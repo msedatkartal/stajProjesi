@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
- 
- {% block css %}
- <style>
+
+{% block css %}
+<style>
     .carousel-brand {
         background-color: #35a29f;
     }
@@ -44,16 +44,19 @@
         width: 100%;
     }
 
-    .owl-prev, .owl-next {
+    .owl-prev,
+    .owl-next {
         display: flex;
         position: absolute;
         transform: scale(4) !important;
         color: #071952 !important;
     }
 
-    .owl-prev, .owl-next:hover {
+    .owl-prev,
+    .owl-next:hover {
         background: transparent !important;
     }
+
     .owl-prev {
         top: 115px;
         left: 10px;
@@ -68,10 +71,19 @@
         display: block;
     }
 
+    .main_right a,
+    p,
+    li {
+        font-size: 12px;
+    }
+
+    .main_right ul {
+        list-style: none;
+    }
 </style>
-    
- {% endblock css %}
-    
+
+{% endblock css %}
+
 
 {% block main %}
 
@@ -100,8 +112,7 @@
                                         <div class="user-img">
                                             <img src="baykus.png" alt="">
                                         </div>
-                                        <small
-                                            class="d-flex justify-content-center align-items-center">username</small>
+                                        <small class="d-flex justify-content-center align-items-center">username</small>
                                     </div>
                                     <div class="message">
                                         <i class="far fa-comments">2</i>
@@ -314,9 +325,9 @@
         </div>
         <!-- Tabs content -->
     </div>
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-9">
-            <div class="forumlar mt-5">
+            <div class="forumlar">
                 <div class="card">
                     <div class="card-body">
                         <h4>Oyunlar</h4>
@@ -336,15 +347,88 @@
                 </div>
             </div>
         </div>
-        <div class="col-3">
-            <div class="card">
+
+        <div class="col-3 main_right">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fas fa-cake-candles me-2"></i>
+                    <a href="">Bugün doğum günü olanlar</a>
+                </div>
                 <div class="card-body">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem sunt cupiditate error
-                        voluptate, et minus qui? Vero incidunt eaque velit?</p>
+                    <img src="" alt="" class="rounded-circle">
                 </div>
             </div>
 
+
+
+            <div class="card mb-3">
+                <div class="card-header head">
+                    <i class="fas fa-users me-2"></i>
+                    <a href="#">Çevrimiçi üyeler</a>
+                </div>
+                <div class="card-body">
+                    <p>Şu anda çevrimiçi üye yok</p>
+                </div>
+                <div class="card-footer">
+                    <p style="font-size: 10px;">Toplam: 7 (Kullanıcı: 0, ziyaretçi: 7)</p>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="far fa-comment me-2"></i>
+                    <a href="#">Son mesajlar</a>
+                </div>
+                <div class="card-body">
+                    <img src="" alt="" class="rounded-circle me-2" style="width: 30px;">
+                    <a href="#">gamer laptop önerisi</a>
+                    <p class="mt-3">En son: hubege Dün 12:16 da</p>
+                    <a href="">Konu dışı</a>
+                </div>
+                <div class="card-body">
+                    <img src="" alt="" class="rounded-circle me-2" style="width: 30px;">
+                    <a href="#">gamer laptop önerisi</a>
+                    <p class="mt-3">En son: hubege Dün 12:16 da</p>
+                    <a href="">Konu dışı</a>
+                </div>
+                <div class="card-body">
+                    <img src="" alt="" class="rounded-circle me-2" style="width: 30px;">
+                    <a href="#">gamer laptop önerisi</a>
+                    <p class="mt-3">En son: hubege Dün 12:16 da</p>
+                    <a href="">Konu dışı</a>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-chart-column me-2"></i>
+                    <p style="display: inline;"> Forum istatistikleri</p>
+                </div>
+                <div class="card-body">
+                    <ul class="p-0">
+                        <div class="d-flex justify-content-between">
+                            <li>Konular:</li>
+                            <li> 4,130</li>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <li>Mesajlar:</li>
+                            <li> 16,033</li>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <li>Kullanıcılar:</li>
+                            <li> 2016</li>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <li>Son üye:</li>
+                            <li> <a href="#">xroleplay</a></li>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
         </div>
+
     </div>
 </div>
 
@@ -360,8 +444,8 @@
         loop: true,
         dots: false,
         nav: true,
-        autoplay:true,
-        autoplayTimeout:5000,
+        autoplay: true,
+        autoplayTimeout: 5000,
         smartSpeed: 4000,
         responsive: {
             0: {
@@ -382,4 +466,3 @@
 
 </script>
 {% endblock js %}
-    
