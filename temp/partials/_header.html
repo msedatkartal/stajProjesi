@@ -1,0 +1,129 @@
+{% load static %}
+
+{% block css %}
+<style>
+    .bg{
+        height: 200px;
+        background-image: url("{% static 'img/banner.png' %}");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+    
+{% endblock css %}
+    
+
+<nav class="position-relative" >
+    <!-- UP (logo and login/register/search/mode)-->
+    <div class=" d-block">
+        <!-- LOGO -->
+        <div class="navbar navbar-expand-md navbar-light bg-light px-5 bg">
+            <div class="container-fluid justify-content-between ">
+                <!-- Left elements -->
+                <div class="d-flex">
+                    <!-- Brand -->
+                    <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="#">
+                      
+                        <!-- <img src="{% static 'img/banner.png' %}" height="120"
+                            alt="MDB Logo"  style="margin-top: 2px;" /> -->
+                    </a>
+                </div>
+                <!-- Left elements -->
+
+                <!-- Right elements -->
+                <ul class="navbar-nav flex-row bg-dark bg-opacity-75 p-1 rounded">
+                    <!-- login -->
+                    <li class="nav-item me-3 me-lg-2">
+                        <a class="nav-link" href="#">
+                            <span class="text-white text-capitalize"><i class="fas fa-arrow-right-to-bracket fa-lg">
+                                </i>
+                                Giriş</span>
+                        </a>
+                    </li>
+                    <!-- register -->
+                    <li class="nav-item me-3 me-lg-2">
+                        <a class="nav-link btn btn-success" href="#">
+                            <span class="text-white text-capitalize"><i class="far fa-square-plus fa-lg"> </i> Kayıt
+                                ol</span>
+                        </a>
+                    </li>
+                    <!-- search -->
+                    <li class="nav-item dropdown me-3 me-lg-2">
+                        <a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
+                            role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                            <span class="text-white"><i class="fas fa-magnifying-glass fa-lg"></i></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                            <li>
+                                <a class="dropdown-item" href="#">Some news</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Another news</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- dark/light mode -->
+                    <li class="nav-item me-3 me-lg-2">
+                        <a class="nav-link" href="#" role="button">
+                            <span class="text-white"><i class="far fa-moon fa-lg"></i></span>
+                            <!-- <span class="text-white"><i class="far fa-lightbulb fa-lg"></i></span> -->
+                        </a>
+                    </li>
+                </ul>
+                <!-- Right elements -->
+            </div>
+        </div>
+    </div>
+    <!-- DOWN (menu and search area) -->
+    <div class="position">
+        <div class="navbar navbar-expand-lg navbar-dark bg-primary ">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                    data-mdb-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow"
+                                aria-current="page" href="#"><i class="pe-2 fas fa-house-chimney"></i>Anasayfa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href="#"><i
+                                    class="pe-2 fas fa-comments"></i>Forumlar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href="#"><i
+                                    class="pe-2 fas fa-laptop"></i>Laptop Arşivi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href="#"><i
+                                    class="pe-2 fas fa-tag"></i>İkinci El</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href="#"><i
+                                    class="pe-2 fas fa-star"></i>Neler Yeni</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href="#"><i
+                                    class="pe-2 fas fa-user-astronaut"></i>Üyeler</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href="#"><i
+                                    class="pe-2 fas fa-paper-plane"></i>Teknoloji Haberleri</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex input-group w-auto position-relative">
+                        <input type="search" class="form-control border border-3 border-dark" placeholder="Ara.."
+                            aria-label="Search" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
