@@ -1,8 +1,60 @@
 {% extends 'base.html' %}
 {% load static %}
- 
- {% block css %}
- <style>
+
+{% block css %}
+<style>
+    .information {
+
+        background: #071952;
+        margin-top: 120px;
+    }
+
+
+    .smokewhite {
+        color: whitesmoke;
+    }
+
+    .line:hover {
+
+        text-decoration: underline;
+        text-decoration-color: whitesmoke;
+        text-decoration-thickness: 1.5px;
+        width: fit-content;
+    }
+
+
+
+    .shaking-icon:hover i {
+        animation: shake 0.8s infinite;
+    }
+
+
+
+    @keyframes shake {
+
+        0% {
+            transform: translateX(0);
+        }
+
+        25% {
+            transform: translateX(-5px);
+        }
+
+        50% {
+            transform: translateX(5px);
+        }
+
+        75% {
+            transform: translateX(-5px);
+        }
+
+        100% {
+            transform: translateX(0);
+        }
+
+
+    }
+
     .carousel-brand {
         background-color: #35a29f;
     }
@@ -44,16 +96,19 @@
         width: 100%;
     }
 
-    .owl-prev, .owl-next {
+    .owl-prev,
+    .owl-next {
         display: flex;
         position: absolute;
         transform: scale(4) !important;
         color: #071952 !important;
     }
 
-    .owl-prev, .owl-next:hover {
+    .owl-prev,
+    .owl-next:hover {
         background: transparent !important;
     }
+
     .owl-prev {
         top: 115px;
         left: 10px;
@@ -67,11 +122,10 @@
     .owl-carousel .owl-nav.disabled {
         display: block;
     }
-
 </style>
-    
- {% endblock css %}
-    
+
+{% endblock css %}
+
 
 {% block main %}
 
@@ -100,8 +154,7 @@
                                         <div class="user-img">
                                             <img src="baykus.png" alt="">
                                         </div>
-                                        <small
-                                            class="d-flex justify-content-center align-items-center">username</small>
+                                        <small class="d-flex justify-content-center align-items-center">username</small>
                                     </div>
                                     <div class="message">
                                         <i class="far fa-comments">2</i>
@@ -314,6 +367,8 @@
         </div>
         <!-- Tabs content -->
     </div>
+
+
     <div class="row">
         <div class="col-9">
             <div class="forumlar mt-5">
@@ -348,6 +403,95 @@
     </div>
 </div>
 
+
+
+<!-- İnformation Bar -->
+
+<div class="container">
+
+    <div class="card information mb-5 ">
+        <div class="card-body">
+
+            <div class="container text-center text-md-start">
+
+                <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 row-cols-1">
+
+                    <div class="col d-flex justify-content-center align-items-center smokewhite shaking-icon">
+                        <div class="col-2 mt-2 me-2">
+                            <i class="fas fa-file-signature fa-2x"></i>
+                        </div>
+                        <div class="col-10 mt-4 ">
+                            <a href="#" class="line">
+                                <h6 class=" smokewhite fw-bold">
+                                    Şartlar ve Kurallar
+                                </h6>
+                            </a>
+                            <p>
+                                Forum kullanım kurallarımız.
+                            </p>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col d-flex justify-content-center align-items-center smokewhite shaking-icon">
+                        <div class="col-2 mt-2 me-2">
+                            <i class="fas fa-user-shield fa-2xl"></i>
+                        </div>
+                        <div class="col-10 mt-4">
+                            <a href="#" class="line">
+                                <h6 class="smokewhite fw-bold">
+                                    Gizlilik Politikası
+                                </h6>
+                            </a>
+                            <p>
+                                Kişisel bilgi gizlilik detayları.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col d-flex justify-content-center align-items-center smokewhite shaking-icon">
+                        <div class="col-2 mt-2 me-2">
+                            <i class="fas fa-life-ring fa-2xl"></i>
+                        </div>
+                        <div class="col-10 mt-4">
+                            <a href="#" class="line">
+                                <h6 class="smokewhite fw-bold">
+                                    Yardım
+                                </h6>
+                            </a>
+                            <p>
+                                Forum kullanım klavuzu
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col d-flex justify-content-center align-items-center smokewhite shaking-icon">
+                        <div class="col-2 mt-2 me-2">
+                            <i class="fas fa-envelope fa-2xl "></i>
+                        </div>
+                        <div class="col-10 mt-4">
+                            <a href="#" class="line">
+                                <h6 class="smokewhite fw-bold">
+                                    Bize Ulaşın
+                                </h6>
+                            </a>
+                            <p>
+                                Forum yöneticilerine ulaş.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Grid row -->
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
 {% endblock main %}
 
 
@@ -360,8 +504,8 @@
         loop: true,
         dots: false,
         nav: true,
-        autoplay:true,
-        autoplayTimeout:5000,
+        autoplay: true,
+        autoplayTimeout: 5000,
         smartSpeed: 4000,
         responsive: {
             0: {
@@ -382,4 +526,3 @@
 
 </script>
 {% endblock js %}
-    
