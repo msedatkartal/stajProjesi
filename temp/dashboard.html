@@ -3,6 +3,61 @@
 
 {% block css %}
 <style>
+<<<<<<< HEAD
+=======
+    .information {
+
+        background: #071952;
+        margin-top: 120px;
+    }
+
+
+    .smokewhite {
+        color: whitesmoke;
+    }
+
+    .line:hover {
+
+        text-decoration: underline;
+        text-decoration-color: whitesmoke;
+        text-decoration-thickness: 1.5px;
+        width: fit-content;
+    }
+
+
+
+    .shaking-icon:hover i {
+        animation: shake 0.8s infinite;
+    }
+
+
+
+    @keyframes shake {
+
+        0% {
+            transform: translateX(0);
+        }
+
+        25% {
+            transform: translateX(-5px);
+        }
+
+        50% {
+            transform: translateX(5px);
+        }
+
+        75% {
+            transform: translateX(-5px);
+        }
+
+        100% {
+            transform: translateX(0);
+        }
+
+
+    }
+
+>>>>>>> pr/8
     .carousel-brand {
         background-color: #35a29f;
     }
@@ -70,6 +125,7 @@
     .owl-carousel .owl-nav.disabled {
         display: block;
     }
+<<<<<<< HEAD
 
     .main_right a,
     p,
@@ -80,6 +136,8 @@
     .main_right ul {
         list-style: none;
     }
+=======
+>>>>>>> pr/8
 </style>
 
 {% endblock css %}
@@ -325,7 +383,13 @@
         </div>
         <!-- Tabs content -->
     </div>
+<<<<<<< HEAD
     <div class="row mt-5">
+=======
+
+
+    <div class="row">
+>>>>>>> pr/8
         <div class="col-9">
             <div class="forumlar">
                 <div class="card">
@@ -430,6 +494,95 @@
         </div>
 
     </div>
+</div>
+
+
+
+<!-- İnformation Bar -->
+
+<div class="container">
+
+    <div class="card information mb-5 ">
+        <div class="card-body">
+
+            <div class="container text-center text-md-start">
+
+                <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 row-cols-1">
+
+                    <div class="col d-flex justify-content-center align-items-center smokewhite shaking-icon">
+                        <div class="col-2 mt-2 me-2">
+                            <i class="fas fa-file-signature fa-2x"></i>
+                        </div>
+                        <div class="col-10 mt-4 ">
+                            <a href="#" class="line">
+                                <h6 class=" smokewhite fw-bold">
+                                    Şartlar ve Kurallar
+                                </h6>
+                            </a>
+                            <p>
+                                Forum kullanım kurallarımız.
+                            </p>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col d-flex justify-content-center align-items-center smokewhite shaking-icon">
+                        <div class="col-2 mt-2 me-2">
+                            <i class="fas fa-user-shield fa-2xl"></i>
+                        </div>
+                        <div class="col-10 mt-4">
+                            <a href="#" class="line">
+                                <h6 class="smokewhite fw-bold">
+                                    Gizlilik Politikası
+                                </h6>
+                            </a>
+                            <p>
+                                Kişisel bilgi gizlilik detayları.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col d-flex justify-content-center align-items-center smokewhite shaking-icon">
+                        <div class="col-2 mt-2 me-2">
+                            <i class="fas fa-life-ring fa-2xl"></i>
+                        </div>
+                        <div class="col-10 mt-4">
+                            <a href="#" class="line">
+                                <h6 class="smokewhite fw-bold">
+                                    Yardım
+                                </h6>
+                            </a>
+                            <p>
+                                Forum kullanım klavuzu
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col d-flex justify-content-center align-items-center smokewhite shaking-icon">
+                        <div class="col-2 mt-2 me-2">
+                            <i class="fas fa-envelope fa-2xl "></i>
+                        </div>
+                        <div class="col-10 mt-4">
+                            <a href="#" class="line">
+                                <h6 class="smokewhite fw-bold">
+                                    Bize Ulaşın
+                                </h6>
+                            </a>
+                            <p>
+                                Forum yöneticilerine ulaş.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Grid row -->
+            </div>
+
+        </div>
+    </div>
+
 </div>
 
 {% endblock main %}
