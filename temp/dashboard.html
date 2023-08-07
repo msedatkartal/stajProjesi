@@ -125,14 +125,17 @@
         display: block;
     }
 
-    .main_right a,p,
-    li {
+    .main_right a,
+    .main_right p,
+    .main_right li,
+    .content-text p {
         font-size: 12px;
     }
 
     .main_right ul {
         list-style: none;
     }
+     
 </style>
 
 {% endblock css %}
@@ -157,7 +160,7 @@
                                 <div class="content-text">
                                     <h6>{{ card.gameName | truncatechars:25 }}</h6>
                                     <hr class="m-0 ">
-                                    <p>yorum</p>
+                                    <p >yorum</p>
                                 </div>
                                 <div class="text-under d-flex justify-content-between align-items-center">
                                     <div class="d-flex">
