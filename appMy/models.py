@@ -15,8 +15,6 @@ class GameCard(models.Model):
     def __str__(self):
         return self.gameName
     
-    
-    
     class Meta:
         verbose_name_plural="Oyun Kartları"
         verbose_name="Kart"

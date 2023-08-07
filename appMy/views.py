@@ -4,8 +4,10 @@ from .models import *
 
 def dashboardPage(request):
     gamecard = GameCard.objects.all()
+    gamecategory = CategoryGame.objects.all()
     context = {
-        'gamecard' : gamecard
+        'gamecard' : gamecard,
+        'gamecategory' : gamecategory
     }
     return render(request,'dashboard.html',context)
 
