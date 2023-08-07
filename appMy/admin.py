@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import *
 
 
+
 class CardAdmin(admin.ModelAdmin):
     list_display = ['gameName','gameImage','categoryName']
     
