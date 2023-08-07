@@ -1,8 +1,12 @@
 from django.shortcuts import render
+from .models import *
 
-# Create your views here.
+
 def dashboardPage(request):
-    context = {}
+    gamecard = GameCard.objects.all()
+    context = {
+        'gamecard' : gamecard
+    }
     return render(request,'dashboard.html',context)
 
 def forumDetail(request):
