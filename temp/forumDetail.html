@@ -3,242 +3,337 @@
 
 {% block css %}
 <style>
-  
-    .breadcrumbs {
-        border: 1px solid #cbd2d9;
-        border-radius: 0.3rem;
-        display: inline-flex;
-        overflow: hidden;
-        margin-top: 30px;
-    }
+  .breadcrumbs {
+    border: 1px solid #cbd2d9;
+    border-radius: 0.3rem;
+    display: inline-flex;
+    overflow: hidden;
+    margin-top: 30px;
+  }
 
-    .breadcrumbs__item {
-        background: #fff;
-        color: #333;
-        outline: none;
-        padding: 0.75em 0.75em 0.75em 1.25em;
-        position: relative;
-        text-decoration: none;
-        transition: background 0.2s linear;
-    }
+  .breadcrumbs__item {
+    background: #fff;
+    color: #333;
+    outline: none;
+    padding: 0.75em 0.75em 0.75em 1.25em;
+    position: relative;
+    text-decoration: none;
+    transition: background 0.2s linear;
+  }
 
-    .breadcrumbs__item:hover:after,
-    .breadcrumbs__item:hover {
-        background: #edf1f5;
-    }
+  .breadcrumbs__item:hover:after,
+  .breadcrumbs__item:hover {
+    background: #edf1f5;
+  }
 
-    .breadcrumbs__item:focus:after,
-    .breadcrumbs__item:focus,
-    .breadcrumbs__item.is-active:focus {
-        background: #323f4a;
-        color: #fff;
-    }
+  .breadcrumbs__item:focus:after,
+  .breadcrumbs__item:focus,
+  .breadcrumbs__item.is-active:focus {
+    background: #323f4a;
+    color: #fff;
+  }
 
-    .breadcrumbs__item:after,
-    .breadcrumbs__item:before {
-        background: white;
-        bottom: 0;
-        clip-path: polygon(50% 50%, -50% -50%, 0 100%);
-        content: "";
-        left: 100%;
-        position: absolute;
-        top: 0;
-        transition: background 0.2s linear;
-        width: 1em;
-        z-index: 1;
-    }
+  .breadcrumbs__item:after,
+  .breadcrumbs__item:before {
+    background: white;
+    bottom: 0;
+    clip-path: polygon(50% 50%, -50% -50%, 0 100%);
+    content: "";
+    left: 100%;
+    position: absolute;
+    top: 0;
+    transition: background 0.2s linear;
+    width: 1em;
+    z-index: 1;
+  }
 
-    .breadcrumbs__item:before {
-        background: #cbd2d9;
-        margin-left: 1px;
-    }
+  .breadcrumbs__item:before {
+    background: #cbd2d9;
+    margin-left: 1px;
+  }
 
-    .breadcrumbs__item:last-child {
-        border-right: none;
-    }
+  .breadcrumbs__item:last-child {
+    border-right: none;
+  }
 
-    .breadcrumbs__item.is-active {
-        background: #edf1f5;
-    }
+  .breadcrumbs__item.is-active {
+    background: #edf1f5;
+  }
 
-    /* Some styles to make the page look a little nicer */
-    
+  /* Some styles to make the page look a little nicer */
 
 
-    .border-subject-row {
-        padding: 20px 15px;
-    }
 
-    .border-subject {
-        color: #090a0a;
-        background: #fff;
-        border: 1px solid #ededed;
-        border-radius: 4px;
-        border-color: #00518f;
-        box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 2px, inset rgba(0, 0, 0, 0.08) 0px -5px 20px;
-        background-clip: padding-box;
-    }
+  .border-subject-row {
+    padding: 20px 15px;
+  }
 
-    .title-subject {
-        padding: 0;
-        margin: 0 0 5px 0;
-        min-width: 0;
-        margin-right: auto;
-        font-weight: bold;
-    }
+  .border-subject {
+    color: #090a0a;
+    background: #fff;
+    border: 1px solid #ededed;
+    border-radius: 4px;
+    border-color: #00518f;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 2px, inset rgba(0, 0, 0, 0.08) 0px -5px 20px;
+    background-clip: padding-box;
+  }
 
-    .newsubject {
-        margin: auto;
-        height: 48px;
-        align-items: center;
-        justify-content: center;
-        margin-top: 2.5px;
-    }
+  .title-subject {
+    padding: 0;
+    margin: 0 0 5px 0;
+    min-width: 0;
+    margin-right: auto;
+    font-weight: bold;
+  }
+
+  .newsubject {
+    margin: auto;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2.5px;
+  }
 </style>
 {% endblock css %}
-    
+
 
 {% block main %}
-    <div class="container w-100">
-        <div class="row">
-            <div class="col-10">
-                <nav class="breadcrumbs">
-                    <a href="#home" class="breadcrumbs__item">Home</a>
-                    <a href="#shop" class="breadcrumbs__item">Shop</a>
-                    <a href="#cart" class="breadcrumbs__item">Cart</a>
-                    <a href="#checkout" class="breadcrumbs__item is-active">Checkout</a>
-                </nav>
-            </div>
-        </div>
-        <div class="row border-subject-row">
-            <div class="col-10 border-subject">
-                <div class="p-title d-flex">
-                    <h1 class="title-subject">Anakart</h1>
-                    <form method="POST">
-                        {% csrf_token %}
-                        <div class="new-subject">
-                            <input type="hidden" value="yenikonu" name="yenikonu">
-
-                            <input type="submit" value="Yeni Konu" name="newsubject" class="btn btn-success newsubject">
-
-
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        
-        
-            
-
-        <div class="row tables">
-            <div class="col-10">
-                <table class="table align-middle mb-0 bg-white">
-                    <thead class="bg-light">
-                      <tr >
-                        <th style="padding: 25px;"></th>
-                        <th></th>
-                        <!-- <th>Status</th> -->
-                        
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <img
-                                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                                alt=""
-                                style="width: 45px; height: 45px"
-                                class="rounded-circle"
-                                />
-                            <div class="ms-3">
-                                <a href="#" data-mdb-toggle="tooltip" title="Hi! I'm tooltip">
-                                    <p class="fw-bold mb-1">John Doe</p>
-                                    <small class="text-muted mb-0">john.doe@gmail.com</small>
-                                </a>
-                              
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="fw-normal mb-1">Cevaplar: </p>
-                          <p class="text-muted mb-0">Hit :</p>
-                        </td>
-                        
-                        
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <img
-                                src="https://mdbootstrap.com/img/new/avatars/6.jpg"
-                                class="rounded-circle"
-                                alt=""
-                                style="width: 45px; height: 45px"
-                                />
-                            <div class="ms-3">
-                              <p class="fw-bold mb-1">Alex Ray</p>
-                              <p class="text-muted mb-0">alex.ray@gmail.com</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="fw-normal mb-1">Cevaplar :</p>
-                          <p class="text-muted mb-0">Hit: </p>
-                        </td>
-                        
-                        
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <img
-                                src="https://mdbootstrap.com/img/new/avatars/7.jpg"
-                                class="rounded-circle"
-                                alt=""
-                                style="width: 45px; height: 45px"
-                                />
-                            <div class="ms-3">
-                              <p class="fw-bold mb-1">Kate Hunington</p>
-                              <p class="text-muted mb-0">kate.hunington@gmail.com</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="fw-normal mb-1">Cevaplar: </p>
-                          <p class="text-muted mb-0">Hit: </p>
-                        </td>
-                        
-                        
-                        
-                      </tr>
-                    </tbody>
-                  </table>
-            </div>
-        </div>
-
-        <div class="row pagination-bottom mt-5">
-            <div class="col-10">
-                <nav aria-label="...">
-                    <ul class="pagination">
-                      <li class="page-item disabled">
-                        <span class="page-link">Previous</span>
-                      </li>
-                      <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item " aria-current="page">
-                        <span class="page-link">
-                          2
-                          <span class="visually-hidden">(current)</span>
-                        </span>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                      </li>
-                    </ul>
-                  </nav>
-            </div>
-        </div>
+<div class="container w-100">
+  <div class="row">
+    <div class="col-9">
+      <nav class="breadcrumbs">
+        <a href="#home" class="breadcrumbs__item">Home</a>
+        <a href="#shop" class="breadcrumbs__item">Shop</a>
+        <a href="#cart" class="breadcrumbs__item">Cart</a>
+        <a href="#checkout" class="breadcrumbs__item is-active">Checkout</a>
+      </nav>
     </div>
+  </div>
+
+  <div>
+    <div class="row">
+      <div class="col">
+        <!-- subject name -->
+        <div class="row mt-3">
+          <div class="col-9 border-subject">
+            <div class="p-title d-flex">
+              <h1 class="title-subject">Anakart</h1>
+              <form method="POST">
+                {% csrf_token %}
+                <div class="new-subject">
+                  <input type="hidden" value="yenikonu" name="yenikonu">
+                  <input type="submit" value="Yeni Konu" name="newsubject" class="btn btn-success newsubject">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+          
+        <!--  subject table -->
+        <div class="row mt-3">
+          <div class="col">
+            <table class="table align-middle mb-0 bg-white">
+              <thead class="bg-light">
+                <tr>
+                  <th style="padding: 25px;"></th>
+                  <th></th>
+                  <!-- <th>Status</th> -->
+      
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px"
+                        class="rounded-circle" />
+                      <div class="ms-3">
+                        <a href="#" data-mdb-toggle="tooltip" title="Hi! I'm tooltip">
+                          <p class="fw-bold mb-1">John Doe</p>
+                          <small class="text-muted mb-0">john.doe@gmail.com</small>
+                        </a>
+      
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <p class="fw-normal mb-1">Cevaplar: </p>
+                    <p class="text-muted mb-0">Hit :</p>
+                  </td>
+      
+      
+                </tr>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" class="rounded-circle" alt=""
+                        style="width: 45px; height: 45px" />
+                      <div class="ms-3">
+                        <p class="fw-bold mb-1">Alex Ray</p>
+                        <p class="text-muted mb-0">alex.ray@gmail.com</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <p class="fw-normal mb-1">Cevaplar :</p>
+                    <p class="text-muted mb-0">Hit: </p>
+                  </td>
+      
+      
+                </tr>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <img src="https://mdbootstrap.com/img/new/avatars/7.jpg" class="rounded-circle" alt=""
+                        style="width: 45px; height: 45px" />
+                      <div class="ms-3">
+                        <p class="fw-bold mb-1">Kate Hunington</p>
+                        <p class="text-muted mb-0">kate.hunington@gmail.com</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <p class="fw-normal mb-1">Cevaplar: </p>
+                    <p class="text-muted mb-0">Hit: </p>
+                  </td>
+      
+      
+      
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      
+      <!-- page number -->
+          <div class="row mt-5">
+            <div class="col">
+              <nav aria-label="...">
+                <ul class="pagination">
+                  <li class="page-item disabled">
+                    <span class="page-link">Previous</span>
+                  </li>
+                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item " aria-current="page">
+                    <span class="page-link">
+                      2
+                      <span class="visually-hidden">(current)</span>
+                    </span>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+      
+          </div>
+
+      </div>
+      <div class="col-3 main_right">
+        <div class="card mb-3">
+          <div class="card-header head">
+            <i class="fas fa-users me-2"></i>
+            <a href="#">Çevrimiçi üyeler</a>
+          </div>
+          <div class="card-body">
+            <p>Şu anda çevrimiçi üye yok</p>
+          </div>
+          <div class="card-footer">
+            <p style="font-size: 10px;">Toplam: 7 (Kullanıcı: 0, ziyaretçi: 7)</p>
+          </div>
+        </div>
+    
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="far fa-comment me-2"></i>
+            <a href="#">Son mesajlar</a>
+          </div>
+          <div class="card-body">
+            <img src="" alt="" class="rounded-circle me-2" style="width: 30px;">
+            <a href="#">gamer laptop önerisi</a>
+            <p class="mt-3">En son: hubege Dün 12:16 da</p>
+            <a href="">Konu dışı</a>
+          </div>
+          <div class="card-body">
+            <img src="" alt="" class="rounded-circle me-2" style="width: 30px;">
+            <a href="#">gamer laptop önerisi</a>
+            <p class="mt-3">En son: hubege Dün 12:16 da</p>
+            <a href="">Konu dışı</a>
+          </div>
+          <div class="card-body">
+            <img src="" alt="" class="rounded-circle me-2" style="width: 30px;">
+            <a href="#">gamer laptop önerisi</a>
+            <p class="mt-3">En son: hubege Dün 12:16 da</p>
+            <a href="">Konu dışı</a>
+          </div>
+        </div>
+    
+    
+        <div class="card">
+          <div class="card-header">
+            <i class="fas fa-chart-column me-2"></i>
+            <p style="display: inline;"> Forum istatistikleri</p>
+          </div>
+          <div class="card-body">
+            <ul class="p-0">
+              <div class="d-flex justify-content-between">
+                <li>Konular:</li>
+                <li> 4,130</li>
+              </div>
+              <div class="d-flex justify-content-between">
+                <li>Mesajlar:</li>
+                <li> 16,033</li>
+              </div>
+              <div class="d-flex justify-content-between">
+                <li>Kullanıcılar:</li>
+                <li> 2016</li>
+              </div>
+              <div class="d-flex justify-content-between">
+                <li>Son üye:</li>
+                <li> <a href="#">xroleplay</a></li>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+    
+    {% comment %}
+      
+    <div class="row border-subject-row">
+    </div>
+    {% endcomment %}
+      
+
+
+
+    
+    {% comment %}
+      
+    <div class="row tables">
+    </div>
+    {% endcomment %}
+      
+
+    <div class="row pagination-bottom mt-5">
+
+    </div>
+   
+
+
+  </div>
+
+
+  
+
+
+</div>
 {% endblock main %}
