@@ -20,10 +20,4 @@ class GameCard(models.Model):
         verbose_name_plural="Oyun Kartları"
         verbose_name="Kart"
 
-class Game(models.Model):
-    gamename = models.CharField(("Oyun Adı"), max_length=50)
-    gameimg = models.ImageField(("Oyun Resmi"), upload_to="games", max_length=200)
-
-    def __str__(self):
-        return self.gamename
 
