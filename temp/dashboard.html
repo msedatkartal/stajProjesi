@@ -73,19 +73,20 @@
 
     .owl-item {
         position: relative;
-        height: 220px;
         overflow: hidden;
         border-radius: 10px;
         box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.6);
     }
-
-    .owl-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
+    
+    
+    .owl-img{
+      background-repeat: no-repeat;  
+      background-position: center;
+      background-size: cover;
+      width: 100%;
+      height:100%;
+            
     }
-
     .owl-img:hover {
         scale: 1.2;
     }
@@ -125,14 +126,16 @@
     }
 
     .main_right a,
-    p,
-    li {
+    .main_right p,
+    .main_right li,
+    .content-text p {
         font-size: 12px;
     }
 
     .main_right ul {
         list-style: none;
     }
+     
 </style>
 
 {% endblock css %}
@@ -140,25 +143,24 @@
 
 {% block main %}
 
-<!-- owl carousel -->
+<!-- owl carousel start -->
 <div class="container mt-3">
     <div class="row">
         <div class="col ">
             <div style="border: 1px solid #071952; border-radius: 5px;">
-
                 <div class="carousel-brand ps-2 py-1">
-                    <h4 class="text-dark">TembelBaykuş.net - </h4>
+                    <h4 class="text-white">TembelBaykuş.net - </h4>
                 </div>
-
                 <div class="owl-carousel owl-theme py-4 px-5">
+                    {% for card in gamecard %}
                     <a href="">
-                        <div class="item  ">
-                            <img class="owl-img" src="digital.jpg" alt="">
-                            <div class="carousel-context text-dark px-2">
+                    <div class="item">
+                        <div class="owl-img" style="width: 100%;height: 250px; background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('{{ card.gameImage.url }}');"></div>
+                            <div class="carousel-context text-light px-2">
                                 <div class="content-text">
-                                    <h5>popüler başlık</h5>
+                                    <h6>{{ card.gameName | truncatechars:25 }}</h6>
                                     <hr class="m-0 ">
-                                    <h6>yorum</h6>
+                                    <p >yorum</p>
                                 </div>
                                 <div class="text-under d-flex justify-content-between align-items-center">
                                     <div class="d-flex">
@@ -170,16 +172,17 @@
                                     <div class="message">
                                         <i class="far fa-comments">2</i>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                     </a>
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!-- owl carousel end -->
 
 <div class="container">
     <div class="forum-istatistik mt-5">
@@ -234,6 +237,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        
                         <tr>
                             <td>
                                 <p>1</p>
@@ -382,29 +386,34 @@
     <div class="row mt-5">
 
         <div class="col-9">
+
+            {% for category in gamecategory %}
             <div class="forumlar">
                 <div class="card">
                     <div class="card-body">
-                        <h4>Oyunlar</h4>
-                        <small>Oyunlar Hakkında Herşey!!</small>
+                        <h4>{{ category.categoryName }}</h4>
                     </div>
                 </div>
-                <div class="card games mt-3">
-                    <div class="card-body">
+                <div class="card games mt-3 mb-5">
+                    <div class="card-body">                     
                         <div>
-                            <a href="" class="me-3"><i class="fas fa-headset me-1"></i>Online Oyunlar</a>
-                            <a href="" class="me-3"><i class="fas fa-table-tennis-paddle-ball me-1"></i>Eşli Oyunlar</a>
-                            <a href="" class="me-3"><i class="fas fa-puzzle-piece me-1"></i>Tek Kişilik Oyunlar</a>
-                            <a href="" class="me-3"><i class="fas fa-gamepad me-1"></i>PvP Serverlar</a>
-                            <a href="" class="me-3"><i class="fab fa-fantasy-flight-games me-1"></i>MOBA Oyunlar</a>
+                            
+                            {% for i in category.gamecard_set.all %}
+                            <a href="" class="me-3"><i class="fas fa-gamepad me-1"></i>{{ i.gameName }}</a>      
+                                
+                            {% endfor %}
+                                
                         </div>
                     </div>
                 </div>
             </div>
+            {% endfor %}
+
+
         </div>
 
 
-        
+
         <div class="col-3 main_right">
             <div class="card mb-3">
                 <div class="card-header">
