@@ -78,13 +78,15 @@
         box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.6);
     }
     
+    
     .owl-img{
-
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+      background-repeat: no-repeat;  
+      background-position: center;
+      background-size: cover;
+      width: 100%;
+      height:100%;
+            
     }
-
     .owl-img:hover {
         scale: 1.2;
     }
@@ -124,14 +126,16 @@
     }
 
     .main_right a,
-    p,
-    li {
+    .main_right p,
+    .main_right li,
+    .content-text p {
         font-size: 12px;
     }
 
     .main_right ul {
         list-style: none;
     }
+     
 </style>
 
 {% endblock css %}
@@ -139,27 +143,24 @@
 
 {% block main %}
 
-<!-- owl carousel -->
+<!-- owl carousel start -->
 <div class="container mt-3">
     <div class="row">
         <div class="col ">
             <div style="border: 1px solid #071952; border-radius: 5px;">
-
                 <div class="carousel-brand ps-2 py-1">
-                    <h4 class="text-dark">TembelBaykuş.net - </h4>
+                    <h4 class="text-white">TembelBaykuş.net - </h4>
                 </div>
                 <div class="owl-carousel owl-theme py-4 px-5">
                     {% for card in gamecard %}
                     <a href="">
                     <div class="item">
-                        <div style="width: 100%;height: 250px;">
-                            <img class="owl-img" src="{{ card.gameImage.url }}" alt="">
-                        </div>
+                        <div class="owl-img" style="width: 100%;height: 250px; background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('{{ card.gameImage.url }}');"></div>
                             <div class="carousel-context text-light px-2">
                                 <div class="content-text">
-                                    <h5>{{ card.gameName | truncatechars:25 }}</h5>
+                                    <h6>{{ card.gameName | truncatechars:25 }}</h6>
                                     <hr class="m-0 ">
-                                    <h6>yorum</h6>
+                                    <p >yorum</p>
                                 </div>
                                 <div class="text-under d-flex justify-content-between align-items-center">
                                     <div class="d-flex">
@@ -171,7 +172,6 @@
                                     <div class="message">
                                         <i class="far fa-comments">2</i>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -182,6 +182,7 @@
         </div>
     </div>
 </div>
+<!-- owl carousel end -->
 
 <div class="container">
     <div class="forum-istatistik mt-5">
