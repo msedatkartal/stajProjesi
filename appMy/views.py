@@ -15,6 +15,7 @@ def forumDetail(request):
     context = {}
     return render(request,'forumDetail.html',context)
 
-def postDetail(request):
-    context = {}
-    return render(request,'postDetail.html',context)
+
+
+
+
