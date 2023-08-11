@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
 {% block css %}
 <style>
     .breadcrumbs {
@@ -117,53 +116,22 @@
             <div class="col">
                 <div class="row mt-2">
                     <div class="col border-subject">
-                        <div class="p-title d-flex">
-                            <h1 class="title-subject">{{ comments.subject_brand }}</h1>
-                            <form method="POST">
-                                {% csrf_token %}
-                                <div class="new-subject">
-                                    <input type="hidden" value="yenikonu" name="yenikonu">
-                                </div>
-                            </form>
-                        </div>
-                        <div class="d-flex">
-                            <div class="me-5"><i class="fas fa-baby"></i> <small>username</small></div>
-                            <div><i class="far fa-clock"></i> <small>tarih</small></div>
+                        <div class="p-title p-2">
+                            <h4 class="title-subject">Yeni Konu Aç</h4>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <!-- subject name end -->
-
-        <!-- comment card start -->
-        <div class="row ">
-            <div class="col">    
-                {% for i in comments %}
-                <div class="card mb-2">
-                    <div class="d-flex">
-                        <div class="card-header">
-                            <div class="comment ">
-                                <img style="width: 100px; height: 100px; border:2px solid #00000030 ; border-radius: 50%;"
-                                    src="" alt="">
-                                <h5 style="min-width: 180px;">user ismi gelecek</h5>
-                                <h6 style="min-width:50px; font-size: 12px;"> {{ i.date_now }} </h6>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <p class="ms-5 ps-5 border-start" style="min-height: 100px;">{{ i.text }}</p>
-                        </div>
-
-                    </div>
-                </div>
-                {% endfor %}
-                
+        
                 <!-- comment text -->
                 <div class="card mt-5">
                     <div class="card-body">
                         <form action="{% url 'postDetail' %}" method="POST">
                             {% csrf_token %}
+                            <input type="hidden" name="subject" value="{{ comments.id }}">
+                            <input class="form-control my-2" name="subject" type="text" placeholder="Konu">
                             <div>
                                 <div class="iconlar my-0">
                                     <div class="div2" style="width:720px; height:55px">
@@ -213,7 +181,7 @@
                                     </div>
                                     <textarea class="form-control my-2" name="text" placeholder="Yorum" cols="30"
                                         rows="10"></textarea>
-                                    <button type="submit" class="btn btn-primary my-2" type="submit">Paylaş</button>
+                                    <button type="submit" class="btn btn-primary my-2 btn-success" type="submit">Yeni Konu Aç</button>
                                     <button type="button"
                                         style="border: 1px solid rgba(128, 128, 128, 0.854); float: right;  margin-top:10px;"
                                         class="btn btn-"><i class="fa-solid fa-paperclip "

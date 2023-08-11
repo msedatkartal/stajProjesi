@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import *
+from appUser.models import Comment
 
 
 def dashboardPage(request):
@@ -12,7 +13,19 @@ def dashboardPage(request):
     return render(request,'dashboard.html',context)
 
 def forumDetail(request):
-    context = {}
+    comments=Comment.objects.all()
+    
+    if request.method == 'POST':
+        text = request.POST.get("text")
+        subject_brand = request.POST.get("subject")
+        comment = Comment(text=text,subject_brand=subject_brand)
+        comment.save()
+        return redirect('postDetail')
+    context = {
+        'comments':comments,
+        
+        
+    }
     return render(request,'forumDetail.html',context)
 
 
