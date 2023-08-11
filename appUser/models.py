@@ -1,7 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
 from appMy.models import GameCard
 
-# Create your models here.
+# User Model
 
 # Comment
 class Comment(models.Model):
