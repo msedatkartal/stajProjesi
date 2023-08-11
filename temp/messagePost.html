@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<style>
+    .breadcrumbs {
+        border: 1px solid #cbd2d9;
+        border-radius: 0.3rem;
+        display: inline-flex;
+        overflow: hidden;
+        margin-top: 30px;
+    }
+
+    .breadcrumbs__item {
+        background: #fff;
+        color: #333;
+        outline: none;
+        padding: 0.75em 0.75em 0.75em 1.25em;
+        position: relative;
+        text-decoration: none;
+        transition: background 0.2s linear;
+    }
+
+    .breadcrumbs__item:hover:after,
+    .breadcrumbs__item:hover {
+        background: #edf1f5;
+    }
+
+    .breadcrumbs__item:focus:after,
+    .breadcrumbs__item:focus,
+    .breadcrumbs__item.is-active:focus {
+        background: #323f4a;
+        color: #fff;
+    }
+
+    .breadcrumbs__item:after,
+    .breadcrumbs__item:before {
+        background: white;
+        bottom: 0;
+        clip-path: polygon(50% 50%, -50% -50%, 0 100%);
+        content: "";
+        left: 100%;
+        position: absolute;
+        top: 0;
+        transition: background 0.2s linear;
+        width: 1em;
+        z-index: 1;
+    }
+
+    .breadcrumbs__item:before {
+        background: #cbd2d9;
+        margin-left: 1px;
+    }
+
+    .breadcrumbs__item:last-child {
+        border-right: none;
+    }
+
+    .breadcrumbs__item.is-active {
+        background: #edf1f5;
+    }
+
+    .border-subject-row {
+        padding: 20px 15px;
+    }
+
+    .border-subject {
+        color: #090a0a;
+        background: #fff;
+        border: 1px solid #ededed;
+        border-radius: 4px;
+        border-color: #00518f;
+        box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 2px, inset rgba(0, 0, 0, 0.08) 0px -5px 20px;
+        background-clip: padding-box;
+    }
+
+    .title-subject {
+        padding: 0;
+        margin: 0 0 5px 0;
+        min-width: 0;
+        margin-right: auto;
+        font-weight: bold;
+    }
+
+    .newsubject {
+        margin: auto;
+        height: 48px;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2.5px;
+    }
+</style>
+{% endblock css %}
+
+
+{% block main %}
+<main>
+
+    <!-- Comment -->
+    <div class="container mb-5">
+        <!-- page next -->
+        <div class="row mb-2">
+            <div class="col-9">
+                <nav class="breadcrumbs">
+                    <a href="#home" class="breadcrumbs__item">Home</a>
+                    <a href="#shop" class="breadcrumbs__item">Shop</a>
+                    <a href="#cart" class="breadcrumbs__item">Cart</a>
+                    <a href="#checkout" class="breadcrumbs__item is-active">Checkout</a>
+                </nav>
+            </div>
+        </div>
+        <!-- page next-end -->
+
+        <!-- subject name start -->
+        <div class="row mb-5">
+            <div class="col">
+                <div class="row mt-2">
+                    <div class="col border-subject">
+                        <div class="p-title p-2">
+                            <h4 class="title-subject">Yeni Konu Aç</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- subject name end -->
+        
+                <!-- comment text -->
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <form action="{% url 'postDetail' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="subject" value="{{ comments.id }}">
+                            <input class="form-control my-2" name="subject" type="text" placeholder="Konu">
+                            <div>
+                                <div class="iconlar my-0">
+                                    <div class="div2" style="width:720px; height:55px">
+                                        <i style="padding-left: 10px;" class="fas fa-eraser"></i>
+                                        <span></span>
+                                        <span>
+                                        </span> <i style="padding-left: 10px;" class="fas fa-italic"></i>
+                                        <span></span>
+                                        <i class="fas fa-quote-left"></i>
+                                        <i class="fas fa-paragraph"></i>
+                                        <span></span>
+                                        <span></span>
+                                        <i class="fas fa-comment my-2" style="padding-left: 10px;"></i>
+                                        <span></span>
+                                        <i class="fas fa-heading" style="padding-left: 10px;"></i>
+                                        <span></span>
+                                        <i class="fas fa-file-word" style="padding-left: 10px;"></i>
+                                        <span></span>
+                                        <i class="fas fa-font"></i>
+                                        <span></span>
+                                        <i class="fas fa-align-center" style="padding-left: 10px;"></i>
+                                        <span></span>
+                                        <i class="fas fa-step-forward" style="padding-left: 10px;"></i>
+                                        <span></span>
+                                        <i class="fas fa-align-justify" style="padding-left: 10px;"></i>
+                                        <span></span>
+                                        <i class="fas fa-palette" style="padding-left: 15px;"></i>
+                                        <span></span>
+                                        <span></span>
+                                        <i class="far fa-comment-dots" style="padding-left: 10px;"></i>
+                                        <span></span>
+                                        <i class="fas fa-circle-notch" style="padding-left: 10px;"></i>
+                                        <span></span>
+                                        <i class="fas fa-print" style="padding-left: 10px;"></i>
+                                        <span></span>
+                                        <i class="fas fa-text-size" style="padding-left: 10px;"></i>
+                                        <i class="fa-solid fa-envelopes-bulk"></i>
+                                        <i class="fa-solid fa-paperclip"></i>
+                                        <i class="fa-solid fa-database"></i>
+                                        <i class="fa-regular fa-image" style="padding-left: 40px;"></i>
+                                        <i class="fa-regular fa-user"></i>
+                                        <i class="fa-solid fa-paperclip"></i>
+                                        <i class="fa-solid fa-table"></i>
+                                        <i class="fa-solid fa-arrow-up-wide-short"></i>
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                        <span></span>
+                                    </div>
+                                    <textarea class="form-control my-2" name="text" placeholder="Yorum" cols="30"
+                                        rows="10"></textarea>
+                                    <button type="submit" class="btn btn-primary my-2 btn-success" type="submit">Yeni Konu Aç</button>
+                                    <button type="button"
+                                        style="border: 1px solid rgba(128, 128, 128, 0.854); float: right;  margin-top:10px;"
+                                        class="btn btn-"><i class="fa-solid fa-paperclip "
+                                            style="padding-right:7px;"></i>Dosya
+                                        Ekle</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</main>
+{% endblock main %}
