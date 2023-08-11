@@ -117,7 +117,7 @@
         <div class="row mt-3">
           <div class="col-9 border-subject">
             <div class="p-title d-flex">
-              <h1 class="title-subject">Anakart</h1>
+              <h1 class="title-subject">oyun kategori isimleri yazılacak</h1>
               <form method="POST">
                 {% csrf_token %}
                 <div class="new-subject">
@@ -132,6 +132,7 @@
         <!--  subject table -->
         <div class="row mt-3">
           <div class="col">
+            {% for brand in comments %}
             <table class="table align-middle mb-0 bg-white">
               <thead class="bg-light">
                 <tr>
@@ -148,11 +149,16 @@
                       <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px"
                         class="rounded-circle" />
                       <div class="ms-3">
-                        <a href="#" data-mdb-toggle="tooltip" title="Hi! I'm tooltip">
-                          <p class="fw-bold mb-1">John Doe</p>
-                          <small class="text-muted mb-0">john.doe@gmail.com</small>
+                        
+                        <a href="" data-mdb-toggle="tooltip" title="Hi! I'm tooltip">
+                          <p class="fw-bold mb-1">{{ brand.subject_brand }}</p>
                         </a>
-      
+                        
+                        <div class="d-flex">
+                          <div class="me-5"><i class="fas fa-baby"></i> <small>username</small></div>
+                          <div><i class="far fa-clock"></i> <small>tarih</small></div>
+                      </div>
+                        
                       </div>
                     </div>
                   </td>
@@ -160,48 +166,13 @@
                     <p class="fw-normal mb-1">Cevaplar: </p>
                     <p class="text-muted mb-0">Hit :</p>
                   </td>
-      
-      
+                  
+                  
                 </tr>
-                <tr>
-                  <td>
-                    <div class="d-flex align-items-center">
-                      <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" class="rounded-circle" alt=""
-                        style="width: 45px; height: 45px" />
-                      <div class="ms-3">
-                        <p class="fw-bold mb-1">Alex Ray</p>
-                        <p class="text-muted mb-0">alex.ray@gmail.com</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <p class="fw-normal mb-1">Cevaplar :</p>
-                    <p class="text-muted mb-0">Hit: </p>
-                  </td>
-      
-      
-                </tr>
-                <tr>
-                  <td>
-                    <div class="d-flex align-items-center">
-                      <img src="https://mdbootstrap.com/img/new/avatars/7.jpg" class="rounded-circle" alt=""
-                        style="width: 45px; height: 45px" />
-                      <div class="ms-3">
-                        <p class="fw-bold mb-1">Kate Hunington</p>
-                        <p class="text-muted mb-0">kate.hunington@gmail.com</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <p class="fw-normal mb-1">Cevaplar: </p>
-                    <p class="text-muted mb-0">Hit: </p>
-                  </td>
-      
-      
-      
-                </tr>
+                
               </tbody>
             </table>
+            {% endfor %}
           </div>
         </div>
       

@@ -1,6 +1,7 @@
 from django.db import models
 
 
+
 class CategoryGame(models.Model):
     categoryName = models.CharField(("Kategori İsmi"), max_length=50)
     
@@ -13,6 +14,7 @@ class GameCard(models.Model):
     categoryName=models.ForeignKey(CategoryGame, verbose_name=("kategori ismi"), on_delete=models.CASCADE)
     slug=models.SlugField(blank=True, null=True)
 
+    
     def __str__(self):
         return self.gameName
     
