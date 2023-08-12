@@ -12,9 +12,12 @@ urlpatterns = [
     # appMY
     path('',dashboardPage, name='dashboardPage'),
     path('forumDetail',forumDetail, name='forumDetail'),
+    path('forumDetail/<id>',forumDetail, name='forumDetail'),
     
     # appUser
     path('loginPage', loginPage , name='loginPage'),
     path('postDetail',postDetail, name='postDetail'),
+    path('messagePost',messagePost, name='messagePost'),
+    path('logout',logoutUser, name='logoutUser'),
     
 ]+ static (settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
