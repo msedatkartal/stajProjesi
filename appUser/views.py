@@ -3,6 +3,8 @@ from django.contrib.auth import login,logout,authenticate
 from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import *
+
+
 def loginPage(request):
     context={}
     if request.method == "POST":
@@ -41,6 +43,12 @@ def loginPage(request):
                 user.save()
                 return redirect("dashboardPage")
     return render(request, 'login-register.html', context)
+
+
+def logoutUser(request):
+    logout(request)
+    return redirect("dashboardPage")
+
 
 # comment
 def postDetail(request):

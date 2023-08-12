@@ -18,5 +18,6 @@ urlpatterns = [
     path('loginPage', loginPage , name='loginPage'),
     path('postDetail',postDetail, name='postDetail'),
     path('messagePost',messagePost, name='messagePost'),
+    path('logout',logoutUser, name='logoutUser'),
     
 ]+ static (settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
