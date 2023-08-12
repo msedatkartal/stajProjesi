@@ -8,7 +8,19 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+        
+    
     }
+    .navbg{
+        background: #D8601D;
+    }
+
+    .btncolor{
+       background-color:#D8601D ;
+    }
+    .btncolor:hover{
+        background:#d8521d ;
+     }
 </style>
     
 {% endblock css %}
@@ -43,7 +55,7 @@
                     </li>
                     <!-- register -->
                     <li class="nav-item me-3 me-lg-2">
-                        <a class="nav-link btn btn-success" href="#">
+                        <a class="nav-link btn btncolor" href="#">
                             <span class="text-white text-capitalize"><i class="far fa-square-plus fa-lg"> </i> Kayıt
                                 ol</span>
                         </a>
@@ -78,9 +90,11 @@
             </div>
         </div>
     </div>
+
+
     <!-- DOWN (menu and search area) -->
     <div class="position">
-        <div class="navbar navbar-expand-lg navbar-dark bg-primary ">
+        <div class="navbar navbar-expand-lg navbg">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
                     data-mdb-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
@@ -97,14 +111,7 @@
                             <a class="nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href="{% url 'forumDetail' %}"><i
                                     class="pe-2 fas fa-comments"></i>Forumlar</a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href="#"><i
-                                    class="pe-2 fas fa-laptop"></i>Laptop Arşivi</a>
-                        </li> -->
-                        <!-- <li class="nav-item">
-                            <a class="nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href="#"><i
-                                    class="pe-2 fas fa-tag"></i>İkinci El</a>
-                        </li> -->
+                       
                         <li class="nav-item">
                             <a class="nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href="{% url 'postDetail' %}"><i
                                     class="pe-2 fas fa-blog"></i>Blog</a>
