@@ -2,6 +2,10 @@
 
 {% block css %}
 <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Blinker&display=swap');
+
+
     .bg{
         height: 200px;
         background-image: url("{% static 'img/banner.png' %}");
@@ -21,6 +25,38 @@
     .btncolor:hover{
         background:#d8521d ;
      }
+
+     .nlink{
+
+        font-family: 'Blinker', sans-serif;
+        font-size: 17px !important;
+
+     }
+     .nlink2{
+        font-family: 'Blinker', sans-serif;
+     }
+     .hover-shadow:hover{
+        background: #cf6135;
+     }
+
+     
+
+     @media (max-width: 992px) {
+
+        .logbox {
+            display: none;
+        }
+    }
+
+    @media (min-width: 992px) {
+
+        .logbox2 {
+            display: none;
+        }
+
+    }
+
+  
 </style>
     
 {% endblock css %}
@@ -44,10 +80,10 @@
                 <!-- Left elements -->
 
                 <!-- Right elements -->
-                <ul class="navbar-nav flex-row bg-dark bg-opacity-75 p-1 rounded">
+                <ul class="navbar-nav flex-row bg-dark bg-opacity-75 p-1 rounded logbox">
                     <!-- login -->
                     <li class="nav-item me-3 me-lg-2">
-                        <a class="nav-link" href="{% url 'loginPage' %}">
+                        <a class="nlink2 nav-link" href="{% url 'loginPage' %}">
                             <span class="text-white text-capitalize"><i class="fas fa-arrow-right-to-bracket fa-lg">
                                 </i>
                                 Giriş</span>
@@ -55,11 +91,11 @@
                     </li>
                     <!-- register -->
                     <li class="nav-item me-3 me-lg-2">
-<<<<<<< HEAD
-                        <a class="nav-link btn btncolor" href="#">
-=======
-                        <a class="nav-link btn btn-success" href="{% url 'loginPage' %}">
->>>>>>> 620d71823853bf8e202456a5edacd1fc6bf14cac
+
+                    
+
+                        <a class="nlink2 nav-link btn btncolor" href="{% url 'loginPage' %}">
+
                             <span class="text-white text-capitalize"><i class="far fa-square-plus fa-lg"> </i> Kayıt
                                 ol</span>
                         </a>
@@ -91,6 +127,8 @@
                     </li>
                 </ul>
                 <!-- Right elements -->
+
+
             </div>
         </div>
     </div>
@@ -105,27 +143,76 @@
                     aria-label="Toggle navigation">
                     <i class="fas fa-bars"></i>
                 </button>
+
+
+                <ul class="navbar-nav flex-row bg-dark bg-opacity-75 p-1 rounded logbox2">
+                    <!-- login -->
+                    <li class="nav-item me-3 me-lg-2">
+                        <a class="nlink2 nav-link" href="{% url 'loginPage' %}">
+                            <span class="text-white text-capitalize"><i class="fas fa-arrow-right-to-bracket fa-lg">
+                                </i>
+                                Giriş</span>
+                        </a>
+                    </li>
+                    <!-- register -->
+                    <li class="nav-item me-3 me-lg-2">
+
+                        <a class="nlink2 nav-link btn btncolor" href="{% url 'loginPage' %}">
+
+                            <span class="text-white text-capitalize"><i class="far fa-square-plus fa-lg"> </i> Kayıt
+                                ol</span>
+                        </a>
+                    </li>
+                    <!-- search -->
+                    <li class="nav-item dropdown me-3 me-lg-2">
+                        <a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
+                            role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                            <span class="text-white"><i class="fas fa-magnifying-glass fa-lg"></i></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                            <li>
+                                <a class="dropdown-item" href="#">Some news</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Another news</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- dark/light mode -->
+                    <li class="nav-item me-3 me-lg-2">
+                        <a class="nav-link" href="#" role="button">
+                            <span class="text-white"><i class="far fa-moon fa-lg"></i></span>
+                            <!-- <span class="text-white"><i class="far fa-lightbulb fa-lg"></i></span> -->
+                        </a>
+                    </li>
+                </ul>
+
+
+
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
                         <li class="nav-item">
-                            <a class="nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow"
+                            <a class="nlink  nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow"
                                 aria-current="page" href="/"><i class="pe-2 fas fa-house-chimney"></i>Anasayfa</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href="{% url 'forumDetail' %}"><i
+                            <a class="nlink nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href="{% url 'forumDetail' %}"><i
                                     class="pe-2 fas fa-comments"></i>Forumlar</a>
                         </li>
                        
                         <li class="nav-item">
-                            <a class="nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href="{% url 'postDetail' %}"><i
+                            <a class="nlink nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href="{% url 'postDetail' %}"><i
                                     class="pe-2 fas fa-blog"></i>Blog</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href="#"><i
+                            <a class="nlink nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href="#"><i
                                     class="pe-2 fas fa-star"></i>Neler Yeni?</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href="#"><i
+                            <a class="nlink nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href="#"><i
                                     class="pe-2 fas fa-user-astronaut"></i>Kullanıcılar</a>
                         </li>
                         <!-- <li class="nav-item">
