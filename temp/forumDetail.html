@@ -129,12 +129,9 @@
           <div class="col-9 border-subject">
             <div class="p-title d-flex">
               <h1 class="title-subject">oyun kategori isimleri yazılacak</h1>
-              <form method="POST">
-                {% csrf_token %}
-                <div class="new-subject">
-                  <input type="hidden" value="yenikonu" name="yenikonu">
+                <a href="{% url 'messagePost' %}" class="new-subject">
                   <input type="submit" value="Yeni Konu" name="newsubject" class="btn btn-success newsubject">
-                </div>
+                </a>
               </form>
             </div>
           </div>

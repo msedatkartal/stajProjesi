@@ -12,7 +12,7 @@ def dashboardPage(request):
     }
     return render(request,'dashboard.html',context)
 
-def forumDetail(request):
+def forumDetail(request,categoryTitle=None):
     comments=Comment.objects.all()
     
     if request.method == 'POST':
@@ -21,8 +21,14 @@ def forumDetail(request):
         comment = Comment(text=text,subject_brand=subject_brand)
         comment.save()
         return redirect('postDetail')
+    
+    if categoryTitle== None:
+        category=CategoryGame.objects.all()
+    else:
+        category=CategoryGame.objects.get(slug=categoryTitle)
     context = {
         'comments':comments,
+        'category':category
         
         
     }
