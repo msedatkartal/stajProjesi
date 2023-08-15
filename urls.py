@@ -12,7 +12,7 @@ urlpatterns = [
     # appMY
     path('',dashboardPage, name='dashboardPage'),
     path('forumDetail',forumDetail, name='forumDetail'),
-    path('forumlar/<str:pk>',forumDetail, name='forumDetail'),
+    path('forumDetail/<id>',forumDetail, name='forumDetail'),
     
     # appUser
     path('loginPage', loginPage , name='loginPage'),

@@ -7,7 +7,7 @@ class CardAdmin(admin.ModelAdmin):
     list_display = ['gameName','gameImage','categoryName']
     
     
-    
+
     
 
 admin.site.register(GameCard, CardAdmin )
