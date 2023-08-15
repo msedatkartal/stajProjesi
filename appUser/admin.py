@@ -7,4 +7,4 @@ class ProfileAdmin(admin.ModelAdmin):
     readonly_fields = ['loginUser']
 
 admin.site.register(Profile,ProfileAdmin)
-admin.site.register(Comment) 
+admin.site.register(Comment)
