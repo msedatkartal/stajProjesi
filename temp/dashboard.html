@@ -405,12 +405,7 @@
                     <div class="card-body">
                         <div>
                             {% for i in category.gamecard_set.all %}
-<<<<<<< HEAD
-                            <a href="{% url 'forumDetail' %}" class="me-3"><i class="fas fa-gamepad me-1"></i>{{ i.gameName }}</a>
-=======
                             <a href="{% url 'forumDetail' i.slug %}" class="me-3"><i class="fas fa-gamepad me-1"></i>{{ i.gameName }}</a>
-
->>>>>>> main
                             {% endfor %}
                         </div>
                     </div>
