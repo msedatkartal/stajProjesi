@@ -12,11 +12,7 @@ urlpatterns = [
     # appMY
     path('',dashboardPage, name='dashboardPage'),
     path('forumDetail',forumDetail, name='forumDetail'),
-<<<<<<< HEAD
-    path('forumlar/<str:categoryTitle>',forumDetail, name='forumDetail'),
-=======
-    path('forumlar/<str:pk>',forumDetail, name='forumDetail'),
->>>>>>> main
+    path('forumDetail/<id>',forumDetail, name='forumDetail'),
     
     # appUser
     path('loginPage', loginPage , name='loginPage'),

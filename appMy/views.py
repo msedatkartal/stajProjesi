@@ -12,8 +12,9 @@ def dashboardPage(request):
     }
     return render(request,'dashboard.html',context)
 
-def forumDetail(request):
+def forumDetail(request,pk = None):
     comments=Comment.objects.all()
+    games = GameCard.objects.filter(slug=pk).first()
     
     if request.method == 'POST':
         text = request.POST.get("text")
@@ -21,9 +22,15 @@ def forumDetail(request):
         comment = Comment(text=text,subject_brand=subject_brand)
         comment.save()
         return redirect('postDetail')
+    
+    if pk == None:
+        pk = GameCard.objects.all()
+    else:
+        pk = GameCard.objects.get(slug=pk)
     context = {
         'comments':comments,
-        
+        'pk':pk,
+        'games':games
         
     }
     return render(request,'forumDetail.html',context)
