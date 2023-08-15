@@ -41,6 +41,9 @@ def loginPage(request):
             if password_bool and email_bool and username_register_bool:
                 user = User.objects.create_user(first_name = fname,email = email,username=username_register,password=password1)
                 user.save()
+                
+                Profile.objects.create(user=user,loginUser=False)
+
                 return redirect("dashboardPage")
     return render(request, 'login-register.html', context)
 
