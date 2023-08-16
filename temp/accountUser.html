@@ -2,8 +2,7 @@
 
 {% load static %}
 
-
-{% block header %}
+{% block css %}
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Blinker&display=swap');
 
@@ -149,13 +148,15 @@
         }
     }
 </style>
+{% endblock css %}
+    
+
+{% block header %}
+
 
 <nav class="position-relative">
-
-
     <!-- DOWN (menu and search area) -->
     <div class="position">
-
         <div class="navbar navbar-expand-lg navbg ">
             <div class="container-fluid  px-lg-5 px-md-3 px-sm-2 ">
                 <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
@@ -270,14 +271,14 @@
 
 {% block main %}
 
-<div class="container">
+<div class="container pt-5" style="min-height: 70vh;">
     <div class="row">
         <div class="col">
 
             <div class="row">
                 <h1>Hesap Ayarları</h1>
                 <hr>
-                <div class="col">
+                <div class="col mt-2">
                     <h4>Üyelik</h4>
 
                     <a href="" data-mdb-toggle="modal" data-mdb-target="#profilePicture">
@@ -383,14 +384,14 @@
 
 
                 </div>
-                <div class="col">
+                <div class="col mt-2">
                     <strong>Email: {{ request.user.email|slice:":5" }}...{{ request.user.email|slice:"-10:" }}</strong>
                     <p>Parola: {{ request.user.userinfo.password|first }}******{{ request.user.userinfo.password|last }}
                     </p>
                     <p>tel: {{ request.user.userinfo.tel }}</p>
 
                 </div>
-                <div class="col">
+                <div class="col mt-2">
                     <!-- Email Form -->
                     <!-- Button trigger modal -->
                     <a href="" data-mdb-toggle="modal" data-mdb-target="#e-mail">
