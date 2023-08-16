@@ -139,26 +139,35 @@
 
         <!-- comment card start -->
         <div class="row ">
-            <div class="col">    
+            <div class="col">
                 {% for i in comments %}
                 <div class="card mb-2">
                     <div class="d-flex">
-                        <div class="card-header">
-                            <div class="comment ">
-                                <img style="width: 100px; height: 100px; border:2px solid #00000030 ; border-radius: 50%;"
-                                    src="" alt="">
-                                <h5 style="min-width: 180px;">user ismi gelecek</h5>
-                                <h6 style="min-width:50px; font-size: 12px;"> {{ i.date_now }} </h6>
+                        <div class="card-header p-0 py-3">
+                            <div class="comment border-end m-auto px-4 ">
+                                <div class="m-auto my-2" style="width: fit-content;">
+                                    <img style="width: 125px; height: 125px; border:2px solid #00000030 ; border-radius: 50%;" src="" alt="">
+                                </div>
+                                <div class="m-auto p-2 text-center" style="width: 200px;">
+                                    <h5 class="m-0 d-inline m-auto" style="width: fit-content; ">user ismi gelecek</h5>
+                                    <div class="smallbox"style="background:rgba(48, 35, 35, 0.588); border-color: #090a0a">
+                                        <p style="text-align:left;">+80</p>
+                                    </div>
+                                    <p style="text-align:left;">Katılım:</p>
+                                    <p style="text-align:left;">Mesajlar:</p>
+                                    <!-- <h6 style="min-width:50px; font-size: 12px;"> {{ i.date_now }} </h6> -->
+                                </div>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <p class="ms-5 ps-5 border-start" style="min-height: 100px;">{{ i.text }}</p>
+                        <div class="card-body" style="width: 500px;">
+                            <p style="padding-left: 80%; position:relative; font-size: small;"> {{ i.date_now }} </p>
+                            <p class="ms-5  ps-5 " style="min-height: 100px; margin-top: 30px; ">{{ i.text }}</p>
                         </div>
 
                     </div>
                 </div>
                 {% endfor %}
-                
+
                 <!-- comment text -->
                 <div class="card mt-5">
                     <div class="card-body">
