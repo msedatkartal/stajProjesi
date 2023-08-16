@@ -1,0 +1,505 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block header %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Blinker&display=swap');
+
+
+    .bg {
+        height: 200px;
+        background-image: url("{% static 'img/banner.png' %}");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+
+    }
+
+    .navbg {
+        background: #D8601D;
+    }
+
+    .btncolor {
+        background-color: #D8601D;
+    }
+
+    .btncolor:hover {
+        background: #d8521d;
+    }
+
+    .nlink {
+
+        font-family: 'Blinker', sans-serif;
+        font-size: 17px !important;
+
+    }
+
+    .nlink2 {
+        font-family: 'Blinker', sans-serif;
+    }
+
+    .hover-shadow:hover {
+        background: #cf6135;
+    }
+
+    .modal-fullscreen{
+        height: 70px;
+    }
+
+    .deleteBtn{
+
+        background: #D8601D;
+        color: white;
+    }
+
+    .deleteBtn:hover{
+
+        background: #d8521d;
+        color: white;
+      
+    }
+
+   
+
+    @media (max-width: 992px) {
+
+        .logbox {
+            display: none;
+        }
+        .p-image{
+            display: none;
+        }
+
+        .p-owl{
+            display: none;
+        }
+
+        .container-fluid{
+            padding-left: 5px !important;
+        }
+
+      
+    }
+
+    @media (min-width: 992px) {
+
+        .logbox2 {
+            display: none;
+        }
+
+        .indexBtn{
+            display: none;
+        }
+
+        .pimg{
+            display: none;
+        }
+
+    }
+
+    @media (max-width: 660px) {
+
+        .modal-fullscreen{
+            height: 110px;
+        }
+        .account {
+            display: block !important;
+        }
+
+        .accountBtn{
+            margin: 8px 0 0 60px !important;
+        }
+    }
+
+    @media (max-width: 405px) {
+        .modal-fullscreen{
+            height: 103px;
+        }
+        .modal-title{
+            margin-left: 20px !important;
+            font-size: 16px !important;
+        }
+    }
+
+    @media (max-width: 355px) {
+        .modal-fullscreen{
+            height: 100px;
+        }
+        .modal-title{
+            font-size: 14px !important;
+        }
+
+        .accountBtn{
+            margin-left: 40px !important;
+        }
+    }
+    @media (max-width: 320px) {
+        .modal-fullscreen{
+            height: 98px;
+        }
+        .modal-title{
+            font-size: 13px !important;
+        }
+
+        .accountBtn{
+            margin-left: 30px !important;
+        }
+    }
+</style>
+
+<nav class="position-relative">
+
+
+    <!-- DOWN (menu and search area) -->
+    <div class="position">
+
+        <div class="navbar navbar-expand-lg navbg ">
+            <div class="container-fluid  px-lg-5 px-md-3 px-sm-2 ">
+                <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                    data-mdb-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="">
+                    <div class="collapse navbar-collapse d-flex" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown pimg">
+    
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                    role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                                    <img style="width: 30px; height: 30px; object-fit: cover; border-radius: 50%;"
+                                        src="" alt="">
+    
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li><a class="dropdown-item" href="{% url 'accountUser' %}">Hesap Ayarları</a>
+                                    </li>
+                                    <hr class="dropdown-divider">
+                                    <li><a class="dropdown-item" href="{% url 'logoutUser' %}">Oturumu Kapat</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+
+                  
+                <div class="collapse navbar-collapse w-100" id="navbarTogglerDemo03">
+
+
+                    <a class="navbar-brand me-2 mb-1 d-flex" href="/">
+
+                        <img class="p-owl"  src="{% static 'img/owl.png' %}" height="70" width="70" alt="MDB Logo"
+                            style="margin-top: 2px;" />
+                    </a>
+
+
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
+
+                        <li class="nav-item">
+                            <a class=" indexBtn nlink nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow"
+                                aria-current="page" href="/"><i class="pe-2 fas fa-house-chimney"></i>Anasayfa</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nlink nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow"
+                                href="{% url 'forumDetail' %}"><i class="pe-2 fas fa-comments"></i>Forumlar</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nlink nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow"
+                                href="{% url 'postDetail' %}"><i class="pe-2 fas fa-blog"></i>Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nlink nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href="#"><i
+                                    class="pe-2 fas fa-star"></i>Neler Yeni?</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nlink nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href="#"><i
+                                    class="pe-2 fas fa-user-astronaut"></i>Kullanıcılar</a>
+                        </li>
+
+                    </ul>
+
+                    <div class="d-flex input-group w-auto position-relative">
+                        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavDropdown">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown p-image">
+
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                        role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                                        <img style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;"
+                                            src="" alt="">
+
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <li><a class="dropdown-item" href="{% url 'accountUser' %}">Hesap Ayarları</a>
+                                        </li>
+                                        <hr class="dropdown-divider">
+                                        <li><a class="dropdown-item" href="{% url 'logoutUser' %}">Oturumu Kapat</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+</nav>
+
+
+{% endblock header %}
+
+{% block main %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <div class="row">
+                <h1>Hesap Ayarları</h1>
+                <hr>
+                <div class="col">
+                    <h4>Üyelik</h4>
+
+                    <a href="" data-mdb-toggle="modal" data-mdb-target="#profilePicture">
+                        Profil Fotoğrafını değiştir
+                    </a>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="profilePicture" data-mdb-backdrop="static" data-mdb-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <form method="POST" class="modal-content">
+                                {% csrf_token %}
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel"> Profili Düzenle</h1>
+                                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body d-flex align-items-center gap-3">
+                                    <img class="pimage" style="border: 2px solid #333; width: 100px; height: 100px; object-fit: cover;" src="" alt="">
+                                    <div>
+                                        <input type="text" name="pname2" value="" class="form-control my-3" placeholder="Profil Adı">
+                                        <input type="file" name="image2" id="" onchange="imageChange(this)" class="dataimage form-control my-3">
+                                        <input type="hidden" value="">
+                                        <input type="hidden" name="id" value="">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" name="submit" value="emailUpdate"
+                                        class="btn btn-primary">Güncelle</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+
+<!-- 
+
+                    <div class="modal fade" id="" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <form method="POST" enctype="multipart/form-data" class="modal-content">
+                                {% csrf_token %}
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">{{ i.name }} Profili Düzenle</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body d-flex align-items-center gap-3">
+                                    <img class="pimage" style="border: 2px solid #333; width: 100px; height: 100px; object-fit: cover;" src="{{ i.image.url }}" alt="">
+                                    <div>
+                                        <input type="text" name="pname2" value="{{ i.name }}" class="form-control my-3" placeholder="Profil Adı">
+                                        <input type="file" name="image2" id="" onchange="imageChange(this)" class="dataimage form-control my-3">
+                                        <input type="hidden" value="{{ forloop.counter0 }}">
+                                        <input type="hidden" name="id" value="{{ i.id }}">
+                                    </div>
+                                </div>
+                                <div class="modal-footer d-flex justify-content-between">
+                                    
+                                    {% comment %}
+                                    <a href="{% url 'deleteProfileUser' i.id %}" type="submit" class="btn btn-danger">Profili Sil</a>
+                                    {% endcomment %}
+                                        
+                                    <button type="submit" name="submit" value="profileDelete" class="btn btn-danger">Profili Sil</button>
+                                    <div>
+                                        <button type="submit" name="submit" value="profileChange" class="btn btn-primary">Düzenle</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    -->
+
+                    <div>
+                        <button class="btn btn-light border" data-mdb-toggle="modal"
+                            data-mdb-target="#subscribeModal">Hesabı Sil</button>
+                        <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-fullscreen  ">
+                                <form method="POST" class="modal-content">
+                                    {% csrf_token %}
+                                    <div class="modal-header">
+                                        <div class="account d-flex m-auto">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                Hesabını silmek istediğine emin misin?
+                                            </h1>
+                                            <div class="ms-5 accountBtn">
+                                                <button type="button" class="btn btn-dark" data-mdb-dismiss="modal"
+                                                    aria-label="Close">Vazgeç</button>
+                                                <button type="submit" name="submit" value="subscribeUnfollow"
+                                                    class="deleteBtn btn">Hesabı sil</button>
+                                            </div>
+                                            
+                                        </div>
+
+                                        <button type="button" class="btn-close" data-mdb-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                <div class="col">
+                    <strong>Email: {{ request.user.email|slice:":5" }}...{{ request.user.email|slice:"-10:" }}</strong>
+                    <p>Parola: {{ request.user.userinfo.password|first }}******{{ request.user.userinfo.password|last }}
+                    </p>
+                    <p>tel: {{ request.user.userinfo.tel }}</p>
+
+                </div>
+                <div class="col">
+                    <!-- Email Form -->
+                    <!-- Button trigger modal -->
+                    <a href="" data-mdb-toggle="modal" data-mdb-target="#e-mail">
+                        E-Mail Değiştir
+                    </a>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="e-mail" data-mdb-backdrop="static" data-mdb-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <form method="POST" class="modal-content">
+                                {% csrf_token %}
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Email Değiştir</h1>
+                                    <button type="button" class="btn-close" data-mdb-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <label for="">Yeni Email</label>
+                                    <input type="email" name="email" class="form-control">
+
+                                    <label for="">Şifreyi giriniz</label>
+                                    <input type="password" name="password" class="form-control">
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" name="submit" value="emailUpdate"
+                                        class="btn btn-primary">Güncelle</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+
+
+                    <!-- Telefon Form -->
+                    <div>
+                        <a href="" data-mdb-toggle="modal" data-mdb-target="#telephone">
+                            Telefon Değiştir
+                        </a> <br>
+                        <div class="modal fade" id="telephone" tabindex="-1" aria-labelledby="telephoneLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <form method="POST" class="modal-content">
+                                    {% csrf_token %}
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Telefon Değiştir</h1>
+                                        <button type="button" class="btn-close" data-mdb-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <label for="">Yeni Telefon</label>
+                                        <input type="tel" name="tel" class="form-control">
+
+                                        <label for="">Şifreyi giriniz</label>
+                                        <input type="password" name="password" class="form-control">
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" name="submit" value="telUpdate"
+                                            class="btn btn-primary">Güncelle</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Şifre Form -->
+                    <div>
+                        <a href="" data-mdb-toggle="modal" data-mdb-target="#password">
+                            Şifreyi Değiştir
+                        </a> <br>
+                        <div class="modal fade" id="password" tabindex="-1" aria-labelledby="passwordLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <form method="POST" class="modal-content">
+                                    {% csrf_token %}
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Şifre Değiştir</h1>
+                                        <button type="button" class="btn-close" data-mdb-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <label for="">Eski Şifreyi Giriniz</label>
+                                        <input type="password" name="password" class="form-control">
+
+                                        <label for="">Yeni Şifre</label>
+                                        <input type="password" name="password1" class="form-control">
+
+                                        <label for="">Yeni Şifre Tekrar</label>
+                                        <input type="password" name="password2" class="form-control">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" name="submit" value="passwordUpdate"
+                                            class="btn btn-primary">Güncelle</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+{% endblock main %}
