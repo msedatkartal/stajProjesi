@@ -86,3 +86,6 @@ def messagePost(request):
     }
     return render (request, 'messagePost.html', context)
 
+def accountUser(request):
+    context = {}
+    return render(request, 'accountUser.html', context)
