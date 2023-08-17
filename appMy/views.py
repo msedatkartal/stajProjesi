@@ -22,15 +22,8 @@ def dashboardPage(request):
     return render(request, 'dashboard.html', context)
 
 def forumDetail(request,pk = None):
-    comments=Comment.objects.all()
+    comments=Comment.objects.filter(game_cate__slug=pk)
     games = GameCard.objects.filter(slug=pk).first()
-    
-    if request.method == 'POST':
-        text = request.POST.get("text")
-        subject_brand = request.POST.get("subject")
-        comment = Comment(text=text,subject_brand=subject_brand)
-        comment.save()
-        return redirect('postDetail')
     
     if pk == None:
         pk = GameCard.objects.all()
