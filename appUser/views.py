@@ -54,17 +54,20 @@ def logoutUser(request):
 
 
 # comment
-def postDetail(request):
-    comments = Comment.objects.all()
+def postDetail(request,pk):
+    comments = Comment.objects.filter(slug=pk)
+
     if request.method == 'POST':
         text = request.POST.get("text")
         subject_brand = request.POST.get("subject")
-        comment = Comment(text=text,subject_brand=subject_brand)
+        comment = Comment(text=text,subject_brand=subject_brand,slug=pk)
         comment.save()
-        return redirect('postDetail')
+        return redirect('/postDetail/<str:'+pk+'>')
     
     context = {
         "comments":comments,
+        "comment":comment,
+        
         }
     
     return render(request,'postDetail.html',context)
