@@ -10,6 +10,7 @@ class Comment(models.Model):
     text = models.TextField(("Yorum")) 
     date_now =models.DateTimeField(("Tarih - Saat"),auto_now_add = True)
     subject_brand=models.CharField(("Konu Başlığı"), max_length=100, null=True)
+    author = models.ForeignKey(User, verbose_name=("Yazar"), on_delete=models.CASCADE, null=True)
     game_cate= models.ForeignKey(GameCard, verbose_name=("Konuya bağlı Kategori İsmi"), on_delete=models.CASCADE, null=True)
     slug=models.SlugField(blank=True, null=True)
 
