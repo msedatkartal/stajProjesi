@@ -119,10 +119,7 @@
                     <div class="col border-subject">
                         <div class="p-title d-flex">
                             
-                            {% for post in comments  %}
-                            <h1 class="title-subject">{{ post.subject_brand }}</h1>
-                            {% endfor %}
-                                
+                            <h1 class="title-subject">{{ subject.subjectBrand }}</h1>    
                             <form method="POST">
                                 {% csrf_token %}
                                 <div class="new-subject">

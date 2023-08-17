@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import *
-from appUser.models import Comment,Profile
+from appUser.models import *
 
 
 def dashboardPage(request):
