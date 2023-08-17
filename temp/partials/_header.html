@@ -90,9 +90,7 @@
 
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                                     data-mdb-toggle="dropdown" aria-expanded="false">
-                                    <img style="width: 25px; height: 25px; object-fit: cover; border-radius: 50%;"
-                                        src="{{ profile_user.image.url }}" alt="">
-
+                                    <img style="width: 30px; height: 30px; object-fit: cover; border-radius: 50%;" src="{{ profile_user.image.url }}" alt="">
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <li><a class="dropdown-item" href="{% url 'accountUser' %}">Hesap Ayarları</a></li>
@@ -220,8 +218,10 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nlink nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow"
-                                href="{% url 'postDetail' %}"><i class="pe-2 fas fa-blog"></i>Blog</a>
+
+                            <a class="nlink nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href=""><i
+                                    class="pe-2 fas fa-blog"></i>Blog</a>
+
                         </li>
                         <li class="nav-item">
                             <a class="nlink nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href="#"><i
