@@ -118,7 +118,11 @@
                 <div class="row mt-2">
                     <div class="col border-subject">
                         <div class="p-title d-flex">
-                            <h1 class="title-subject">{{ comments.subject_brand }}</h1>
+                            
+                            {% for post in comments  %}
+                            <h1 class="title-subject">{{ post.subject_brand }}</h1>
+                            {% endfor %}
+                                
                             <form method="POST">
                                 {% csrf_token %}
                                 <div class="new-subject">
@@ -171,7 +175,7 @@
                 <!-- comment text -->
                 <div class="card mt-5">
                     <div class="card-body">
-                        <form action="{% url 'postDetail' %}" method="POST">
+                        <form method="POST">
                             {% csrf_token %}
                             <div>
                                 <div class="iconlar my-0">

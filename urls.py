@@ -16,7 +16,7 @@ urlpatterns = [
     
     # appUser
     path('loginPage', loginPage , name='loginPage'),
-    path('postDetail',postDetail, name='postDetail'),
+    path('postDetail/<str:pk>',postDetail, name='postDetail'),
     path('messagePost',messagePost, name='messagePost'),
     path('logout',logoutUser, name='logoutUser'),
     
