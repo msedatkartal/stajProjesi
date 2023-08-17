@@ -1,27 +1,29 @@
 from django.shortcuts import render,redirect
 from .models import *
-from appUser.models import Comment
+from appUser.models import Comment,Profile
 
 
 def dashboardPage(request):
     gamecard = GameCard.objects.all()
     gamecategory = CategoryGame.objects.all()
+    
+    profile_user = None
+    if request.user.is_authenticated:
+        try:
+            profile_user = Profile.objects.get(user=request.user)
+        except Profile.DoesNotExist:
+            pass
+    
     context = {
-        'gamecard' : gamecard,
-        'gamecategory' : gamecategory
+        'gamecard': gamecard,
+        'gamecategory': gamecategory,
+        'profile_user': profile_user
     }
-    return render(request,'dashboard.html',context)
+    return render(request, 'dashboard.html', context)
 
 def forumDetail(request,pk = None):
-    comments=Comment.objects.all()
+    comments=Comment.objects.filter(game_cate__slug=pk)
     games = GameCard.objects.filter(slug=pk).first()
-    
-    if request.method == 'POST':
-        text = request.POST.get("text")
-        subject_brand = request.POST.get("subject")
-        comment = Comment(text=text,subject_brand=subject_brand)
-        comment.save()
-        return redirect('postDetail')
     
     if pk == None:
         pk = GameCard.objects.all()
