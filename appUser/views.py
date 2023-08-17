@@ -89,7 +89,7 @@ def messagePost(request):
     }
     return render (request, 'messagePost.html', context)
 
-<<<<<<< HEAD
+
 # def messagePost(request, pk):
 #     games = GameCard.objects.get(slug=pk)
 #     comments = Comment.objects.filter(game_cate__slug=games.slug)
@@ -128,8 +128,8 @@ def messagePost(request):
 #     return render(request, 'messagePost.html', context)
 
 
-=======
+
 def accountUser(request):
     context = {}
     return render(request, 'accountUser.html', context)
->>>>>>> 2ad1e8399229d28aac620cc915ff77d690f71f68
+
