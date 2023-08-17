@@ -14,9 +14,10 @@ class Comment(models.Model):
     game_cate= models.ForeignKey(GameCard, verbose_name=("Konuya bağlı Kategori İsmi"), on_delete=models.CASCADE, null=True)
     slug=models.SlugField(blank=True, null=True)
 
-    def save(self,*args, **kwargs):
-        self.slug=slugify(self.subject_brand.replace("ı","i"))
-        super(Comment,self).save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        if self.subject_brand:
+            self.slug = slugify(self.subject_brand.replace("ı", "i"))
+        super(Comment, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.subject_brand
