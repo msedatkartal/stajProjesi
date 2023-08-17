@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import login,logout,authenticate
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.urls import reverse
 from .models import *
 
 
@@ -54,35 +55,81 @@ def logoutUser(request):
 
 
 # comment
-def postDetail(request, pk):
-    comments = Comment.objects.filter(slug=pk)
-
+def postDetail(request,pk):
+    subject = Subject.objects.get(slug=pk)
+    comments = Comment.objects.filter(subject_brand__subjectBrand =subject)
+    
     if request.method == 'POST':
         text = request.POST.get("text")
-        comment = Comment(text=text,slug=pk)
+        comment = Comment(text=text,subject_brand=subject)
         comment.save()
-        return redirect('/postDetail/' + pk)
-
+        return redirect('/postDetail/'+ pk )
+    
     context = {
-        "comments": comments,
-    }
-
-    return render(request, 'postDetail.html', context)
+        "comments":comments,
+        "subject":subject
+        }
+    
+    return render(request,'postDetail.html',context)
+    
     
     
     
 def messagePost(request):
     comments = Comment.objects.all()
     if request.method == 'POST':
-        print("asd")
         subject_brand = request.POST.get("subject")
         text = request.POST.get("text")
-        comment = Comment(text=text, subject_brand=subject_brand)
+        comment = Comment(text=text, subject_brand__subjectBrand=subject_brand)
         comment.save()
-        return redirect('forumDetail')
+        return redirect('/forumDetail')
     print("comment", comments )
     context={
         "comments":comments,
     }
     return render (request, 'messagePost.html', context)
+
+
+# def messagePost(request, pk):
+#     games = GameCard.objects.get(slug=pk)
+#     comments = Comment.objects.filter(game_cate__slug=games.slug)
+    
+#     if request.method == 'POST':
+#         subject_brand = request.POST.get("subject")
+#         text = request.POST.get("text")
+#         comment = Comment(text=text, subject_brand=subject_brand, game_cate=games)
+#         comment.save()
+#         return redirect(reverse('forumDetail', args=[pk]))  # Dinamik URL oluşturma
+    
+#     context = {
+#         "comments": comments,
+#         "game": games
+#     }
+#     return render(request, 'messagePost.html', context)
+
+
+# def messagePost(request, pk):
+#     print("asdsasad",pk)
+#     games = GameCard.objects.get(slug=pk)
+#     # subjects = Subject.objects.all()  # Tüm konu başlıklarını alın
+    
+#     if request.method == 'POST':
+#         subject_id = request.POST.get("subject")  # Formdan seçilen konu başlığının ID'sini alın
+#         text = request.POST.get("text")
+#         subject = Subject.objects.get(id=subject_id)  # ID'ye göre ilgili konu başlığını alın
+#         comment = Comment(text=text, subject_brand=subject, game_cate=games)
+#         comment.save()
+#         return redirect(reverse('forumDetail', args=[pk]))
+    
+#     context = {
+#         # "subjects": subjects,
+#         "game": games
+#     }
+#     return render(request, 'messagePost.html', context)
+
+
+
+def accountUser(request):
+    context = {}
+    return render(request, 'accountUser.html', context)
 

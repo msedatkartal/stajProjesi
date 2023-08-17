@@ -4,22 +4,26 @@ from appMy.models import GameCard
 from django.utils.text import slugify
 
 # User Model
+class Subject(models.Model):
+    subjectBrand = models.CharField(("Konu Başlığı"), max_length=50)
+    slug = models.SlugField(blank=True,null=True)
+    
+    def save(self, *args, **kwargs):
+        if self.subjectBrand:
+            self.slug = slugify(self.subjectBrand.replace("ı", "i"))
+        super(Subject, self).save(*args, **kwargs)
 
+    def __str__(self):
+        return self.subjectBrand
 # Comment
 class Comment(models.Model):
     text = models.TextField(("Yorum")) 
     date_now =models.DateTimeField(("Tarih - Saat"),auto_now_add = True)
-    subject_brand=models.CharField(("Konu Başlığı"), max_length=100, null=True)
+    subject_brand=models.ForeignKey(Subject, verbose_name=("Konu Başlığı"), on_delete=models.CASCADE,null=True)
     author = models.ForeignKey(User, verbose_name=("Yazar"), on_delete=models.CASCADE, null=True)
-    game_cate= models.ForeignKey(GameCard, verbose_name=("Konuya bağlı Kategori İsmi"), on_delete=models.CASCADE, null=True)
-    slug=models.SlugField(blank=True, null=True)
+    game_cate= models.ForeignKey(GameCard, verbose_name=("Konuya bağlı Kategori İsmi"), on_delete=models.CASCADE, null=True)    
 
-    def save(self,*args, **kwargs):
-        self.slug=slugify(self.subject_brand.replace("ı","i"))
-        super(Comment,self).save(*args, **kwargs)
-
-    def __str__(self):
-        return self.subject_brand
+   
 
 class Profile(models.Model):
     user = models.OneToOneField(User, verbose_name=("Kullanıcı"), on_delete=models.CASCADE)
