@@ -4,6 +4,8 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.urls import reverse
 from .models import *
+from django.http import HttpResponse
+
 
 
 def loginPage(request):
@@ -75,19 +77,19 @@ def postDetail(request,pk):
     
     
     
-def messagePost(request):
-    comments = Comment.objects.all()
-    if request.method == 'POST':
-        subject_brand = request.POST.get("subject")
-        text = request.POST.get("text")
-        comment = Comment(text=text, subject_brand__subjectBrand=subject_brand)
-        comment.save()
-        return redirect('/forumDetail')
-    print("comment", comments )
-    context={
-        "comments":comments,
-    }
-    return render (request, 'messagePost.html', context)
+# def messagePost(request):
+#     comments = Comment.objects.all()
+#     if request.method == 'POST':
+#         subject_brand = request.POST.get("subject")
+#         text = request.POST.get("text")
+#         comment = Comment(text=text, subject_brand__subjectBrand=subject_brand)
+#         comment.save()
+#         return redirect('/forumDetail')
+#     print("comment", comments )
+#     context={
+#         "comments":comments,
+#     }
+#     return render (request, 'messagePost.html', context)
 
 
 # def messagePost(request, pk):
@@ -126,6 +128,40 @@ def messagePost(request):
 #         "game": games
 #     }
 #     return render(request, 'messagePost.html', context)
+
+def messagePost(request, game_slug):
+    try:
+        game = GameCard.objects.get(slug=game_slug)  # Slug'a göre oyunu alın
+        print(game_slug)
+        
+    except GameCard.DoesNotExist:
+        return HttpResponse("Oyun bulunamadı.")
+    
+    if request.method == 'POST':
+        subject_slug = request.POST.get("subject")  # Formdan seçilen konu başlığının ID'sini alın
+        print(subject_slug)
+        try:
+            subject = Subject.objects.filter(slug=subject_slug).first()
+            print(subject)# ID'yi sayısal bir değere dönüştürün
+        except (Subject.DoesNotExist, ValueError):
+            return HttpResponse("Geçersiz veya bulunmayan konu ID.")
+        
+        text = request.POST.get("text")
+
+        
+        subject_title=Subject(subjectBrand=subject_slug)
+        subject_title.save()
+        comment = Comment(text=text, subject_brand=subject_title, author=request.user, game_cate=game)
+        comment.save()
+        
+        return redirect(('/forumlar/'+game_slug))
+    
+    context = {
+        'game': game,
+    }
+    
+    return render(request, 'messagePost.html', context)
+
 
 
 
