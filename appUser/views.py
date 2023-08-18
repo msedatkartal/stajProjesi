@@ -74,86 +74,25 @@ def postDetail(request,pk):
     
     return render(request,'postDetail.html',context)
     
-    
-    
-    
-# def messagePost(request):
-#     comments = Comment.objects.all()
-#     if request.method == 'POST':
-#         subject_brand = request.POST.get("subject")
-#         text = request.POST.get("text")
-#         comment = Comment(text=text, subject_brand__subjectBrand=subject_brand)
-#         comment.save()
-#         return redirect('/forumDetail')
-#     print("comment", comments )
-#     context={
-#         "comments":comments,
-#     }
-#     return render (request, 'messagePost.html', context)
-
-
-# def messagePost(request, pk):
-#     games = GameCard.objects.get(slug=pk)
-#     comments = Comment.objects.filter(game_cate__slug=games.slug)
-    
-#     if request.method == 'POST':
-#         subject_brand = request.POST.get("subject")
-#         text = request.POST.get("text")
-#         comment = Comment(text=text, subject_brand=subject_brand, game_cate=games)
-#         comment.save()
-#         return redirect(reverse('forumDetail', args=[pk]))  # Dinamik URL oluşturma
-    
-#     context = {
-#         "comments": comments,
-#         "game": games
-#     }
-#     return render(request, 'messagePost.html', context)
-
-
-# def messagePost(request, pk):
-#     print("asdsasad",pk)
-#     games = GameCard.objects.get(slug=pk)
-#     # subjects = Subject.objects.all()  # Tüm konu başlıklarını alın
-    
-#     if request.method == 'POST':
-#         subject_id = request.POST.get("subject")  # Formdan seçilen konu başlığının ID'sini alın
-#         text = request.POST.get("text")
-#         subject = Subject.objects.get(id=subject_id)  # ID'ye göre ilgili konu başlığını alın
-#         comment = Comment(text=text, subject_brand=subject, game_cate=games)
-#         comment.save()
-#         return redirect(reverse('forumDetail', args=[pk]))
-    
-#     context = {
-#         # "subjects": subjects,
-#         "game": games
-#     }
-#     return render(request, 'messagePost.html', context)
 
 def messagePost(request, game_slug):
+    # game_slug a göre messagepostu getirme
     try:
-        game = GameCard.objects.get(slug=game_slug)  # Slug'a göre oyunu alın
+        game = GameCard.objects.get(slug=game_slug)  
         print(game_slug)
         
     except GameCard.DoesNotExist:
         return HttpResponse("Oyun bulunamadı.")
     
+    # game_slug a göre konu başlığı oluşturup yorumu kaydetme
     if request.method == 'POST':
-        subject_slug = request.POST.get("subject")  # Formdan seçilen konu başlığının ID'sini alın
+        subject_slug = request.POST.get("subject")  
         print(subject_slug)
-        try:
-            subject = Subject.objects.filter(slug=subject_slug).first()
-            print(subject)# ID'yi sayısal bir değere dönüştürün
-        except (Subject.DoesNotExist, ValueError):
-            return HttpResponse("Geçersiz veya bulunmayan konu ID.")
-        
         text = request.POST.get("text")
-
-        
         subject_title=Subject(subjectBrand=subject_slug)
         subject_title.save()
         comment = Comment(text=text, subject_brand=subject_title, author=request.user, game_cate=game)
         comment.save()
-        
         return redirect(('/forumlar/'+game_slug))
     
     context = {
