@@ -128,7 +128,7 @@
                 <!-- comment text -->
                 <div class="card mt-5">
                     <div class="card-body">
-                        <form  method="POST">
+                        <form  method="POST"   >
                             {% csrf_token %}
                             <input type="hidden" name="subject" value="{{ comments.id }}">
                             <input class="form-control my-2" name="subject" type="text" placeholder="Konu">

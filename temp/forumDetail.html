@@ -129,7 +129,7 @@
           <div class="col-9 border-subject">
             <div class="p-title d-flex">
               <h1 class="title-subject">{{ games.gameName }}</h1>
-                <a href="{% url 'messagePost' %}" class="new-subject">            
+                <a href="{% url 'messagePost' game_slug=games.slug %}" class="new-subject">            
                   <input type="submit" value="Yeni Konu" name="newsubject" class="btn btn-success newsubject">
                 </a>
             </div>
