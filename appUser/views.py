@@ -69,7 +69,8 @@ def postDetail(request,pk):
     
     context = {
         "comments":comments,
-        "subject":subject
+        "subject":subject,
+        
         }
     
     return render(request,'postDetail.html',context)
