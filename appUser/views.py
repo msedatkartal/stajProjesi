@@ -62,6 +62,7 @@ def postDetail(request, category, pk):
     games = GameCard.objects.filter(slug=category).first()
     print(category)
     subject = Subject.objects.get(slug=pk)
+    print(subject)
     comments = Comment.objects.filter(subject_brand__subjectBrand =subject)
     print(comments)
     
@@ -69,7 +70,7 @@ def postDetail(request, category, pk):
         text = request.POST.get("text")
         comment = Comment(text=text,subject_brand=subject)
         comment.save()
-        return redirect('/postDetail/'+category+'/'+ pk )
+        return redirect('/blog/'+category+'/'+ pk )
     
     context = {
         "comments":comments,
