@@ -63,12 +63,13 @@ def postDetail(request, category, pk):
     print(category)
     subject = Subject.objects.get(slug=pk)
     comments = Comment.objects.filter(subject_brand__subjectBrand =subject)
+    print(comments)
     
     if request.method == 'POST':
         text = request.POST.get("text")
         comment = Comment(text=text,subject_brand=subject)
         comment.save()
-        return redirect('/postDetail/'+ pk )
+        return redirect('/postDetail/'+category+'/'+ pk )
     
     context = {
         "comments":comments,

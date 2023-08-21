@@ -103,9 +103,10 @@
         <div class="row mb-2">
             <div class="col-9">
                 <nav class="breadcrumbs">
-                    <a href="#home" class="breadcrumbs__item">Anasayfa</a>
-                    <a href="#shop" class="breadcrumbs__item">{{ games.categoryName }}</a>
-                    <a href="#shop" class="breadcrumbs__item">{{ games.gameName }}</a>
+                    <a href="#home" class="breadcrumbs__item">Home</a>
+                    <a href="#shop" class="breadcrumbs__item">Shop</a>
+                    <a href="#cart" class="breadcrumbs__item">Cart</a>
+                    <a href="#checkout" class="breadcrumbs__item is-active">Checkout</a>
                 </nav>
             </div>
         </div>
@@ -126,10 +127,15 @@
                                 </div>
                             </form>
                         </div>
+                        
+                        
                         <div class="d-flex">
-                            <div class="me-5"><i class="fas fa-baby"></i> <small>username</small></div>
-                            <div><i class="far fa-clock"></i> <small>tarih</small></div>
+                            <div class="me-5"><i class="fas fa-baby"></i> <small>{{ comments.author }}</small></div>
+                            <div><i class="far fa-clock"></i> <small>{{ brand.date_now }}</small></div>
                         </div>
+                            
+                       
+                            
                     </div>
                 </div>
 
@@ -145,11 +151,16 @@
                     <div class="d-flex">
                         <div class="card-header p-0 py-3">
                             <div class="comment border-end m-auto px-4 ">
+                                
+                                
                                 <div class="m-auto my-2" style="width: fit-content;">
                                     <img style="width: 125px; height: 125px; border:2px solid #00000030 ; border-radius: 50%;" src="" alt="">
                                 </div>
+                                    
+                                
+                                    
                                 <div class="m-auto p-2 text-center" style="width: 200px;">
-                                    <h5 class="m-0 d-inline m-auto" style="width: fit-content; ">user ismi gelecek</h5>
+                                    <h5 class="m-0 d-inline m-auto" style="width: fit-content; ">{{ i.author }}</h5>
                                     <div class="smallbox"style="background:rgba(48, 35, 35, 0.588); border-color: #090a0a">
                                         <p style="text-align:left;">+80</p>
                                     </div>
