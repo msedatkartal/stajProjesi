@@ -61,7 +61,7 @@ def logoutUser(request):
 def postDetail(request, category, pk):
     games = GameCard.objects.filter(slug=category).first()
     print(category)
-    subject = Subject.objects.get(slug=pk)
+    subject = Subject.objects.filter(slug=pk).first()
     print(subject)
     comments = Comment.objects.filter(subject_brand__subjectBrand =subject)
     print(comments)
@@ -102,7 +102,7 @@ def messagePost(request, game_slug):
         print(Subject.slug)
         comment = Comment(text=text, subject_brand=subject_title, author=request.user, game_cate=game)
         comment.save()
-        return redirect(('/blog/'+game_slug+'/'+subject_slug))
+        return redirect('/forumlar/'+game_slug)
     
     context = {
         'game': game,
