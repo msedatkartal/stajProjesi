@@ -157,7 +157,7 @@
                         class="rounded-circle" />
                       <div class="ms-3">
 
-                        <a href="{% url 'postDetail' brand.subject_brand.slug %}" data-mdb-toggle="tooltip" title="Hi! I'm tooltip">
+                        <a href="{% url 'postDetail' brand.game_cate.slug brand.subject_brand.slug %}" data-mdb-toggle="tooltip" title="Hi! I'm tooltip">
                           <p class="fw-bold mb-1">{{ brand.subject_brand }}</p>
                         </a>
 
