@@ -22,7 +22,7 @@ class Comment(models.Model):
     subject_brand=models.ForeignKey(Subject, verbose_name=("Konu Başlığı"), on_delete=models.CASCADE,null=True)
     author = models.ForeignKey(User, verbose_name=("Yazar"), on_delete=models.CASCADE, null=True)
     game_cate= models.ForeignKey(GameCard, verbose_name=("Konuya bağlı Kategori İsmi"), on_delete=models.CASCADE, null=True)    
-
+    
    
 
 class Profile(models.Model):

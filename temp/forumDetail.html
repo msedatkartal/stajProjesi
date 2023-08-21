@@ -113,8 +113,8 @@
   <div class="row">
     <div class="col-9">
       <nav class="breadcrumbs">
-        <a href="#home" class="breadcrumbs__item">Anasayfa</a>
-        <a href="#shop" class="breadcrumbs__item">{{ games.categoryName }}</a>
+        <a href="{% url 'dashboardPage' %}" class="breadcrumbs__item">Anasayfa</a>
+        <a href="" class="breadcrumbs__item">{{ games.categoryName }}</a>
         <a href="#shop" class="breadcrumbs__item">{{ games.gameName }}</a>
       </nav>
     </div>
@@ -157,13 +157,13 @@
                         class="rounded-circle" />
                       <div class="ms-3">
 
-                        <a href="{% url 'postDetail' brand.game_cate.slug brand.subject_brand.slug %}" data-mdb-toggle="tooltip" title="Hi! I'm tooltip">
+                        <a href="{% url 'postDetail' brand.game_cate.slug brand.subject_brand.slug %}" data-mdb-toggle="tooltip" title="{{ brand.text|truncatechars:50 }}">
                           <p class="fw-bold mb-1">{{ brand.subject_brand }}</p>
                         </a>
 
                         <div class="d-flex">
-                          <div class="me-5"><i class="fas fa-baby"></i> <small>username</small></div>
-                          <div><i class="far fa-clock"></i> <small>tarih</small></div>
+                          <div class="me-5"><i class="fas fa-baby"></i> <small>{{ brand.author }}</small></div>
+                          <div><i class="far fa-clock"></i> <small>{{ brand.date_now }}</small></div>
                         </div>
 
                       </div>
