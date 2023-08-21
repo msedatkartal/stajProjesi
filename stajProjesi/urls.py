@@ -16,8 +16,8 @@ urlpatterns = [
     
     # appUser
     path('loginPage', loginPage , name='loginPage'),
-    path('postDetail/<str:pk>',postDetail, name='postDetail'),
-    path('messagePost/<str:game_slug>',messagePost, name='messagePost'),
+    path('blog/<category>/<str:pk>',postDetail, name='postDetail'),
+    path('message/<str:game_slug>',messagePost, name='messagePost'),
     path('logout',logoutUser, name='logoutUser'),
     path('accountUser', accountUser, name='accountUser'),
     

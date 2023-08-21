@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.urls import reverse
 from .models import *
+from appMy.models import *
 from django.http import HttpResponse
 
 
@@ -57,7 +58,9 @@ def logoutUser(request):
 
 
 # comment
-def postDetail(request,pk):
+def postDetail(request, category, pk):
+    games = GameCard.objects.filter(slug=category).first()
+    print(category)
     subject = Subject.objects.get(slug=pk)
     comments = Comment.objects.filter(subject_brand__subjectBrand =subject)
     
@@ -70,7 +73,8 @@ def postDetail(request,pk):
     context = {
         "comments":comments,
         "subject":subject,
-        
+        "games":games
+
         }
     
     return render(request,'postDetail.html',context)
@@ -92,6 +96,7 @@ def messagePost(request, game_slug):
         text = request.POST.get("text")
         subject_title=Subject(subjectBrand=subject_slug)
         subject_title.save()
+        subject_url = Subject.objects.filter()
         comment = Comment(text=text, subject_brand=subject_title, author=request.user, game_cate=game)
         comment.save()
         return redirect(('/forumlar/'+game_slug))
