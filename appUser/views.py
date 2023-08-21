@@ -69,7 +69,7 @@ def postDetail(request, category, pk):
         text = request.POST.get("text")
         comment = Comment(text=text,subject_brand=subject)
         comment.save()
-        return redirect('/postDetail/'+category+'/'+ pk )
+        return redirect('/blog/'+category+'/'+ pk )
     
     context = {
         "comments":comments,
