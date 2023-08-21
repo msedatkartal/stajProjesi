@@ -119,7 +119,6 @@
                 <div class="row mt-2">
                     <div class="col border-subject">
                         <div class="p-title d-flex">
-                            
                             <h1 class="title-subject">{{ subject.subjectBrand }}</h1>    
                             <form method="POST">
                                 {% csrf_token %}
@@ -128,15 +127,10 @@
                                 </div>
                             </form>
                         </div>
-                        
-                        
                         <div class="d-flex">
                             <div class="me-5"><i class="fas fa-baby"></i> <small>{{ comments.author }}</small></div>
                             <div><i class="far fa-clock"></i> <small>{{ brand.date_now }}</small></div>
                         </div>
-                            
-                       
-                            
                     </div>
                 </div>
 

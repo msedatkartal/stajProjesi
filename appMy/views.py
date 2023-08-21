@@ -7,17 +7,12 @@ def dashboardPage(request):
     gamecard = GameCard.objects.all()
     gamecategory = CategoryGame.objects.all()
     
-    profile_user = None
-    if request.user.is_authenticated:
-        try:
-            profile_user = Profile.objects.get(user=request.user)
-        except Profile.DoesNotExist:
-            pass
+    
     
     context = {
         'gamecard': gamecard,
         'gamecategory': gamecategory,
-        'profile_user': profile_user
+
     }
     return render(request, 'dashboard.html', context)
 
