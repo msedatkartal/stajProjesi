@@ -72,8 +72,12 @@ def postDetail(request, category, pk):
     if request.method == 'POST':
         
         text = request.POST.get("text")
+<<<<<<< HEAD
         comment = Comment(text=text,subject_brand=subject,author=request.user, image= user.image,game_cate=games)
         
+=======
+        comment = Comment(text=text,subject_brand=subject,author=request.user)
+>>>>>>> a43a401973acf5f7d518c7d2a563c89fe364d7d0
         comment.save()
         return redirect('/blog/'+category+'/'+ pk )
     

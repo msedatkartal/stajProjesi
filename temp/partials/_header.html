@@ -39,6 +39,84 @@
         background: #cf6135;
     }
 
+    /*search start*/
+    .search-button {
+        position: relative;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        top: 3px;
+        align-items: center;
+        transition: width 0.5s;
+        right: 0.5rem;
+    }
+
+    .active-search {
+        width: 200px;
+        border: 0.125rem solid black;
+        border-radius: 2rem;
+    }
+
+    .search-bar {
+        position: absolute;
+        width: inherit;
+        height: inherit;
+        border: 0.125rem solid transparent;
+        background-color: transparent;
+        border-radius: 2rem;
+        outline: none;
+        font: 1rem helvetica, sans-serif;
+        letter-spacing: 0.05rem;
+        padding-left: 2rem;
+    }
+
+    ::-webkit-search-cancel-button {
+        position: absolute;
+        right: 2rem;
+        filter: grayscale(100%) invert(20%);
+        font-size: 0.9rem;
+        cursor: pointer;
+    }
+
+    .search-btn {
+        position: absolute;
+        right: 2.2px;
+        width: 30px;
+        height: 30px;
+        border: none;
+        background-color: transparent;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+    }
+
+    .search-icon {
+        position: absolute;
+        color: white;
+        font-size: 1.5rem;
+    }
+
+    .search-glass {
+        opacity: 1;
+        transition: opacity 0.5s, transform 0.5s;
+    }
+
+    .active-search .search-glass {
+        opacity: 0;
+        transform: rotate(360deg);
+    }
+
+    .search-close {
+        opacity: 0;
+        transition: opacity 0.5s, transform 0.5s;
+    }
+
+    .active-search .search-close {
+        opacity: 1;
+        transform: rotate(360deg);
+    }
+
+
 
 
     @media (max-width: 992px) {
@@ -52,10 +130,17 @@
         }
     }
 
+    @media (max-width:768px) {
+        .logbox2{
+            background-color: transparent !important;
+            box-shadow: 0px 0px 28px 7px rgba(0,0,0,0.1);
+        }
+    }
     @media (min-width: 992px) {
 
         .logbox2 {
             display: none;
+
         }
 
     }
@@ -219,22 +304,13 @@
                     </li> -->
                     {% endif %}
                     <!-- search -->
-                    <li class="nav-item dropend me-3 me-lg-2">
-                        <a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
-                            role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                            <span class="text-white"><i class="fas fa-magnifying-glass fa-lg"></i></span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                            <li>
-                                <div class="input-group p-2 mx-2">
-                                    <div class="form-outline w-auto">
-                                        <input type="search" id="form1" class="form-control-dropdown"
-                                            placeholder="Ara" />
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
+                    <form class='search-button' action='' method='POST' target='_blank'>
+                        <input class='search-bar' type='search' name='q'>
+                        <button class='search-btn' type='button'>
+                            <ion-icon class='search-icon search-glass' name="search-outline"></ion-icon>
+                            <ion-icon class='search-icon search-close' name="close-outline"></ion-icon>
+                        </button>
+                    </form>
                     <!-- dark/light mode -->
                     <li class="nav-item me-3 me-lg-2">
                         <a class="nav-link" href="#" role="button">
@@ -278,3 +354,19 @@
         </div>
     </div>
 </nav>
+
+{% block js %}
+<script>
+    const search = document.querySelector('.search-button');
+    const bar = document.querySelector('.search-bar');
+    const btn = document.querySelector('.search-btn');
+
+    function activate() {
+        search.classList.toggle('active-search');
+        bar.value = ''; 
+        setTimeout(() => bar.focus(), 750)
+    }
+
+    btn.addEventListener('click', activate, false);
+</script>
+{% endblock js %}
