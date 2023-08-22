@@ -175,7 +175,7 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                                     data-mdb-toggle="dropdown" aria-expanded="false">
                                     <img style="width: 30px; height: 30px; object-fit: cover; border-radius: 50%;"
-                                        src="{{ profile_user.image.url }}" alt="">
+                                        src="{{ profile_user.image.image.url }}" alt="">
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <li><a class="dropdown-item" href="{% url 'accountUser' %}">Hesap Ayarları</a></li>
@@ -258,7 +258,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                             data-mdb-toggle="dropdown" aria-expanded="false">
                             <img style="width: 30px; height: 30px; object-fit: cover; border-radius: 50%;"
-                                src="{{ profile_user.image.url }}" alt="">
+                                src="{{ profile_user.image.image.url }}" alt="">
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <li><a class="dropdown-item" href="{% url 'accountUser' %}">Hesap Ayarları</a></li>

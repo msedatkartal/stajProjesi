@@ -46,7 +46,9 @@ def loginPage(request):
                 user = User.objects.create_user(first_name = fname,email = email,username=username_register,password=password1)
                 user.save()
                 
-                Profile.objects.create(user=user,loginUser=False,image='profile/owl.png')
+                image = Profileimage(image='profile/owl.png')
+                image.save()
+                Profile.objects.create(user=user,loginUser=False,image=image)
 
                 return redirect("dashboardPage")
     return render(request, 'login-register.html', context)
@@ -64,19 +66,20 @@ def postDetail(request, category, pk):
     subject = Subject.objects.filter(slug=pk).first()
     print(subject)
     comments = Comment.objects.filter(subject_brand__subjectBrand =subject)
-    print(comments)
     
+    user = Profile.objects.filter(user = request.user).first()
+
     if request.method == 'POST':
+        
         text = request.POST.get("text")
-        comment = Comment(text=text,subject_brand=subject,author=request.user)
+        comment = Comment(text=text,subject_brand=subject,author=request.user, image= user.image)
         comment.save()
         return redirect('/blog/'+category+'/'+ pk )
     
     context = {
         "comments":comments,
         "subject":subject,
-        "games":games
-
+        "games":games,
         }
     
     return render(request,'postDetail.html',context)
@@ -85,7 +88,8 @@ def postDetail(request, category, pk):
 def messagePost(request, game_slug):
     # game_slug a göre messagepostu getirme
     try:
-        game = GameCard.objects.get(slug=game_slug)  
+        game = GameCard.objects.get(slug=game_slug) 
+        user = Profile.objects.filter(user = request.user).first() 
 
         
     except GameCard.DoesNotExist:
@@ -96,13 +100,15 @@ def messagePost(request, game_slug):
         subject_slug = request.POST.get("subject")  
         print(subject_slug)
         text = request.POST.get("text")
-        subject_title=Subject(subjectBrand=subject_slug)
+        subject_title=Subject(subjectBrand=subject_slug,game_cate=game)
         subject_title.save()
-        subject_url = Subject.objects.all()
-        print(subject_url[::-1][0].slug)
-        comment = Comment(text=text, subject_brand=subject_title, author=request.user, game_cate=game)
+        subject_url = Subject.objects.filter().last()
+        
+        print("son konu:", subject_url)
+      
+        comment = Comment(text=text, subject_brand=subject_title, author=request.user, game_cate=game,image= user.image)
         comment.save()
-        return redirect('/blog/'+game_slug+'/'+str((subject_url[::-1][0].slug)))    
+        return redirect('/blog/'+game_slug+'/'+str((subject_url.slug)))    
     context = {
         'game': game,
     }
