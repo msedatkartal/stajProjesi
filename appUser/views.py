@@ -68,7 +68,7 @@ def postDetail(request, category, pk):
     
     if request.method == 'POST':
         text = request.POST.get("text")
-        comment = Comment(text=text,subject_brand=subject)
+        comment = Comment(text=text,subject_brand=subject,author=request.user, game_cate=games)
         comment.save()
         return redirect('/blog/'+category+'/'+ pk )
     
@@ -99,11 +99,10 @@ def messagePost(request, game_slug):
         subject_title=Subject(subjectBrand=subject_slug)
         subject_title.save()
         subject_url = Subject.objects.all()
-        print(Subject.slug)
+        print(subject_url[::-1][0].slug)
         comment = Comment(text=text, subject_brand=subject_title, author=request.user, game_cate=game)
         comment.save()
-        return redirect('/forumlar/'+game_slug)
-    
+        return redirect('/blog/'+game_slug+'/'+str((subject_url[::-1][0].slug)))    
     context = {
         'game': game,
     }
