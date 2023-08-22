@@ -6,12 +6,14 @@ from appUser.models import *
 def dashboardPage(request):
     gamecard = GameCard.objects.all()
     gamecategory = CategoryGame.objects.all()
-    
-    
+    comments = Comment.objects.all()
+    comment10 = comments[::-1][0:10]
+
     
     context = {
         'gamecard': gamecard,
         'gamecategory': gamecategory,
+        'comments': comment10
 
     }
     return render(request, 'dashboard.html', context)
@@ -19,6 +21,11 @@ def dashboardPage(request):
 def forumDetail(request,pk = None):
     comments=Comment.objects.filter(game_cate__slug=pk)
     games = GameCard.objects.filter(slug=pk).first()
+    user = Profile.objects.filter(user = request.user).first()
+    subject = Subject.objects.filter(game_cate__slug=pk)
+    
+    print(subject)
+   
     
     if pk == None:
         pk = GameCard.objects.all()
@@ -27,8 +34,8 @@ def forumDetail(request,pk = None):
     context = {
         'comments':comments,
         'pk':pk,
-        'games':games
-        
+        'games':games,
+        'subject':subject
     }
     return render(request,'forumDetail.html',context)
 

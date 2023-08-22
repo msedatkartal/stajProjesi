@@ -12,3 +12,4 @@ class CommentAdmin(admin.ModelAdmin):
 admin.site.register(Profile,ProfileAdmin)
 admin.site.register(Comment,CommentAdmin)
 admin.site.register(Subject)
+admin.site.register(Profileimage)
