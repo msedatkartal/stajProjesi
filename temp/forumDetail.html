@@ -139,7 +139,7 @@
         <!--  subject table -->
         <div class="row mt-3">
           <div class="col">
-            {% for brand in subject %}
+            {% for brand in comments %}
             <table class="table align-middle mb-0 bg-white">
               <thead class="bg-light">
                 <tr>
@@ -157,8 +157,8 @@
                         class="rounded-circle" />
                       <div class="ms-3">
 
-                        <a href="{% url 'postDetail' brand.game_cate.slug brand.slug %}" data-mdb-toggle="tooltip" title="{{ brand.text|truncatechars:50 }}">
-                          <p class="fw-bold mb-1">{{ brand.subjectBrand }}</p>
+                        <a href="{% url 'postDetail' brand.game_cate.slug brand.subject_brand.slug %}" data-mdb-toggle="tooltip" title="{{ brand.text|truncatechars:50 }}">
+                          <p class="fw-bold mb-1">{{ brand.subject_brand }}</p>
                         </a>
 
                         <div class="d-flex">
