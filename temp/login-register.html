@@ -2,111 +2,278 @@
 {% load static %}
 
 
-{% block main %}
-<div class="container w-50">
+{% block css %}
 
-    <!-- Pills navs -->
-    <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
-        <li class="nav-item" role="presentation">
-            <a class="nav-link active" id="tab-login" data-mdb-toggle="pill" href="#pills-login" role="tab"
-                aria-controls="pills-login" aria-selected="true">Login</a>
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" id="tab-register" data-mdb-toggle="pill" href="#pills-register" role="tab"
-                aria-controls="pills-register" aria-selected="false">Register</a>
-        </li>
-    </ul>
-    <!-- Pills navs -->
-    
-    <!-- Pills content -->
-    <div class="tab-content">
-        <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-            <form method="POST">
-                {% csrf_token %}
-                <!-- Email input -->
-                <div class="form-outline mb-4">
-                    <input type="text" name="username" id="loginName" class="form-control" />
-                    <label class="form-label" for="loginName">Username</label>
+<style>
+    a {
+        color: #d8521d;
+    }
+
+    section {
+        margin: 80px auto;
+        padding: 20px;
+        box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+        border-radius: 10px;
+        background: #EEDAD1;
+    }
+
+    img {
+        max-height: 100%;
+        max-width: 100%;
+    }
+
+    .carousel-item {
+        position: relative;
+        display: none;
+        float: left;
+        width: 100%;
+        backface-visibility: hidden;
+        transition: transform .6s ease-in-out;
+    }
+
+
+    .log {
+
+        padding: 10px 60px 10px 60px;
+    }
+
+    .form-outline .form-control {
+        min-height: auto;
+        padding: .32rem .75rem;
+        border: 0;
+        background: white;
+        transition: all .2s linear;
+
+    }
+
+
+    .inp {
+        margin-bottom: 15px;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    .orangeBG {
+        background: #D8601D;
+        color: white;
+    }
+
+    .orangeBG:hover {
+        background: #d8521d;
+        color: white;
+    }
+
+    .nav-pills .nav-link.active,
+    .nav-pills .show>.nav-link {
+        background-color: rgb(249, 240, 228);
+        color: #d8521d;
+    }
+
+    .form-check-input[type="checkbox"]:checked {
+        background-image: none;
+        background-color: #D8601D !important;
+    }
+
+    .form-check-input:checked {
+        border-color: #D8601D !important;
+    }
+
+    @media (max-width: 992px) {
+
+        img {
+            height: 500px;
+        }
+
+        .log {
+            padding: 20px 40px 20px 40px;
+        }
+
+    }
+
+    @media (max-width: 767px) {
+
+        img {
+            display: none !important;
+        }
+
+        .k-link {
+            display: block;
+        }
+    }
+</style>
+
+{% endblock %}
+
+
+{% block main %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 d-flex">
+            <section class="d-flex">
+                <div class="col-md-6 col-sm-12 mt-4">
+                    <div class=" log">
+                        <!-- Pills navs -->
+                        <ul class="nav nav-pills nav-justified k-link mb-3" id="ex1" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="tab-login" data-mdb-toggle="pill" href="#pills-login"
+                                    role="tab" aria-controls="pills-login" aria-selected="true">Giriş</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="tab-register" data-mdb-toggle="pill" href="#pills-register"
+                                    role="tab" aria-controls="pills-register" aria-selected="false">Kayıt ol</a>
+                            </li>
+                        </ul>
+                        <!-- Pills navs -->
+
+                        <!-- Pills content -->
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <!-- Email input -->
+                                    <div class="form-outline mb-4">
+                                        <input type="text" name="username" id="loginName" class="form-control inp" />
+                                        <label class="form-label" for="loginName">Kullanıcı adı</label>
+                                    </div>
+                                    <!-- Password input -->
+                                    <div class="form-outline mb-4">
+                                        <input type="password" name="password" id="loginPassword"
+                                            class="form-control inp" />
+                                        <label class="form-label" for="loginPassword">Parola</label>
+                                    </div>
+
+                                    <!-- 2 column grid layout -->
+                                    <!-- Submit button -->
+                                    <button type="submit" name="submit" value="login"
+                                        class="btn orangeBG btn-block mb-4">Giriş</button>
+                                    <div class="row mb-1">
+                                        <div class="col-md-12 d-flex justify-content-center">
+                                            <!-- Simple link -->
+                                            <a href="#!">Şifreni mi unuttun?</a>
+                                        </div>
+                                    </div>
+                                    <!-- Register buttons -->
+                                    <div class="text-center">
+                                        <p>Üye değil misin? <a href="#!">Kayıt ol!</a></p>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <!-- Name input -->
+                                    <div class="form-outline mb-4">
+                                        <input type="text" name="fname" id="registerName" class="form-control" />
+                                        <label class="form-label" for="registerName">Ad</label>
+                                    </div>
+
+                                    <!-- Username input -->
+                                    <div class="form-outline mb-4">
+                                        <input type="text" name="username_register" id="registerUsername"
+                                            class="form-control" />
+                                        <label class="form-label" for="registerUsername">Kullanıcı Adı</label>
+                                    </div>
+
+                                    <!-- Email input -->
+                                    <div class="form-outline mb-4">
+                                        <input type="email" name="email" id="registerEmail" class="form-control" />
+                                        <label class="form-label" for="registerEmail">Email</label>
+                                    </div>
+
+                                    <!-- Password input -->
+                                    <div class="form-outline mb-4">
+                                        <input type="password" name="password1" id="registerPassword"
+                                            class="form-control" />
+                                        <label class="form-label" for="registerPassword">Parola</label>
+                                    </div>
+
+                                    <!-- Repeat Password input -->
+                                    <div class="form-outline mb-4">
+                                        <input type="password" name="password2" id="registerRepeatPassword"
+                                            class="form-control" />
+                                        <label class="form-label" for="registerRepeatPassword">Parolayı tekrarla</label>
+                                    </div>
+
+                                    <!-- Checkbox -->
+                                    <div class="form-check d-flex justify-content-center mb-4">
+                                        <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck"
+                                            checked aria-describedby="registerCheckHelpText" />
+                                        <label class="form-check-label" for="registerCheck">
+                                            Şartları okudum ve kabul ediyorum
+                                        </label>
+                                    </div>
+
+                                    <!-- Submit button -->
+                                    <button type="submit" name="submit" value="register"
+                                        class="btn orangeBG btn-block mb-3">Kayıt ol</button>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- Pills content -->
+                    </div>
                 </div>
-    
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                    <input type="password" name="password" id="loginPassword" class="form-control" />
-                    <label class="form-label" for="loginPassword">Password</label>
-                </div>
-    
-                <!-- 2 column grid layout -->
-                <div class="row mb-4">
-                    <div class="col-md-6 d-flex justify-content-center">
-                        <!-- Checkbox -->
-                        <div class="form-check mb-3 mb-md-0">
-                            <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
-                            <label class="form-check-label" for="loginCheck"> Remember me </label>
+                <div class="col-md-6 m-auto">
+                    <div class="col-md-12">
+                        <div id="carouselExampleSlidesOnly" class="carousel slide" data-mdb-ride="carousel">
+                            <div class="carousel-inner ">
+                                <div class="carousel-item active" style="height: 400px; ">
+                                    <img src="{% static 'img/lol.jpg' %}" class=" w-100 "/>
+                                </div>
+
+                                <div class=" carousel-item" style="height:400px; ">
+                                    <img src="{% static 'img/witcher.jpeg' %}" class=" w-100" />
+                                </div>
+
+                                <div class="carousel-item" style="height: 400px; ">
+                                    <img src="{% static 'img/fortnite.jpg' %}" class=" w-100" />
+                                </div>
+                                
+                                <div class="carousel-item" style="height: 400px; ">
+                                    <img src="{% static 'img/nfs.jpeg' %}" class=" w-100" />
+                                </div>
+
+                                <div class="carousel-item" style="height: 400px; ">
+                                    <img src="{% static 'img/horizon.jpg' %}" class=" w-100" />
+                                </div>
+
+                                <div class="carousel-item" style="height: 400px; ">
+                                    <img src="{% static 'img/assasın.jpg' %}" class=" w-100" />
+                                </div>
+
+                                <div class="carousel-item" style="height: 400px; ">
+                                    <img src="{% static 'img/sims.jpg' %}" class=" w-100" />
+                                </div>
+
+                                <div class="carousel-item" style="height: 400px; ">
+                                    <img src="{% static 'img/gta.jpg' %}" class=" w-100" />
+                                </div>
+                            </div>
                         </div>
                     </div>
-    
-                    <div class="col-md-6 d-flex justify-content-center">
-                        <!-- Simple link -->
-                        <a href="#!">Forgot password?</a>
-                    </div>
                 </div>
-    
-                <!-- Submit button -->
-                <button type="submit" name="submit" value="login" class="btn btn-primary btn-block mb-4">Sign in</button>
-    
-                <!-- Register buttons -->
-                <div class="text-center">
-                    <p>Not a member? <a href="#!">Register</a></p>
-                </div>
-            </form>
-        </div>
-        <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-            <form method="POST">
-                {% csrf_token %}
-                <!-- Name input -->
-                <div class="form-outline mb-4">
-                    <input type="text" name="fname" id="registerName" class="form-control" />
-                    <label class="form-label" for="registerName">Name</label>
-                </div>
-    
-                <!-- Username input -->
-                <div class="form-outline mb-4">
-                    <input type="text" name="username_register" id="registerUsername" class="form-control" />
-                    <label class="form-label" for="registerUsername">Username</label>
-                </div>
-    
-                <!-- Email input -->
-                <div class="form-outline mb-4">
-                    <input type="email" name="email" id="registerEmail" class="form-control" />
-                    <label class="form-label" for="registerEmail">Email</label>
-                </div>
-    
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                    <input type="password" name="password1" id="registerPassword" class="form-control" />
-                    <label class="form-label" for="registerPassword">Password</label>
-                </div>
-    
-                <!-- Repeat Password input -->
-                <div class="form-outline mb-4">
-                    <input type="password" name="password2" id="registerRepeatPassword" class="form-control" />
-                    <label class="form-label" for="registerRepeatPassword">Repeat password</label>
-                </div>
-    
-                <!-- Checkbox -->
-                <div class="form-check d-flex justify-content-center mb-4">
-                    <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
-                        aria-describedby="registerCheckHelpText" />
-                    <label class="form-check-label" for="registerCheck">
-                        I have read and agree to the terms
-                    </label>
-                </div>
-    
-                <!-- Submit button -->
-                <button type="submit" name="submit" value="register" class="btn btn-primary btn-block mb-3">Sign in</button>
-            </form>
+            </section>
         </div>
     </div>
-    <!-- Pills content -->
 </div>
+
+
+<!-- <section class="header-img">
+        <img src="https://assets.codepen.io/1149983/Mt.FujiJapan-day.png" alt="day landing image of japan" />
+        <img src="https://assets.codepen.io/1149983/London-day.png" alt="day landing image of London" loading="lazy" />
+        <img src="https://assets.codepen.io/1149983/France-day.png" alt="day landing image of Paris" loading="lazy" />
+        <img src="https://assets.codepen.io/1149983/India-day.png" alt="day landing image of Taj Mahal" loading="lazy" />
+        <img src="https://assets.codepen.io/1149983/Egypt-day.png" alt="day landing image of Pyramids" loading="lazy" />
+        <img src="https://assets.codepen.io/1149983/China-day.png" alt="day landing image of Great wall of China"
+            loading="lazy" />
+        <img src="https://assets.codepen.io/1149983/Italy-day.png" alt="day landing image of Italy" loading="lazy" />
+        <img src="https://assets.codepen.io/1149983/Indonesia-day.png" alt="day landing image of Indonesia"
+            loading="lazy" />
+        <img src="https://assets.codepen.io/1149983/Philippines-day.png" alt="day landing image of Indonesia"
+            loading="lazy" />
+    </section> -->
+
+
 {% endblock main %}
