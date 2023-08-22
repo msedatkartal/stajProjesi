@@ -68,7 +68,7 @@ def postDetail(request, category, pk):
     
     if request.method == 'POST':
         text = request.POST.get("text")
-        comment = Comment(text=text,subject_brand=subject,author=request.user, game_cate=games)
+        comment = Comment(text=text,subject_brand=subject,author=request.user)
         comment.save()
         return redirect('/blog/'+category+'/'+ pk )
     
