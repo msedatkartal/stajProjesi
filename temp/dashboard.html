@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block css %}
 <style>
@@ -173,7 +174,7 @@
                                 <div class="text-under d-flex justify-content-between align-items-center">
                                     <div class="d-flex">
                                         <div class="user-img">
-                                            <img src="baykus.png" alt="">
+                                            <img src="{{ card. }}" alt="">
                                         </div>
                                         <small class="d-flex justify-content-center align-items-center">username</small>
                                     </div>
@@ -271,7 +272,7 @@
                                 <p data-mdb-toggle="tooltip" title="Hit">4</p>
                             </td>
                             <td>
-                                <p><a href="#" data-mdb-toggle="tooltip" title="Gönderim">{{ i.date_now }}</a></p>
+                                <p><a href="#" data-mdb-toggle="tooltip" title="Gönderim">{{ i.date_now | naturaltime }}</a></p>
                             </td>
                             <td>
                                 <p><a href="#" data-mdb-toggle="tooltip" title="Son Yazan">{{ i.author }}</a></p>
