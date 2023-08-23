@@ -10,12 +10,10 @@ def dashboardPage(request):
     gamecategory = CategoryGame.objects.all()
     comments = Comment.objects.all()
     comment10 = comments[::-1][0:10]
-<<<<<<< HEAD
+
     games = GameCard.objects.values_list('gameName',flat=True)
     print(games)
-=======
-    
->>>>>>> 471e66527f5eaeadb79a46a4ad3f0e8355af85e2
+
     context = {
         'gamecard': gamecard,
         'gamecategory': gamecategory,
