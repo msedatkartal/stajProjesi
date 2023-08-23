@@ -8,7 +8,6 @@ def dashboardPage(request):
     gamecategory = CategoryGame.objects.all()
     comments = Comment.objects.all()
     comment10 = comments[::-1][0:10]
-
     
     context = {
         'gamecard': gamecard,
