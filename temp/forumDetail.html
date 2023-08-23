@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block css %}
 <style>
@@ -163,7 +164,7 @@
 
                         <div class="d-flex">
                           <div class="me-5"><i class="fas fa-baby"></i> <small>{{ brand.author }}</small></div>
-                          <div><i class="far fa-clock"></i> <small>{{ brand.date_now }}</small></div>
+                          <div><i class="far fa-clock"></i> <small>{{ brand.date_now|naturaltime }}</small></div>
                         </div>
 
                       </div>

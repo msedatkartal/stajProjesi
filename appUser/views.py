@@ -66,9 +66,14 @@ def postDetail(request, category, pk):
     subject = Subject.objects.filter(slug=pk).first()
     print(subject)
     comments = Comment.objects.filter(subject_brand__subjectBrand =subject)
+    subject_author = comments.first()
     
-    user = Profile.objects.filter(user = request.user).first()
-
+ 
+    if request.user.is_authenticated:
+        user = Profile.objects.filter(user = request.user).first()
+    else:
+        user = Profile.objects.all()
+        
     if request.method == 'POST':
         
         text = request.POST.get("text")
@@ -80,6 +85,7 @@ def postDetail(request, category, pk):
         "comments":comments,
         "subject":subject,
         "games":games,
+        'subject_author':subject_author,
         }
     
     return render(request,'postDetail.html',context)
