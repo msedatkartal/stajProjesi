@@ -11,8 +11,8 @@ def dashboardPage(request):
     comments = Comment.objects.all()
     comment10 = comments[::-1][0:10]
 
-    games = GameCard.objects.values_list('gameName',flat=True)
-    print(games)
+    # games = GameCard.objects.values_list('gameName',flat=True)
+    # print(games)
 
     context = {
         'gamecard': gamecard,

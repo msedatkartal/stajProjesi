@@ -158,7 +158,7 @@
                                 <div class="m-auto p-2 text-center" style="width: 200px;">
                                     <h5 class="m-0 d-inline m-auto" style="width: fit-content; ">{{ i.author }}</h5>
                                     <p class="mt-2" style="text-align:left;"><b class="me-3">Katılım</b>: {{ i.author.date_joined|date:"SHORT_DATE_FORMAT" }}</p>
-                                    <p style="text-align:left;">Mesajlar:</p>
+                                    <p class="me-1" style="text-align:left;"><b class="me-1">Mesajlar</b>: {{ i.author.profile.comment_user }}</p>
                                     <!-- <h6 style="min-width:50px; font-size: 12px;"> {{ i.date_now }} </h6> -->
                                 </div>
                             </div>

@@ -240,7 +240,6 @@
                             <th>Konu</th>
                             <th>Forumu</th>
                             <th>Cevap</th>
-                            <th>Hit</th>
                             <th>Gönderim</th>
                             <th>Son Yazan</th>
                         </tr>
@@ -266,10 +265,7 @@
                                 <p><a href="#" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">{{ i.game_cate }}</a></p>
                             </td>
                             <td>
-                                <p data-mdb-toggle="tooltip" title="Cevap">4</p>
-                            </td>
-                            <td>
-                                <p data-mdb-toggle="tooltip" title="Hit">4</p>
+                                <p data-mdb-toggle="tooltip" title="Cevap">{{ i.subject_brand.comment_number }}</p>
                             </td>
                             <td>
                                 <p><a href="#" data-mdb-toggle="tooltip" title="Gönderim">{{ i.date_now | naturaltime }}</a></p>
