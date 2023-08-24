@@ -1,24 +1,24 @@
 from django.shortcuts import render,redirect
 from .models import *
 from appUser.models import *
+import datetime
+from django.utils import timezone
+from datetime import datetime
 
 
 
 def dashboardPage(request):
     gamecard = GameCard.objects.all()
-    print(gamecard)
     gamecategory = CategoryGame.objects.all()
     comments = Comment.objects.all()
     comment10 = comments[::-1][0:10]
-
-    # games = GameCard.objects.values_list('gameName',flat=True)
-    # print(games)
+    birthday= Profile.objects.filter(birthday__day=datetime.now().date().day, birthday__month=datetime.now().date().month)
 
     context = {
         'gamecard': gamecard,
         'gamecategory': gamecategory,
-        'comments': comment10
-
+        'comments': comment10,
+        'birthday_watch': birthday,
     }
     return render(request, 'dashboard.html', context)
 

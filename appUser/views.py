@@ -19,6 +19,9 @@ def loginPage(request):
             user = authenticate(username=username,password=password)
             if user is not None:
                 login(request,user)
+                profile = Profile.objects.get_or_create(user=user)[0]
+                profile.loginUser = True
+                profile.save()
                 return redirect ("dashboardPage")
             else:
                 messages.warning(request,"kullanıcı adı veya şifre yanlış")
