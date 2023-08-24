@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 
 
 {% block css %}
@@ -128,8 +129,8 @@
                             </form>
                         </div>
                         <div class="d-flex">
-                            <div class="me-5"><i class="fas fa-baby"></i> <small>{{ comments.author }}</small></div>
-                            <div><i class="far fa-clock"></i> <small>{{ brand.date_now }}</small></div>
+                            <div class="me-5"><i class="fas fa-baby"></i> <small>{{ subject_author.author }}</small></div>
+                            <div><i class="far fa-clock"></i> <small>{{ subject_author.date_now }}</small></div>
                         </div>
                     </div>
                 </div>
@@ -156,10 +157,7 @@
                                     
                                 <div class="m-auto p-2 text-center" style="width: 200px;">
                                     <h5 class="m-0 d-inline m-auto" style="width: fit-content; ">{{ i.author }}</h5>
-                                    <div class="smallbox"style="background:rgba(48, 35, 35, 0.588); border-color: #090a0a">
-                                        <p style="text-align:left;">+80</p>
-                                    </div>
-                                    <p style="text-align:left;">Katılım:</p>
+                                    <p class="mt-2" style="text-align:left;"><b class="me-3">Katılım</b>: {{ i.author.date_joined|date:"SHORT_DATE_FORMAT" }}</p>
                                     <p style="text-align:left;">Mesajlar:</p>
                                     <!-- <h6 style="min-width:50px; font-size: 12px;"> {{ i.date_now }} </h6> -->
                                 </div>
