@@ -59,7 +59,7 @@
 
     .carousel-brand {
         background-color: #f0b966;
-        
+
     }
 
     .user-img {
@@ -142,7 +142,36 @@
     .modal-game p {
         font-size: 12px;
     }
+
+    .orangeBtn {
+        background-color: #D8601D;
+        color: white;
+    }
+
+    .orangeBtn:hover {
+        background: #d2450d;
+        color: white;
+    }
+
     
+    .closeBtn{
+        background-color: #f0c37f;
+        color: white;
+    }
+    .closeBtn:hover{
+        background-color: #f0b966;
+        color: white;
+    }
+
+    .modal-footer{
+
+        justify-content: center !important;
+    }
+
+    
+
+
+
 </style>
 
 {% endblock css %}
@@ -233,7 +262,7 @@
             <div class="tab-pane fade show active" id="ex-with-icons-tabs-1" role="tabpanel"
                 aria-labelledby="ex-with-icons-tab-1">
                 <!--  -->
-                <table class="table align-middle mb-0 bg-white" >
+                <table class="table align-middle mb-0 bg-white">
                     <thead class="bg-light">
                         <tr>
                             <th>#</th>
@@ -246,7 +275,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
+
                         {% for i in comments %}
                         <tr>
                             <td>
@@ -254,16 +283,19 @@
                             </td>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="{{ i.image.image.url }}" alt=""
-                                        style="width: 45px; height: 45px" class="rounded-circle" />
+                                    <img src="{{ i.image.image.url }}" alt="" style="width: 45px; height: 45px"
+                                        class="rounded-circle" />
                                     <div class="ms-3">
-                                        <p><a href="#" data-mdb-toggle="tooltip" title="{{ i.text|truncatechars:'200' }}">{{ i.subject_brand.subjectBrand }}</a>
+                                        <p><a href="#" data-mdb-toggle="tooltip"
+                                                title="{{ i.text|truncatechars:'200' }}">{{ i.subject_brand.subjectBrand
+                                                }}</a>
                                         </p>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <p><a href="#" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">{{ i.game_cate }}</a></p>
+                                <p><a href="#" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">{{ i.game_cate }}</a>
+                                </p>
                             </td>
                             <td>
                                 <p data-mdb-toggle="tooltip" title="Cevap">4</p>
@@ -279,7 +311,7 @@
                                 </button>
                             </td>
                         </tr>
-                            
+
                         {% endfor %}
                     </tbody>
                 </table>
@@ -312,7 +344,7 @@
                     <div class="card-body">
                         <div>
                             {% for i in category.gamecard_set.all %}
-                            <a href="{% url 'forumDetail' i.slug %}" class="me-3"><i class="fas fa-gamepad me-1"></i>{{ i.gameName }}</a>
+                            <a href="{% url 'forumDetail' i.slug %}" class="me-3"><i class="fas fa-gamepad me-1"></i>{{i.gameName }}</a>
                             {% endfor %}
                         </div>
                     </div>
@@ -337,14 +369,14 @@
                                 aria-label="Close"></button>
                         </div>
                         <div class="modal-body modal-game">
-                            
+
                             {% for category in gamecategory %}
                             <div>
                                 <p>{{ category.categoryName }}</p>
                                 <p>{{ category.categoryName }} oyunlar bilgi ve paylaşım forumu</p>
                             </div>
                             <hr>
-                            
+
                             {% for i in category.gamecard_set.all %}
                             <div class="d-flex justify-content-between">
                                 <div>
@@ -359,9 +391,9 @@
                                 </div>
                             </div>
                             <hr>
-                                
+
                             {% endfor %}
-                                
+
                             {% endfor %}
                         </div>
 
@@ -369,6 +401,34 @@
                 </div>
             </div>
             <!-- MODAL END -->
+
+
+            <div class="card mb-3">
+                <button type="button" class="btn btn-primary button-text" data-mdb-toggle="modal"
+                    data-mdb-target="#singinAlert">
+                    <i class="fas fa-pen-to-square"></i>
+                    Yeni konu aç
+                </button>
+            </div>
+
+         
+
+            <!-- Modal -->
+            <div class="modal fade" id="singinAlert" tabindex="-1" aria-labelledby="SigninAlertLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        
+                        <div class="modal-body text-center">
+                            <h5>Yeni konu açmak lütfen giriş yapınız!</h5> </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn closeBtn" data-mdb-dismiss="modal">Kapat</button>
+                            <a href="loginPage"  type="button" class="btn orangeBtn">Giriş</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
             <div class="card mb-3 ">
                 <div class="card-body">
