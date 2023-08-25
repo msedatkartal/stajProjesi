@@ -12,13 +12,11 @@ def dashboardPage(request):
     gamecategory = CategoryGame.objects.all()
     comments = Comment.objects.all()
     comment10 = comments[::-1][0:10]
-    birthday= Profile.objects.filter(birthday__day=datetime.now().date().day, birthday__month=datetime.now().date().month)
-
     context = {
         'gamecard': gamecard,
         'gamecategory': gamecategory,
         'comments': comment10,
-        'birthday_watch': birthday,
+        
     }
     return render(request, 'dashboard.html', context)
 

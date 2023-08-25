@@ -58,6 +58,10 @@ def loginPage(request):
 
 
 def logoutUser(request):
+    user = Profile.objects.filter(user=request.user,loginUser=True).first()
+    print(user)
+    user.loginUser = False
+    user.save()
     logout(request)
     return redirect("dashboardPage")
 
