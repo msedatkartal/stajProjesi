@@ -124,7 +124,83 @@ def messagePost(request, game_slug):
 
 
 def accountUser(request):
-    context = {}
+    profile = Profile.objects.filter(loginUser=True, user=request.user).first()
+    user = User.objects.filter(username=request.user).first()
     
-    return render(request, 'accountUser.html', context)
+    if request.method == "POST":
+        submit = request.POST.get("submit")
+        
+        # Profil fotografı güncelleme
+        if submit == "profileChange":
+            profile_list = Profile.objects.filter(user=request.user)
 
+            image2 = request.FILES.get("image2")
+            pid = request.POST.get("id")
+            
+            profile2 = profile_list.get(id=pid)
+
+            if image2 is not None:
+                # User profiline ait resim
+                profile_image = Profileimage(image=image2)
+                profile_image.save()
+                profile2.image = profile_image  # Bu kısmı eklemeyi unutmayın
+                profile2.save()
+
+        # Hesap iptali
+        if submit == "subscribeUnfollow":
+            user = request.user
+            user.delete()
+            messages.warning(request,"Hesabınız iptal edilmiştir!!")
+            return redirect("dashboardPage")
+            
+        # Şifre güncelleme
+        elif submit == "passwordUpdate":
+            password = request.POST.get("password")
+            password1 = request.POST.get("password1")
+            password2 = request.POST.get("password2")
+            
+            if user.check_password(password) and password1 == password2:
+                user.profile.password = password1
+                user.profile.save()
+                
+                user.set_password(password1)
+                user.save()
+                return redirect("loginPage")
+            else:
+                messages.warning(request, "Şifreniz yanlış veya yeni şifreler aynı değil!!")
+        
+        #  Tel güncelleme
+        elif submit == "telUpdate":
+            phone = request.POST.get("tel")
+            password = request.POST.get("password")
+            
+            if user.check_password(password):
+                user.profile.phone = phone
+                user.profile.save()
+            else:
+                messages.warning(request,"Şifre yanlış!!")
+                
+        # E mail güncelleme
+        elif submit == "emailUpdate":
+            email = request.POST.get("email")
+            password = request.POST.get("password")
+            
+            email_bool = True
+            if User.objects.filter(email=email).exists():
+               email_bool = False
+               messages.warning(request, "Girdiğiniz email başkası tarafından kullanılıyor!")
+            
+            if user.check_password(password):
+                if email_bool:
+                    user.email = email
+                    user.save()
+            else:
+                messages.warning(request, "Şifreniz yanlış!")
+        
+        return redirect("accountUser")
+    
+    context = {
+        'profile': profile
+    }
+    
+    return render(request,'accountUser.html', context)
