@@ -105,6 +105,20 @@
         background: #d2450d;
         color: white;
     }
+
+    .closeBtn{
+        background-color: #f0c37f;
+        color: white;
+    }
+    .closeBtn:hover{
+        background-color: #f0b966;
+        color: white;
+    }
+    
+    .modal-footer{
+    
+        justify-content: center !important;
+    }
     
 </style>
 {% endblock css %}
@@ -158,7 +172,7 @@
 
         <!-- comment card start -->
         <div class="row ">
-            <div class="col">
+            <div class="col-12">
                 {% for i in comments %}
                 <div class="card mb-2 ">
                     <div class="d-flex">
@@ -185,8 +199,9 @@
                             <div class="card-header mt-3">
                                 <div class="d-flex justify-content-between">
                                     <p style="font-size: small;" data-mdb-toggle="tooltip" title="{{ i.date_now }}" > {{ i.date_now|naturaltime }} </p>
-                                    <button type="button" class="btn-close" data-mdb-dismiss="modal"
-                                        aria-label="Close"></button>
+                                    <button type="button" class="btn-close" 
+                                        aria-label="Close" data-mdb-toggle="modal"
+                                        data-mdb-target="#deleteAlert"></button>
                                 </div>
 
 
@@ -200,6 +215,24 @@
                     </div>
                 </div>
                 {% endfor %}
+
+                  <!-- Modal -->
+            <div class="modal fade" id="deleteAlert" tabindex="-1" aria-labelledby="deleteAlertLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        
+                        <div class="modal-body text-center">
+                            <h5>Mesajı silmek istediğinize emin misiniz?</h5> </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn closeBtn" data-mdb-dismiss="modal">Vazgeç</button>
+                            <a  style="width:100px;" type="button" class="btn orangeBtn">Sil</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
                 <div class=" d-flex justify-content-end w-100">
                     <a href="{% url 'loginPage' %}" type="button" class="btn orangeBtn button-text">
                        
