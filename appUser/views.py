@@ -19,6 +19,9 @@ def loginPage(request):
             user = authenticate(username=username,password=password)
             if user is not None:
                 login(request,user)
+                profile = Profile.objects.get_or_create(user=user)[0]
+                profile.loginUser = True
+                profile.save()
                 return redirect ("dashboardPage")
             else:
                 messages.warning(request,"kullanıcı adı veya şifre yanlış")
@@ -55,6 +58,10 @@ def loginPage(request):
 
 
 def logoutUser(request):
+    user = Profile.objects.filter(user=request.user,loginUser=True).first()
+    print(user)
+    user.loginUser = False
+    user.save()
     logout(request)
     return redirect("dashboardPage")
 
@@ -79,6 +86,11 @@ def postDetail(request, category, pk):
         text = request.POST.get("text")
         comment = Comment(text=text,subject_brand=subject,author=request.user, image= user.image)
         comment.save()
+        subject.comment_number += 1
+        subject.save()
+        user.comment_user +=1
+        user.save()
+        
         return redirect('/blog/'+category+'/'+ pk )
     
     context = {
@@ -86,18 +98,20 @@ def postDetail(request, category, pk):
         "subject":subject,
         "games":games,
         'subject_author':subject_author,
+        "user":user
         }
     
     return render(request,'postDetail.html',context)
     
 
 def messagePost(request, game_slug):
+    comment_number = 0
+    comment_user = 0
+
     # game_slug a göre messagepostu getirme
     try:
         game = GameCard.objects.get(slug=game_slug) 
-        user = Profile.objects.filter(user = request.user).first() 
-
-        
+        user = Profile.objects.filter(user = request.user).first()
     except GameCard.DoesNotExist:
         return HttpResponse("Oyun bulunamadı.")
     
@@ -106,7 +120,8 @@ def messagePost(request, game_slug):
         subject_slug = request.POST.get("subject")  
         print(subject_slug)
         text = request.POST.get("text")
-        subject_title=Subject(subjectBrand=subject_slug,game_cate=game)
+        comment_number += 1
+        subject_title=Subject(subjectBrand=subject_slug,game_cate=game,comment_number = comment_number)
         subject_title.save()
         subject_url = Subject.objects.filter().last()
         
@@ -114,6 +129,8 @@ def messagePost(request, game_slug):
       
         comment = Comment(text=text, subject_brand=subject_title, author=request.user, game_cate=game,image= user.image)
         comment.save()
+        user.comment_user += 1
+        user.save()
         return redirect('/blog/'+game_slug+'/'+str((subject_url.slug)))    
     context = {
         'game': game,
