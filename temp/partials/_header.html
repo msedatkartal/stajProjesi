@@ -278,15 +278,27 @@
     //moon-sun mode
     let moon=document.getElementById('moon')
     let sun=document.getElementById('sun')
-    let card=document.querySelector('.card')
-    
 
-    document.querySelector('.moon-sun-button').addEventListener('click',()=>{
+    document.addEventListener("DOMContentLoaded", function() {
+        const darkMode = localStorage.getItem("darkMode") === "true";
+        document.body.classList.toggle("dark-mode", darkMode);
+    });
+
+    // Toggle butonuna tıklanınca dark-mode durumunu değiştir ve localStorage'a kaydet
+    document.querySelector(".moon-sun-button").addEventListener("click", () => {
+        const body = document.body;
+        const darkMode = body.classList.toggle("dark-mode");
+        localStorage.setItem("darkMode", darkMode);
+        moon.classList.toggle('d-none')
+        sun.classList.toggle('d-none') 
+    });
+
+    /*document.querySelector('.moon-sun-button').addEventListener('click',()=>{
         document.body.classList.toggle('dark-mode')
         moon.classList.toggle('d-none')
         sun.classList.toggle('d-none')  
         card.classList.toggle('dark')
-    })
+    })*/
 
     
 
