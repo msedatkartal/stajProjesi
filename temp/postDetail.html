@@ -120,16 +120,18 @@
                 <div class="row mt-2">
                     <div class="col border-subject">
                         <div class="p-title d-flex">
-                            <h1 class="title-subject">{{ subject.subjectBrand }}</h1>    
+                            <h1 class="title-subject">{{ subject.subjectBrand }}</h1>
                             <form method="POST">
                                 {% csrf_token %}
                                 <div class="new-subject">
                                     <input type="hidden" value="yenikonu" name="yenikonu">
+
                                 </div>
                             </form>
                         </div>
                         <div class="d-flex">
-                            <div class="me-5"><i class="fas fa-baby"></i> <small>{{ subject_author.author }}</small></div>
+                            <div class="me-5"><i class="fas fa-baby"></i> <small>{{ subject_author.author }}</small>
+                            </div>
                             <div><i class="far fa-clock"></i> <small>{{ subject_author.date_now }}</small></div>
                         </div>
                     </div>
@@ -147,31 +149,50 @@
                     <div class="d-flex">
                         <div class="card-header p-0 py-3">
                             <div class="comment border-end m-auto px-4 ">
-                                
-                                
+
+
                                 <div class="m-auto my-2" style="width: fit-content;">
-                                    <img style="width: 125px; height: 125px; border:2px solid #00000030 ; border-radius: 50%;" src="{{ i.image.image.url }}" alt="">
+                                    <img style="width: 125px; height: 125px; border:2px solid #00000030 ; border-radius: 50%;"
+                                        src="{{ i.image.image.url }}" alt="">
                                 </div>
-                                    
-                                
-                                    
+
+
+
                                 <div class="m-auto p-2 text-center" style="width: 200px;">
                                     <h5 class="m-0 d-inline m-auto" style="width: fit-content; ">{{ i.author }}</h5>
-                                    <p class="mt-2" style="text-align:left;"><b class="me-3">Katılım</b>: {{ i.author.date_joined|date:"SHORT_DATE_FORMAT" }}</p>
+                                    <p class="mt-2" style="text-align:left;"><b class="me-3">Katılım</b>:
+                                         {{i.author.date_joined|date:"SHORT_DATE_FORMAT" }}</p>
                                     <p style="text-align:left;">Mesajlar:</p>
                                     <!-- <h6 style="min-width:50px; font-size: 12px;"> {{ i.date_now }} </h6> -->
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body" style="width: 500px;">
-                            <p style="padding-left: 80%; position:relative; font-size: small;"> {{ i.date_now }} </p>
-                            <p class="ms-5  ps-5 " style="min-height: 100px; margin-top: 30px; ">{{ i.text }}</p>
-                        </div>
+                        <div class="d-block w-100">
+                            <div class="card-header mt-3">
+                                <div class="d-flex justify-content-between">
+                                    <p style="font-size: small;"> {{ i.date_now }} </p>
+                                    <button type="button" class="btn-close" data-mdb-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
 
+
+                            </div>
+
+                            <div class="card-body">
+
+                                <p>{{ i.text }}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
-
+                <div class=" d-flex justify-content-end w-100">
+                    <a href="{% url 'loginPage' %}" type="button" class="btn btn-primary button-text">
+                       
+                       Mesaj yazabilmek için lütfen giriş yapınız
+                    </a>
+                </div>
+    
                 <!-- comment text -->
                 <div class="card mt-5 ">
                     <div class="card-body">
