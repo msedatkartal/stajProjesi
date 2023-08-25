@@ -48,6 +48,3 @@ def forumDetail(request,pk = None):
 
 
 
-def accountUser(request):
-    context = {}
-    return render(request,'accountUser.html',context)

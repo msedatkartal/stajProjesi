@@ -1,42 +1,64 @@
-body.dark-mode {
-    background-color: rgb(20, 20, 20);
-    color: white;
+:root{
+    --bg-card-color-1:rgb(26, 27, 27);
+    --bg-card-color-2:rgb(55, 58, 58);
+    --bg-card-color-3:rgb(53, 52, 52);
+    --bg-card-color-4:rgb(45, 48, 55);
 
 }
 
+body.dark-mode {
+    background-color: rgb(20, 20, 20);
+    color: whitesmoke;
+}
+body.dark-mode .moon-sun-button * {
+    fill:#ffffff !important;
+}
+
 body.dark-mode .owl-carousel{
-    background-color: rgb(26, 27, 27);
+    background-color:var(--bg-card-color-1);
 }
 body.dark-mode .owl-prev,
 body.dark-mode .owl-next {
     color: rgb(91, 98, 116) !important;
 }
 
-body.dark-mode .forum-istatistik , body.dark-mode .forum-istatistik .nav-link{
-    background-color: rgb(26, 27, 27) !important;
+body.dark-mode .forum-istatistik , body.dark-mode .forum-istatistik .nav-link, body.dark-mode .position *{
+    background-color: var(--bg-card-color-1) !important;
     color: whitesmoke !important;
 }
-body.dark-mode thead *{
+
+
+body.dark-mode thead *,  body.dark-mode .post, body.dark-mode .breadcrumbs__item ,body.dark-mode .breadcrumbs__item:after {
     background-color: rgb(79, 86, 102) !important;
     color: whitesmoke;
 }
 
-body.dark-mode .forumlar .card:nth-child(even) * {
+body.dark-mode .forumlar .card:nth-child(even) , body.dark-mode .post, body.dark-mode textarea, body.dark-mode .modal-content{
 
-    background-color: rgb(55, 58, 58);
+    background-color: var(--bg-card-color-2);
     color: white;
 }
 body.dark-mode .forumlar .card:nth-child(odd) * {
-
-    background-color: rgb(26, 27, 27);
+    background-color: var(--bg-card-color-1);
     color: white;
 }
 
 body.dark-mode .main_right .card *{
-    background-color: rgb(53, 52, 52);
+    background-color: var(--bg-card-color-3);
     color: white;
 }
 body.dark-mode footer, body.dark-mode .information *{
-    background-color: rgb(45,48, 55);
+    background-color:var(--bg-card-color-4);
     color: white;
+}
+
+ body.dark-mode .breadcrumbs__item:hover{
+    background-color: rgb(114, 121, 134) !important;
+ }
+body.dark-mode .border-subject {
+    background-color:var(--bg-card-color-4)  !important;
+    color: whitesmoke;
+}
+body.dark-mode .iconlar i {
+    color:whitesmoke;
 }
