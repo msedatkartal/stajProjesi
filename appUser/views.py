@@ -138,5 +138,6 @@ def messagePost(request, game_slug):
 
 def accountUser(request):
     context = {}
+    
     return render(request, 'accountUser.html', context)
 
