@@ -91,6 +91,12 @@
         justify-content: center;
         margin-top: 2.5px;
     }
+
+    .tooltip-inner{
+        background-color: #807979;
+    }
+
+    
 </style>
 {% endblock css %}
 
@@ -170,7 +176,7 @@
                         <div class="d-block w-100">
                             <div class="card-header mt-3">
                                 <div class="d-flex justify-content-between">
-                                    <p style="font-size: small;"> {{ i.date_now }} </p>
+                                    <p style="font-size: small;" data-mdb-toggle="tooltip" title="{{ i.date_now }}" > {{ i.date_now|naturaltime }} </p>
                                     <button type="button" class="btn-close" data-mdb-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
