@@ -96,6 +96,15 @@
         background-color: #807979;
     }
 
+    .orangeBtn {
+        background-color: #D8601D;
+        color: white;
+    }
+    
+    .orangeBtn:hover {
+        background: #d2450d;
+        color: white;
+    }
     
 </style>
 {% endblock css %}
@@ -193,7 +202,7 @@
                 </div>
                 {% endfor %}
                 <div class=" d-flex justify-content-end w-100">
-                    <a href="{% url 'loginPage' %}" type="button" class="btn btn-primary button-text">
+                    <a href="{% url 'loginPage' %}" type="button" class="btn orangeBtn button-text">
                        
                        Mesaj yazabilmek için lütfen giriş yapınız
                     </a>
