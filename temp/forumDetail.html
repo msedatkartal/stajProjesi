@@ -105,6 +105,31 @@
   .main_right ul {
     list-style: none;
   }
+
+  .orangeBtn {
+    background-color: #D8601D;
+    color: white;
+}
+
+.orangeBtn:hover {
+    background: #d2450d;
+    color: white;
+}
+
+
+.closeBtn{
+    background-color: #f0c37f;
+    color: white;
+}
+.closeBtn:hover{
+    background-color: #f0b966;
+    color: white;
+}
+
+.modal-footer{
+
+    justify-content: center !important;
+}
 </style>
 {% endblock css %}
 
@@ -130,12 +155,37 @@
           <div class="col border-subject">
             <div class="p-title d-flex">
               <h1 class="title-subject">{{ games.gameName }}</h1>
-                <a href="{% url 'messagePost' game_slug=games.slug %}" class="new-subject">            
+
+              <a ref="{% url 'messagePost' game_slug=games.slug %}" class="new-subject pe-1">
+                <input type="submit" value="Yeni Konu" name="newsubject" class="btn btn-success newsubject" data-mdb-toggle="modal"
+                  data-mdb-target="#singinAlert">
+              </a>
+
+                <a href="{% url 'messagePost' game_slug=games.slug %}" class="new-subject">  
                   <input type="submit" value="Yeni Konu" name="newsubject" class="btn btn-success newsubject">
                 </a>
+                
             </div>
           </div>
         </div>
+
+
+          <!-- Modal -->
+          <div class="modal fade" id="singinAlert" tabindex="-1" aria-labelledby="SigninAlertLabel"
+          aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  
+                  <div class="modal-body text-center">
+                      <h5>Yeni konu açmak lütfen giriş yapınız!</h5> </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn closeBtn" data-mdb-dismiss="modal">Kapat</button>
+                      <a href="{% url 'loginPage' %}"  type="button" class="btn orangeBtn">Giriş</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+
 
         <!--  subject table -->
         <div class="row mt-3">
