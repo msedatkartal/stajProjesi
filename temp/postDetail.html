@@ -174,19 +174,14 @@
         <div class="row ">
             <div class="col-12">
                 {% for i in comments %}
-                <div class="card mb-2 ">
+                <div class="card mb-2 " >
                     <div class="d-flex">
                         <div class="card-header p-0 py-3">
                             <div class="comment border-end m-auto px-4 ">
-
-
                                 <div class="m-auto my-2" style="width: fit-content;">
                                     <img style="width: 125px; height: 125px; border:2px solid #00000030 ; border-radius: 50%;"
                                         src="{{ i.image.image.url }}" alt="">
                                 </div>
-
-
-
                                 <div class="m-auto p-2 text-center" style="width: 200px;">
                                     <h5 class="m-0 d-inline m-auto" style="width: fit-content; ">{{ i.author }}</h5>
                                     <p class="mt-2" style="text-align:left;"><b class="me-3">Katılım</b>: {{ i.author.date_joined|date:"SHORT_DATE_FORMAT" }}</p>
@@ -203,13 +198,9 @@
                                         aria-label="Close" data-mdb-toggle="modal"
                                         data-mdb-target="#deleteAlert"></button>
                                 </div>
-
-
                             </div>
-
                             <div class="card-body">
-
-                                <p>{{ i.text }}</p>
+                                <p>{{ i.text|safe }}</p>
                             </div>
                         </div>
                     </div>
@@ -233,76 +224,81 @@
             </div>
 
 
-                <div class=" d-flex justify-content-end w-100">
-                    <a href="{% url 'loginPage' %}" type="button" class="btn orangeBtn button-text">
-                       
-                       Mesaj yazabilmek için lütfen giriş yapınız
-                    </a>
-                </div>
+{% if request.user.is_authenticated %}
+    <!-- comment text -->
+    <div class="card mt-5 ">
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                <div>
+                    <div class="iconlar my-0">
+                        <div class="div2" style="width:720px; height:55px">
+                            <i style="padding-left: 10px;" class="fas fa-eraser"></i>
+                            <span></span>
+                            <span>
+                            </span> <i style="padding-left: 10px;" class="fas fa-italic"></i>
+                            <span></span>
+                            <i class="fas fa-quote-left"></i>
+                            <i class="fas fa-paragraph"></i>
+                            <span></span>
+                            <span></span>
+                            <i class="fas fa-comment my-2" style="padding-left: 10px;"></i>
+                            <span></span>
+                            <i class="fas fa-heading" style="padding-left: 10px;"></i>
+                            <span></span>
+                            <i class="fas fa-file-word" style="padding-left: 10px;"></i>
+                            <span></span>
+                            <i class="fas fa-font"></i>
+                            <span></span>
+                            <i class="fas fa-align-center" style="padding-left: 10px;"></i>
+                            <span></span>
+                            <i class="fas fa-step-forward" style="padding-left: 10px;"></i>
+                            <span></span>
+                            <i class="fas fa-align-justify" style="padding-left: 10px;"></i>
+                            <span></span>
+                            <i class="fas fa-palette" style="padding-left: 15px;"></i>
+                            <span></span>
+                            <span></span>
+                            <i class="far fa-comment-dots" style="padding-left: 10px;"></i>
+                            <span></span>
+                            <i class="fas fa-circle-notch" style="padding-left: 10px;"></i>
+                            <span></span>
+                            <i class="fas fa-print" style="padding-left: 10px;"></i>
+                            <span></span>
+                            <i class="fas fa-text-size" style="padding-left: 10px;"></i>
+                            <i class="fa-solid fa-envelopes-bulk"></i>
+                            <i class="fa-solid fa-paperclip"></i>
+                            <i class="fa-solid fa-database"></i>
+                            <i class="fa-regular fa-image" style="padding-left: 40px;"></i>
+                            <i class="fa-regular fa-user"></i>
+                            <i class="fa-solid fa-paperclip"></i>
+                            <i class="fa-solid fa-table"></i>
+                            <i class="fa-solid fa-arrow-up-wide-short"></i>
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <span></span>
+                        </div>
+                        <textarea class="form-control my-2" name="text" placeholder="Yorum" cols="30"
+                            rows="10"></textarea>
+                        <button type="submit" class="btn btn-primary my-2" type="submit">Paylaş</button>
+                        <button type="button"
+                            style="border: 1px solid rgba(128, 128, 128, 0.854); float: right;  margin-top:10px;"
+                            class="btn btn-"><i class="fa-solid fa-paperclip "
+                                style="padding-right:7px;"></i>Dosya
+                            Ekle</button>
+            </form>
+        </div>
+    </div>
+{% else %}
+<div class=" d-flex justify-content-end w-100">
+    <a href="{% url 'loginPage' %}" type="button" class="btn orangeBtn button-text">
+       Mesaj yazabilmek için lütfen giriş yapınız
+    </a>
+</div>
+
+{% endif %}
     
-                <!-- comment text -->
-                <div class="card mt-5 ">
-                    <div class="card-body">
-                        <form method="POST">
-                            {% csrf_token %}
-                            <div>
-                                <div class="iconlar my-0">
-                                    <div class="div2" style="width:720px; height:55px">
-                                        <i style="padding-left: 10px;" class="fas fa-eraser"></i>
-                                        <span></span>
-                                        <span>
-                                        </span> <i style="padding-left: 10px;" class="fas fa-italic"></i>
-                                        <span></span>
-                                        <i class="fas fa-quote-left"></i>
-                                        <i class="fas fa-paragraph"></i>
-                                        <span></span>
-                                        <span></span>
-                                        <i class="fas fa-comment my-2" style="padding-left: 10px;"></i>
-                                        <span></span>
-                                        <i class="fas fa-heading" style="padding-left: 10px;"></i>
-                                        <span></span>
-                                        <i class="fas fa-file-word" style="padding-left: 10px;"></i>
-                                        <span></span>
-                                        <i class="fas fa-font"></i>
-                                        <span></span>
-                                        <i class="fas fa-align-center" style="padding-left: 10px;"></i>
-                                        <span></span>
-                                        <i class="fas fa-step-forward" style="padding-left: 10px;"></i>
-                                        <span></span>
-                                        <i class="fas fa-align-justify" style="padding-left: 10px;"></i>
-                                        <span></span>
-                                        <i class="fas fa-palette" style="padding-left: 15px;"></i>
-                                        <span></span>
-                                        <span></span>
-                                        <i class="far fa-comment-dots" style="padding-left: 10px;"></i>
-                                        <span></span>
-                                        <i class="fas fa-circle-notch" style="padding-left: 10px;"></i>
-                                        <span></span>
-                                        <i class="fas fa-print" style="padding-left: 10px;"></i>
-                                        <span></span>
-                                        <i class="fas fa-text-size" style="padding-left: 10px;"></i>
-                                        <i class="fa-solid fa-envelopes-bulk"></i>
-                                        <i class="fa-solid fa-paperclip"></i>
-                                        <i class="fa-solid fa-database"></i>
-                                        <i class="fa-regular fa-image" style="padding-left: 40px;"></i>
-                                        <i class="fa-regular fa-user"></i>
-                                        <i class="fa-solid fa-paperclip"></i>
-                                        <i class="fa-solid fa-table"></i>
-                                        <i class="fa-solid fa-arrow-up-wide-short"></i>
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                        <span></span>
-                                    </div>
-                                    <textarea class="form-control my-2" name="text" placeholder="Yorum" cols="30"
-                                        rows="10"></textarea>
-                                    <button type="submit" class="btn btn-primary my-2" type="submit">Paylaş</button>
-                                    <button type="button"
-                                        style="border: 1px solid rgba(128, 128, 128, 0.854); float: right;  margin-top:10px;"
-                                        class="btn btn-"><i class="fa-solid fa-paperclip "
-                                            style="padding-right:7px;"></i>Dosya
-                                        Ekle</button>
-                        </form>
-                    </div>
-                </div>
+                
+                
             </div>
         </div>
     </div>

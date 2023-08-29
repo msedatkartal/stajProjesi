@@ -215,7 +215,7 @@
                         class="rounded-circle" />
                       <div class="ms-3">
 
-                        <a href="{% url 'postDetail' brand.game_cate.slug brand.subject_brand.slug %}" data-mdb-toggle="tooltip" title="{{ brand.text|truncatechars:50 }}">
+                        <a href="{% url 'postDetail' brand.game_cate.slug brand.subject_brand.slug %}" data-mdb-toggle="tooltip" title="{{ brand.text|striptags|truncatechars:50 }}">
                           <p class="fw-bold mb-1">{{ brand.subject_brand }}</p>
                         </a>
 

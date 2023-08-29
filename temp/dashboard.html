@@ -184,27 +184,27 @@
                     <h4 class="text-white">TembelBaykuş.net - </h4>
                 </div>
                 <div class="owl-carousel owl-theme py-4 px-5">
-                    {% for card in gamecard %}
+                    {% for k,card in game_subject %}
                     <a href="">
                         <div class="item">
                             <div class="owl-img"
-                                style="width: 100%;height: 250px; background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('{{ card.gameImage.url }}');">
+                                style="width: 100%;height: 250px; background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('{{ card.game_cate.gameImage.url }}');">
                             </div>
                             <div class="carousel-context text-light px-2">
                                 <div class="content-text">
-                                    <h6>{{ card.gameName | truncatechars:25 }}</h6>
+                                    <h6>{{ card.subject_brand | truncatechars:25 }}</h6>
                                     <hr class="m-0 ">
-                                    <p>yorum</p>
+                                    <p>{{ card.text | truncatechars:25 }}</p>
                                 </div>
                                 <div class="text-under d-flex justify-content-between align-items-center">
                                     <div class="d-flex">
-                                        <div class="user-img">
+                                        <div class="user-img mb-2">
                                             <img src="{{ card.image.image.url }}" alt="">
                                         </div>
-                                        <small class="d-flex justify-content-center align-items-center">username</small>
+                                        <small class="d-flex justify-content-center align-items-center ms-2">{{ card.author }}</small>
                                     </div>
-                                    <div class="message">
-                                        <i class="far fa-comments">2</i>
+                                    <div class="message ">
+                                        <i class="far fa-comments "> <small class="ms-1 ">{{ card.subject_brand.comment_number }}</small></i>
                                     </div>
                                 </div>
                             </div>
@@ -282,7 +282,7 @@
                                         class="rounded-circle" />
                                     <div class="ms-3">
                                         <p><a href="#" data-mdb-toggle="tooltip"
-                                                title="{{ i.text|truncatechars:'200' }}">{{ i.subject_brand.subjectBrand }}</a>
+                                                title="{{ i.text|striptags|truncatechars:'200' }}">{{ i.subject_brand.subjectBrand }}</a>
                                         </p>
                                     </div>
                                 </div>
@@ -346,6 +346,10 @@
 
         </div>
 
+{% if request.user.is_authenticated %}
+    
+{% endif %}
+    
 
 
         <div class="col-3 main_right">
@@ -392,8 +396,22 @@
                 </div>
             </div>
             <!-- MODAL END -->
-
-
+            
+            {% if request.user.is_authenticated %}
+            <div class="card mb-3 ">
+                <div class="card-body">
+                    <h5 class="text-center">Yeni Konu Aç</h5>
+                    <p class="text-center">Bir soru sorun, bilgi içeren bir konu açın veya yeni üyeler ile tanışın.</p>
+                </div>
+                <div class="card-footer d-flex justify-content-center">
+                    <button type="button" class="btn btn-primary button-text" data-mdb-toggle="modal"
+                        data-mdb-target="#exampleModal">
+                        <i class="fas fa-pen-to-square"></i>
+                        Yeni konu aç
+                    </button>
+                </div>
+            </div>
+            {% else %}
             <div class="card mb-3">
                 <button type="button" class="btn btn-primary button-text" data-mdb-toggle="modal"
                     data-mdb-target="#singinAlert">
@@ -401,9 +419,8 @@
                     Yeni konu aç
                 </button>
             </div>
-
-         
-
+            {% endif %}
+                
             <!-- Modal -->
             <div class="modal fade" id="singinAlert" tabindex="-1" aria-labelledby="SigninAlertLabel"
                 aria-hidden="true">
@@ -421,19 +438,7 @@
             </div>
 
 
-            <div class="card mb-3 ">
-                <div class="card-body">
-                    <h5 class="text-center">Yeni Konu Aç</h5>
-                    <p class="text-center">Bir soru sorun, bilgi içeren bir konu açın veya yeni üyeler ile tanışın.</p>
-                </div>
-                <div class="card-footer d-flex justify-content-center">
-                    <button type="button" class="btn btn-primary button-text" data-mdb-toggle="modal"
-                        data-mdb-target="#exampleModal">
-                        <i class="fas fa-pen-to-square"></i>
-                        Yeni konu aç
-                    </button>
-                </div>
-            </div>
+           
 
 
             <div class="card mb-3">
@@ -462,18 +467,11 @@
                 <div class="card-body">
                     
                     
-               
-                        
-                    
-                
                     {% if user_active.count %}
 
                     {% for i in user_active %}
-
-
                     {% if i.loginUser %}
                         <p class="d-inline">{{ i.user.username }}</p>,
-                        
                     {% endif %}
 
                     {% endfor %}
@@ -483,8 +481,6 @@
 
                     {% endif %}
                     
-                    
-
                 </div>
                 <div class="card-footer">
                     <p style="font-size: 10px;">Toplam: <b>{{ bool_num }}</b></p>

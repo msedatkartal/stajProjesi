@@ -69,7 +69,7 @@ def logoutUser(request):
 # comment
 def postDetail(request, category, pk):
     games = GameCard.objects.filter(slug=category).first()
-    print(category)
+    print("oyu kategorisi:   ",category)
     subject = Subject.objects.filter(slug=pk).first()
     print(subject)
     comments = Comment.objects.filter(subject_brand__subjectBrand =subject)
@@ -84,7 +84,7 @@ def postDetail(request, category, pk):
     if request.method == 'POST':
         
         text = request.POST.get("text")
-        comment = Comment(text=text,subject_brand=subject,author=request.user, image= user.image)
+        comment = Comment(text=text,subject_brand=subject,author=request.user,image= user.image,game_cate=games)
         comment.save()
         subject.comment_number += 1
         subject.save()

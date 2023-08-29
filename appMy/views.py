@@ -9,9 +9,14 @@ from datetime import datetime
 
 def dashboardPage(request):
     gamecard = GameCard.objects.all()
+    game_subject={}
+    for i in gamecard:
+        game_comment=Comment.objects.filter( game_cate=i ).last()
+        game_subject[i]=game_comment
+
     gamecategory = CategoryGame.objects.all()
-    comments = Comment.objects.all()
-    comment10 = comments[::-1][0:10]
+    comments = Comment.objects.all()[::-1]
+    # comment10 = comments[::-1][0:10]
     
     last_ten_comments = {}
     
@@ -21,12 +26,11 @@ def dashboardPage(request):
         if not comment.subject_brand.id in last_ten_comments:
             last_ten_comments[comment.subject_brand.id] = comment
             
-            
-    print("verieeeer:", last_ten_comments)
     context = {
         'gamecard': gamecard,
         'gamecategory': gamecategory,
         'comments': last_ten_comments.items(),
+        'game_subject':game_subject.items()
         
     }
     return render(request, 'dashboard.html', context)

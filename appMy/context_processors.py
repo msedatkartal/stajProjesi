@@ -6,9 +6,8 @@ from datetime import datetime
 def get_login(request):
     user_active = Profile.objects.filter(loginUser=True)
     
-    bool = Profile.objects.filter(loginUser=True)
     bool_num = 0
-    for i in bool:
+    for i in user_active:
         bool_num += 1
         
     subject_number = Subject.objects.all()
