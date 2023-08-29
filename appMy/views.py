@@ -12,10 +12,21 @@ def dashboardPage(request):
     gamecategory = CategoryGame.objects.all()
     comments = Comment.objects.all()
     comment10 = comments[::-1][0:10]
+    
+    last_ten_comments = {}
+    
+    for comment in comments:
+        if last_ten_comments.__len__() >= 10:
+            break
+        if not comment.subject_brand.id in last_ten_comments:
+            last_ten_comments[comment.subject_brand.id] = comment
+            
+            
+    print("verieeeer:", last_ten_comments)
     context = {
         'gamecard': gamecard,
         'gamecategory': gamecategory,
-        'comments': comment10,
+        'comments': last_ten_comments.items(),
         
     }
     return render(request, 'dashboard.html', context)

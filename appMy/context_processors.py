@@ -4,7 +4,7 @@ from datetime import datetime
 
 
 def get_login(request):
-    user_active = Profile.objects.all()
+    user_active = Profile.objects.filter(loginUser=True)
     
     bool = Profile.objects.filter(loginUser=True)
     bool_num = 0

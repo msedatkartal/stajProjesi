@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from appMy.models import GameCard
 from django.utils.text import slugify
+from ckeditor.fields import RichTextField
 
 # User Model
 class Subject(models.Model):
@@ -22,7 +23,7 @@ class Profileimage(models.Model):
     
 # Comment
 class Comment(models.Model):
-    text = models.TextField(("Yorum")) 
+    text = RichTextField(("Yorum")) 
     date_now =models.DateTimeField(("Tarih - Saat"),auto_now_add = True)
     subject_brand=models.ForeignKey(Subject, verbose_name=("Konu Başlığı"), on_delete=models.CASCADE,null=True)
     author = models.ForeignKey(User, verbose_name=("Yazar"), on_delete=models.CASCADE, null=True)

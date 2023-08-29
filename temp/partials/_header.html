@@ -156,7 +156,7 @@
                     <i class="fas fa-bars"></i>
                 </button>
                 <ul class="navbar-nav flex-row bg-dark bg-opacity-75  rounded logbox2">
-                    {% if user.is_authenticated %}
+                    {% if request.user.is_authenticated %}
                     <li class="nav-item dropdown me-2 me-lg-2">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                             data-mdb-toggle="dropdown" aria-expanded="false">

@@ -271,7 +271,7 @@
                     </thead>
                     <tbody>
 
-                        {% for i in comments %}
+                        {% for k,i in comments %}
                         <tr>
                             <td>
                                 <p>{{ i.id }}</p>
@@ -461,14 +461,29 @@
                 </div>
                 <div class="card-body">
                     
-                    {% for i in user_active %}
                     
+               
+                        
+                    
+                
+                    {% if user_active.count %}
+
+                    {% for i in user_active %}
+
+
                     {% if i.loginUser %}
                         <p class="d-inline">{{ i.user.username }}</p>,
                         
                     {% endif %}
-                    
+
                     {% endfor %}
+
+                    {% else %}
+                    <p>login yok</p>
+
+                    {% endif %}
+                    
+                    
 
                 </div>
                 <div class="card-footer">

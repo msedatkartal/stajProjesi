@@ -93,6 +93,8 @@ def postDetail(request, category, pk):
         
         return redirect('/blog/'+category+'/'+ pk )
     
+    
+    print("usssssssssssssssser", user)
     context = {
         "comments":comments,
         "subject":subject,
@@ -112,9 +114,11 @@ def messagePost(request, game_slug):
     try:
         game = GameCard.objects.get(slug=game_slug) 
         user = Profile.objects.filter(user = request.user).first()
+        
     except GameCard.DoesNotExist:
         return HttpResponse("Oyun bulunamadı.")
     
+    print("useeer", user)
     # game_slug a göre konu başlığı oluşturup yorumu kaydetme
     if request.method == 'POST':
         subject_slug = request.POST.get("subject")  
@@ -134,6 +138,7 @@ def messagePost(request, game_slug):
         return redirect('/blog/'+game_slug+'/'+str((subject_url.slug)))    
     context = {
         'game': game,
+        "user": user
     }
     return render(request, 'messagePost.html', context)
 
