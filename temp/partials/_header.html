@@ -112,6 +112,34 @@
         transform: rotate(360deg);
     }
 
+    .modal-footer{
+
+        justify-content: center !important;
+    }
+
+    .orangeBtn {
+        background-color: #D8601D;
+        color: white;
+    }
+
+    .orangeBtn:hover {
+        background: #d2450d;
+        color: white;
+    }
+
+    
+    .closeBtn{
+        background-color: #f0c37f;
+        color: white;
+    }
+    .closeBtn:hover{
+        background-color: #f0b966;
+        color: white;
+    }
+
+    
+
+
     @media (max-width: 992px) {
 
 
@@ -144,7 +172,21 @@
 </style>
 
 {% endblock css %}
-
+       <!-- Modal -->
+                      
+       <div class="modal fade" id="canvasAlert" tabindex="-1" aria-labelledby="canvasAlertLabel"
+       aria-hidden="true">
+       <div class="modal-dialog">
+           <div class="modal-content">
+               <div class="modal-body text-center">
+                   <h5>Yeni konu açmak lütfen giriş yapınız!</h5> </div>
+               <div class="modal-footer">
+                   <button type="button" class="btn closeBtn" data-mdb-dismiss="modal">Kapat</button>
+                   <a href="loginPage"  type="button" class="btn orangeBtn">Giriş</a>
+               </div>
+           </div>
+       </div>
+   </div>
 
 <header class="w-100">
     <!-- UP (logo and login/register/search/mode)-->
@@ -233,6 +275,7 @@
 
 
                 <!-- col-lg de main right offcanvas -->
+             
 
                 <div class="canvasBtn ms-2 me-2"> 
                     <a  style="color: black;"
@@ -268,27 +311,21 @@
                     {% else %}
                     <div class="card mb-3">
                         <button type="button" class="btn btn-primary button-text" data-mdb-toggle="modal"
-                            data-mdb-target="#singinAlert">
+                            data-mdb-target="#canvasAlert">
                             <i class="fas fa-pen-to-square"></i>
                             Yeni konu aç
                         </button>
+
+
+                        
+                 
+                        
+                    
+
                     </div>
                     {% endif %}
                         
-                    <!-- Modal -->
-                    <div class="modal fade" id="singinAlert" tabindex="-1" aria-labelledby="SigninAlertLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-body text-center">
-                                    <h5>Yeni konu açmak lütfen giriş yapınız!</h5> </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn closeBtn" data-mdb-dismiss="modal">Kapat</button>
-                                    <a href="loginPage"  type="button" class="btn orangeBtn">Giriş</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  
         
         
                     <div class="card mb-3">
