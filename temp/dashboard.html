@@ -183,7 +183,7 @@
                 </div>
                 <div class="owl-carousel owl-theme py-4 px-5">
                     {% for k,card in game_subject %}
-                    <a href="">
+                    <a href="{% url 'forumDetail' k.slug %}">
                         <div class="item">
                             <div class="owl-img"
                                 style="width: 100%;height: 250px; background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('{{ card.game_cate.gameImage.url }}');">
