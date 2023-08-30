@@ -166,6 +166,16 @@
         justify-content: center !important;
     }
 
+    @media (max-width: 992px) {
+
+    
+
+        .displayBtn{
+            display: none;
+        }
+    }
+
+
 </style>
 
 {% endblock css %}
@@ -319,7 +329,7 @@
         <!-- Tabs content -->
     </div>
     <div id="forumlar" class="row mt-5">
-        <div class="col-9">
+        <div class="col-lg-9">
             {% for category in gamecategory %}
             <div class="forumlar">
                 <div class="card">
@@ -383,7 +393,7 @@
             <!-- MODAL END -->
             
             {% if request.user.is_authenticated %}
-            <div class="card mb-3 ">
+            <div class="card mb-3 displayBtn ">
                 <div class="card-body">
                     <h5 class="text-center">Yeni Konu Aç</h5>
                     <p class="text-center">Bir soru sorun, bilgi içeren bir konu açın veya yeni üyeler ile tanışın.</p>
@@ -397,7 +407,7 @@
                 </div>
             </div>
             {% else %}
-            <div class="card mb-3">
+            <div class="card mb-3 displayBtn">
                 <button type="button" class="btn btn-primary button-text" data-mdb-toggle="modal"
                     data-mdb-target="#singinAlert">
                     <i class="fas fa-pen-to-square"></i>
@@ -422,7 +432,7 @@
             </div>
 
 
-            <div class="card mb-3">
+            <div class="card mb-3 displayBtn">
                 <div class="card-header">
                     <i class="fas fa-cake-candles me-2"></i>
                     <a href="">Bugün doğum günü olanlar</a>
@@ -438,7 +448,7 @@
 
 
 
-            <div class="card mb-3">
+            <div class="card mb-3 displayBtn">
                 <div class="card-header head">
                     <i class="fas fa-users me-2"></i>
                     <a href="#">Çevrimiçi üyeler</a>
@@ -460,7 +470,7 @@
                 </div>
             </div>
 
-            <div class="card mb-3">
+            <div class="card mb-3 displayBtn">
                 <div class="card-header">
                     <i class="far fa-comment me-2"></i>
                     <a href="#">Son mesajlar</a>
@@ -475,7 +485,7 @@
                 </div>
                 {% endfor %}
             </div>
-            <div class="card">
+            <div class="card displayBtn">
                 <div class="card-header">
                     <i class="fas fa-chart-column me-2"></i>
                     <p style="display: inline;"> Forum istatistikleri</p>
