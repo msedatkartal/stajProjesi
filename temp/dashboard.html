@@ -52,8 +52,6 @@
         100% {
             transform: translateX(0);
         }
-
-
     }
 
 
@@ -317,13 +315,11 @@
                 Tab 4 content
             </div>
         </div>
+
         <!-- Tabs content -->
     </div>
-
     <div id="forumlar" class="row mt-5">
-
         <div class="col-9">
-
             {% for category in gamecategory %}
             <div class="forumlar">
                 <div class="card">
@@ -342,15 +338,7 @@
                 </div>
             </div>
             {% endfor %}
-
-
         </div>
-
-{% if request.user.is_authenticated %}
-    
-{% endif %}
-    
-
 
         <div class="col-3 main_right">
             <!-- MODAL START -->
@@ -371,27 +359,24 @@
                                 <p>{{ category.categoryName }} oyunlar bilgi ve paylaşım forumu</p>
                             </div>
                             <hr>
-
-                            {% for i in category.gamecard_set.all %}
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <a href="{% url 'forumDetail' i.slug %}">{{ i.gameName }}</a>
-                                    <p>Çoğu oyunda gördüğümüz Battle Royal modunu yaratan Pubg hakkında paylaşımları
-                                        burada bulabilirsiniz.
-                                    </p>
+                                {% for i in category.gamecard_set.all %}
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <a href="{% url 'forumDetail' i.slug %}">{{ i.gameName }}</a>
+                                        <p>Çoğu oyunda gördüğümüz Battle Royal modunu yaratan Pubg hakkında paylaşımları
+                                            burada bulabilirsiniz.
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p>Konular</p>
+                                        <p>43</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p>Konular</p>
-                                    <p>43</p>
-                                </div>
-                            </div>
-                            <hr>
-
-                            {% endfor %}
+                                <hr>
+                                {% endfor %}
 
                             {% endfor %}
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -426,7 +411,6 @@
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        
                         <div class="modal-body text-center">
                             <h5>Yeni konu açmak lütfen giriş yapınız!</h5> </div>
                         <div class="modal-footer">
@@ -438,9 +422,6 @@
             </div>
 
 
-           
-
-
             <div class="card mb-3">
                 <div class="card-header">
                     <i class="fas fa-cake-candles me-2"></i>
@@ -448,11 +429,9 @@
                 </div>
                 <div class="card-body">
                     <div>
-
                         {% for i in birthday_watch %}
                         <a>{{ i }},</a>
                         {% endfor %}
-
                     </div>
                 </div>
             </div>
@@ -465,20 +444,14 @@
                     <a href="#">Çevrimiçi üyeler</a>
                 </div>
                 <div class="card-body">
-                    
-                    
                     {% if user_active.count %}
-
-                    {% for i in user_active %}
-                    {% if i.loginUser %}
-                        <p class="d-inline">{{ i.user.username }}</p>,
-                    {% endif %}
-
-                    {% endfor %}
-
+                        {% for i in user_active %}
+                            {% if i.loginUser %}
+                                <p class="d-inline">{{ i.user.username }}</p>,
+                            {% endif %}
+                        {% endfor %}
                     {% else %}
-                    <p>login yok</p>
-
+                    <p>Şuan çevrimiçi üye yok.</p>
                     {% endif %}
                     
                 </div>
