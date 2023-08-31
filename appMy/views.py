@@ -9,6 +9,7 @@ from datetime import datetime
 
 def dashboardPage(request):
     gamecard = GameCard.objects.all()
+    print(gamecard)
     game_subject={}
     for i in gamecard:
         game_comment=Comment.objects.filter( game_cate=i ).last()
@@ -17,6 +18,9 @@ def dashboardPage(request):
     gamecategory = CategoryGame.objects.all()
     comments = Comment.objects.all()[::-1]
     # comment10 = comments[::-1][0:10]
+    
+    type=GameCard.objects.filter(forumTyp__name="Konu Dışı")
+    
     
     last_ten_comments = {}
     
@@ -30,7 +34,8 @@ def dashboardPage(request):
         'gamecard': gamecard,
         'gamecategory': gamecategory,
         'comments': last_ten_comments.items(),
-        'game_subject':game_subject.items()
+        'game_subject':game_subject.items(),
+        'type':type
         
     }
     return render(request, 'dashboard.html', context)

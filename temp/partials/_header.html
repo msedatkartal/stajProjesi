@@ -36,6 +36,12 @@
         background: #cf6135;
     }
 
+    .dropdown-toggle-split{
+        padding-right:0.50rem ;
+        padding-left:0.50rem ;
+
+    }
+
     /*search start*/
     .search-button {
         position: relative;
@@ -141,8 +147,6 @@
 
 
     @media (max-width: 992px) {
-
-
         .logbox2 {
             background-color: transparent !important;
             box-shadow: 0px 0px 28px 7px rgba(0, 0, 0, 0.1);
@@ -168,10 +172,13 @@
         .canvasBtn{
             display: none;
         }
+
     }
+    
 </style>
 
 {% endblock css %}
+
        <!-- Modal -->
                       
        <div class="modal fade" id="canvasAlert" tabindex="-1" aria-labelledby="canvasAlertLabel"
@@ -192,6 +199,7 @@
     <!-- UP (logo and login/register/search/mode)-->
     <img class="header-img " src="{% static 'img/banner.png' %}" alt="">
     <!-- DOWN (menu and search area) -->
+    
     <div class="position">
         <nav class="navbar navbar-expand-lg navbg py-md-2 py-0">
             <div class="container-fluid">
@@ -201,21 +209,28 @@
                     <i class="fas fa-bars"></i>
                 </button>
 
+                <!-- Example split danger button -->
                 <div class="d-flex align-items-center">
-                <ul class="navbar-nav flex-row bg-dark bg-opacity-75  rounded logbox2">
+                <ul class="navbar-nav flex-row bg-dark bg-opacity-75  rounded logbox2 ps-3">
                     {% if request.user.is_authenticated %}
-                    <li class="nav-item dropdown me-2 me-lg-2">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                            data-mdb-toggle="dropdown" aria-expanded="false">
+                    <div class="btn-group">
+                        <li class="d-flex align-items-center">
                             <img style="width: 30px; height: 30px; object-fit: cover; border-radius: 50%;"
                                 src="{{ profile_user.image.image.url }}" alt="">
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item" href="{% url 'accountUser' %}">Hesap Ayarları</a></li>
-                            <hr class="dropdown-divider">
-                            <li><a class="dropdown-item" href="{% url 'logoutUser' %}">Oturumu Kapat</a></li>
+
+                        </li>
+                        <button type="button" class="btn  dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                          
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="{% url 'accountUser' %}">Hesap Ayarları</a></li>
+                          <hr class="dropdown-divider">
+                          <li><a class="dropdown-item" href="{% url 'logoutUser' %}">Oturumu Kapat</a></li>
+                          
                         </ul>
-                    </li>
+                      </div>
+
+                    
                     <!-- notifications -->
                     <li class="nav-item dropdown me-3 me-lg-2">
                         <a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
@@ -502,4 +517,5 @@
 
 
 </script>
+
 {% endblock js %}

@@ -11,4 +11,5 @@ class CardAdmin(admin.ModelAdmin):
     
 
 admin.site.register(GameCard, CardAdmin )
-admin.site.register(CategoryGame)
+# admin.site.register(CategoryGame)
+admin.site.register(ForumTyp)
