@@ -263,9 +263,9 @@
 
         <!-- Forum İstatistik Tabs content -->
         <div class="tab-content tabloscrool" id="ex-with-icons-content" style="overflow-x: scroll; ">
+            <!-- YENİ MESAJ -->
             <div class="tab-pane fade show active" id="ex-with-icons-tabs-1" role="tabpanel"
                 aria-labelledby="ex-with-icons-tab-1">
-                <!--  -->
                 <table class="table align-middle mb-0 bg-white">
                     <thead class="bg-light">
                         <tr>
@@ -278,7 +278,6 @@
                         </tr>
                     </thead>
                     <tbody>
-
                         {% for k,i in comments %}
                         <tr>
                             <td>
@@ -290,7 +289,7 @@
                                         class="rounded-circle" />
                                     <div class="ms-3">
                                         <p><a href="#" data-mdb-toggle="tooltip"
-                                                title="{{ i.text|striptags|truncatechars:'200' }}">{{ i.subject_brand.subjectBrand }}</a>
+                                                title="{{ i.subject_brand.subjectBrand|striptags|truncatechars:'200' }}">{{ i.text|truncatechars:'100' }}</a>
                                         </p>
                                     </div>
                                 </div>
@@ -315,12 +314,109 @@
                     </tbody>
                 </table>
             </div>
+            <!-- YENİ KONULAR -->
             <div class="tab-pane fade" id="ex-with-icons-tabs-2" role="tabpanel" aria-labelledby="ex-with-icons-tab-2">
-                Tab 2 content
+                <table class="table align-middle mb-0 bg-white">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Konu</th>
+                            <th>Forumu</th>
+                            <th>Cevap</th>
+                            <th>Gönderim</th>
+                            <th>Son Yazan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for k,i in comments %}
+                        <tr>
+                            <td>
+                                <p>{{ i.id }}</p>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="{{ i.image.image.url }}" alt="" style="width: 45px; height: 45px"
+                                        class="rounded-circle" />
+                                    <div class="ms-3">
+                                        <p><a href="#" data-mdb-toggle="tooltip"
+                                                title="{{ i.text|striptags|truncatechars:'200' }}">{{ i.subject_brand.subjectBrand|truncatechars:'100' }}</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p><a href="#" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">{{ i.game_cate }}</a>
+                                </p>
+                            </td>
+                            <td>
+                                <p data-mdb-toggle="tooltip" title="Cevap">{{ i.subject_brand.comment_number }}</p>
+                            </td>
+                            <td>
+                                <p><a href="#" data-mdb-toggle="tooltip" title="Gönderim">{{ i.date_now | naturaltime }}</a></p>
+                            </td>
+                            <td>
+                                <p><a href="#" data-mdb-toggle="tooltip" title="Son Yazan">{{ i.author }}</a></p>
+                                </button>
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
+            <!-- KONU DIŞI -->
             <div class="tab-pane fade" id="ex-with-icons-tabs-3" role="tabpanel" aria-labelledby="ex-with-icons-tab-3">
-                Tab 3 content
+                <table class="table align-middle mb-0 bg-white">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Konu</th>
+                            <th>Forumu</th>
+                            <th>Cevap</th>
+                            <th>Gönderim</th>
+                            <th>Son Yazan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for k,i in comments %}
+                        <tr>
+                            <td>
+                                <p>{{ i.id }}</p>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="{{ i.image.image.url }}" alt="" style="width: 45px; height: 45px"
+                                        class="rounded-circle" />
+                                    <div class="ms-3">
+                                        <p><a href="#" data-mdb-toggle="tooltip"
+                                                title="{{ i.text|striptags|truncatechars:'200' }}">{{ i.subject_brand.subjectBrand|truncatechars:'100' }}</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p><a href="#" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">{{ i.game_cate }}</a>
+                                </p>
+                            </td>
+                            <td>
+                                <p data-mdb-toggle="tooltip" title="Cevap">{{ i.subject_brand.comment_number }}</p>
+                            </td>
+                            <td>
+                                <p><a href="#" data-mdb-toggle="tooltip" title="Gönderim">{{ i.date_now | naturaltime }}</a></p>
+                            </td>
+                            <td>
+                                <p><a href="#" data-mdb-toggle="tooltip" title="Son Yazan">{{ i.author }}</a></p>
+                                </button>
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
+            <!-- POPÜLER KONULAR -->
             <div class="tab-pane fade" id="ex-with-icons-tabs-4" role="tabpanel" aria-labelledby="ex-with-icons-tab-4">
                 Tab 4 content
             </div>
