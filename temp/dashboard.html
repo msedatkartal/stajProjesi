@@ -165,6 +165,27 @@
         justify-content: center !important;
     }
 
+    
+    .nav-tabs .nav-link.active {
+        color: #1A605D;
+        border-color: #1A605D;
+      }
+
+      .owlgreenBtn{
+        color: #2B8482;
+    }
+
+    .owlgreenBtn:hover{
+        color:#1A605D;
+    }
+
+    .owlgreenBtn2{
+        color: #2B8482; 
+    }
+    .owlgreenBtn2:hover{
+        color: #2B8482; 
+    }
+
     @media (max-width: 992px) {
         .displayBtn{
             display: none;
@@ -284,24 +305,24 @@
                                     <img src="{{ i.image.image.url }}" alt="" style="width: 45px; height: 45px"
                                         class="rounded-circle" />
                                     <div class="ms-3">
-                                        <p><a href="#" data-mdb-toggle="tooltip"
+                                        <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip"
                                                 title="{{ i.subject_brand.subjectBrand|striptags|truncatechars:'200' }}">{{ i.text|safe|truncatechars:'100' }}</a>
                                         </p>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <p><a href="#" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">{{ i.game_cate }}</a>
+                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">{{ i.game_cate }}</a>
                                 </p>
                             </td>
                             <td>
-                                <p data-mdb-toggle="tooltip" title="Cevap">{{ i.subject_brand.comment_number }}</p>
+                                <p class="owlgreenBtn" data-mdb-toggle="tooltip" title="Cevap">{{ i.subject_brand.comment_number }}</p>
                             </td>
                             <td>
-                                <p><a href="#" data-mdb-toggle="tooltip" title="Gönderim">{{ i.date_now | naturaltime }}</a></p>
+                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="Gönderim">{{ i.date_now | naturaltime }}</a></p>
                             </td>
                             <td>
-                                <p><a href="#" data-mdb-toggle="tooltip" title="Son Yazan">{{ i.author }}</a></p>
+                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="Son Yazan">{{ i.author }}</a></p>
                                 </button>
                             </td>
                         </tr>
@@ -335,24 +356,24 @@
                                     <img src="{{ i.image.image.url }}" alt="" style="width: 45px; height: 45px"
                                         class="rounded-circle" />
                                     <div class="ms-3">
-                                        <p><a href="#" data-mdb-toggle="tooltip"
+                                        <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip"
                                                 title="{{ i.text|striptags|truncatechars:'200' }}">{{ i.subject_brand.subjectBrand|truncatechars:'100' }}</a>
                                         </p>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <p><a href="#" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">{{ i.game_cate }}</a>
+                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">{{ i.game_cate }}</a>
                                 </p>
                             </td>
                             <td>
-                                <p data-mdb-toggle="tooltip" title="Cevap">{{ i.subject_brand.comment_number }}</p>
+                                <p class="owlgreenBtn" data-mdb-toggle="tooltip" title="Cevap">{{ i.subject_brand.comment_number }}</p>
                             </td>
                             <td>
-                                <p><a href="#" data-mdb-toggle="tooltip" title="Gönderim">{{ i.date_now | naturaltime }}</a></p>
+                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="Gönderim">{{ i.date_now | naturaltime }}</a></p>
                             </td>
                             <td>
-                                <p><a href="#" data-mdb-toggle="tooltip" title="Son Yazan">{{ i.author }}</a></p>
+                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="Son Yazan">{{ i.author }}</a></p>
                                 </button>
                             </td>
                         </tr>
@@ -386,24 +407,24 @@
                                     <img src="{{ k.image.image.url }}" alt="" style="width: 45px; height: 45px"
                                         class="rounded-circle" />
                                     <div class="ms-3">
-                                        <p><a href="#" data-mdb-toggle="tooltip"
+                                        <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip"
                                                 title="{{ k.text|striptags|truncatechars:'200' }}">{{ k.subject_brand.subjectBrand|truncatechars:'100' }}</a>
                                         </p>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <p><a href="#" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">{{ k.game_cate }}</a>
+                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">{{ k.game_cate }}</a>
                                 </p>
                             </td>
                             <td>
-                                <p data-mdb-toggle="tooltip" title="Cevap">{{ k.subject_brand.comment_number }}</p>
+                                <p class="owlgreenBtn" data-mdb-toggle="tooltip" title="Cevap">{{ k.subject_brand.comment_number }}</p>
                             </td>
                             <td>
-                                <p><a href="#" data-mdb-toggle="tooltip" title="Gönderim">{{ k.date_now | naturaltime }}</a></p>
+                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="Gönderim">{{ k.date_now | naturaltime }}</a></p>
                             </td>
                             <td>
-                                <p><a href="#" data-mdb-toggle="tooltip" title="Son Yazan">{{ k.author }}</a></p>
+                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="Son Yazan">{{ k.author }}</a></p>
                                 </button>
                             </td>
                         </tr>
@@ -433,7 +454,7 @@
                     <div class="card-body">
                         <div>
                             {% for i in category.gamecard_set.all %}
-                            <a href="{% url 'forumDetail' i.slug %}" class="me-3"><i class="fas fa-gamepad me-1"></i>{{i.gameName }}</a>
+                            <a href="{% url 'forumDetail' i.slug %}" class="me-3 owlgreenBtn"><i class="fas fa-gamepad me-1"></i>{{i.gameName }}</a>
                             {% endfor %}
                         </div>
                     </div>
@@ -457,7 +478,7 @@
 
                             {% for category in gamecategory %}
                             <div>
-                                <p>{{ category.categoryName }}</p>
+                                <p> {{ category.categoryName }}</p>
                                 <p>{{ category.categoryName }} oyunlar bilgi ve paylaşım forumu</p>
                             </div>
                             <hr>
@@ -491,7 +512,7 @@
                     <p class="text-center">Bir soru sorun, bilgi içeren bir konu açın veya yeni üyeler ile tanışın.</p>
                 </div>
                 <div class="card-footer d-flex justify-content-center">
-                    <button type="button" class="btn btn-primary button-text" data-mdb-toggle="modal"
+                    <button type="button" class="btn orangeBtn button-text" data-mdb-toggle="modal"
                         data-mdb-target="#exampleModal">
                         <i class="fas fa-pen-to-square"></i>
                         Yeni konu aç
@@ -500,7 +521,7 @@
             </div>
             {% else %}
             <div class="card mb-3 displayBtn">
-                <button type="button" class="btn btn-primary button-text" data-mdb-toggle="modal"
+                <button type="button" class="btn orangeBtn button-text" data-mdb-toggle="modal"
                     data-mdb-target="#singinAlert">
                     <i class="fas fa-pen-to-square"></i>
                     Yeni konu aç
@@ -525,9 +546,9 @@
 
 
             <div class="card mb-3 displayBtn">
-                <div class="card-header">
+                <div class="card-header owlgreenBtn2">
                     <i class="fas fa-cake-candles me-2"></i>
-                    <a href="">Bugün doğum günü olanlar</a>
+                    <a href="" class="owlgreenBtn2">Bugün doğum günü olanlar</a>
                 </div>
                 <div class="card-body">
                     <div>
@@ -541,9 +562,9 @@
 
 
             <div class="card mb-3 displayBtn">
-                <div class="card-header head">
+                <div class="card-header head owlgreenBtn2">
                     <i class="fas fa-users me-2"></i>
-                    <a href="#">Çevrimiçi üyeler</a>
+                    <a href="#" class="owlgreenBtn2">Çevrimiçi üyeler</a>
                 </div>
                 <div class="card-body">
                     {% if user_active.count %}
@@ -563,24 +584,24 @@
             </div>
 
             <div class="card mb-3 displayBtn">
-                <div class="card-header">
+                <div class="card-header owlgreenBtn2">
                     <i class="far fa-comment me-2"></i>
-                    <a href="#">Son mesajlar</a>
+                    <a href="#" class="owlgreenBtn2">Son mesajlar</a>
                 </div>
                 {% for card in comment3  %}
             
                 <div class="card-body">
                     <img src="{{ card.image.image.url }}" alt="" class="rounded-circle me-2" style="width: 30px;">
-                    <a href="#">{{ card.subject_brand }}</a>
+                    <a href="#" class="owlgreenBtn2">{{ card.subject_brand }}</a>
                     <p class="mt-3">{{ card.date_now| naturaltime }}</p>
-                    <a href="">{{ card.author }}</a>
+                    <a href="" class="owlgreenBtn2">{{ card.author }}</a>
                 </div>
                 {% endfor %}
             </div>
             <div class="card displayBtn">
-                <div class="card-header">
+                <div class="card-header owlgreenBtn2">
                     <i class="fas fa-chart-column me-2"></i>
-                    <p style="display: inline;"> Forum istatistikleri</p>
+                    <p class="owlgreenBtn2" style="display: inline;"> Forum istatistikleri</p>
                 </div>
                 <div class="card-body">
                     <ul class="p-0">
@@ -598,7 +619,7 @@
                         </div>
                         <div class="d-flex justify-content-between">
                             <li>Son üye:</li>
-                            <li> <a href="#">{{ user_last }}</a></li>
+                            <li> <a href="#" class="owlgreenBtn2">{{ user_last }}</a></li>
                             </li>
                         </div>
                     </ul>
