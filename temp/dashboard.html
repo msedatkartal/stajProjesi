@@ -162,14 +162,10 @@
     }
 
     .modal-footer{
-
         justify-content: center !important;
     }
 
     @media (max-width: 992px) {
-
-    
-
         .displayBtn{
             display: none;
         }
@@ -289,7 +285,7 @@
                                         class="rounded-circle" />
                                     <div class="ms-3">
                                         <p><a href="#" data-mdb-toggle="tooltip"
-                                                title="{{ i.subject_brand.subjectBrand|striptags|truncatechars:'200' }}">{{ i.text|truncatechars:'100' }}</a>
+                                                title="{{ i.subject_brand.subjectBrand|striptags|truncatechars:'200' }}">{{ i.text|safe|truncatechars:'100' }}</a>
                                         </p>
                                     </div>
                                 </div>
@@ -380,34 +376,34 @@
                     </thead>
                     <tbody>
 
-                        {% for i in type %}
+                        {% for k,i in comments  %}
                         <tr>
                             <td>
-                                <p>{{ i.id }}</p>
+                                <p>{{ k.id }}</p>
                             </td>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="{{ i.image.image.url }}" alt="" style="width: 45px; height: 45px"
+                                    <img src="{{ k.image.image.url }}" alt="" style="width: 45px; height: 45px"
                                         class="rounded-circle" />
                                     <div class="ms-3">
                                         <p><a href="#" data-mdb-toggle="tooltip"
-                                                title="{{ i.text|striptags|truncatechars:'200' }}">{{ i.subject_brand.subjectBrand|truncatechars:'100' }}</a>
+                                                title="{{ k.text|striptags|truncatechars:'200' }}">{{ k.subject_brand.subjectBrand|truncatechars:'100' }}</a>
                                         </p>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <p><a href="#" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">{{ i.game_cate }}</a>
+                                <p><a href="#" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">{{ k.game_cate }}</a>
                                 </p>
                             </td>
                             <td>
-                                <p data-mdb-toggle="tooltip" title="Cevap">{{ i.subject_brand.comment_number }}</p>
+                                <p data-mdb-toggle="tooltip" title="Cevap">{{ k.subject_brand.comment_number }}</p>
                             </td>
                             <td>
-                                <p><a href="#" data-mdb-toggle="tooltip" title="Gönderim">{{ i.date_now | naturaltime }}</a></p>
+                                <p><a href="#" data-mdb-toggle="tooltip" title="Gönderim">{{ k.date_now | naturaltime }}</a></p>
                             </td>
                             <td>
-                                <p><a href="#" data-mdb-toggle="tooltip" title="Son Yazan">{{ i.author }}</a></p>
+                                <p><a href="#" data-mdb-toggle="tooltip" title="Son Yazan">{{ k.author }}</a></p>
                                 </button>
                             </td>
                         </tr>

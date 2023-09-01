@@ -17,6 +17,7 @@ body.dark-mode .moon-sun-button * {
 body.dark-mode .owl-carousel{
     background-color:var(--bg-card-color-1);
 }
+
 body.dark-mode .owl-prev,
 body.dark-mode .owl-next {
     color: rgb(91, 98, 116) !important;
@@ -62,3 +63,4 @@ body.dark-mode .border-subject {
 body.dark-mode .iconlar i {
     color:whitesmoke;
 }
+

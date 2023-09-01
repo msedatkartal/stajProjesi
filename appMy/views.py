@@ -6,8 +6,8 @@ from django.utils import timezone
 from datetime import datetime
 
 
-
 def dashboardPage(request):
+    # CAROUSEL
     gamecard = GameCard.objects.all()
     print(gamecard)
     game_subject={}
@@ -15,28 +15,27 @@ def dashboardPage(request):
         game_comment=Comment.objects.filter( game_cate=i ).last()
         game_subject[i]=game_comment
 
+    # MESAJ VE KONU
     gamecategory = CategoryGame.objects.all()
     comments = Comment.objects.all()[::-1]
     # comment10 = comments[::-1][0:10]
     
-    type=GameCard.objects.filter(forumTyp__name="Konu Dışı")
-    
-    
     last_ten_comments = {}
-    
+    # if Comment.objects.filter(typ_comment__name="oyun"):
     for comment in comments:
         if last_ten_comments.__len__() >= 10:
             break
-        if not comment.subject_brand.id in last_ten_comments:
+        if  not comment.subject_brand.id in last_ten_comments:
             last_ten_comments[comment.subject_brand.id] = comment
             
+    # KONU DIŞI
+    
+             
     context = {
         'gamecard': gamecard,
         'gamecategory': gamecategory,
         'comments': last_ten_comments.items(),
         'game_subject':game_subject.items(),
-        'type':type
-        
     }
     return render(request, 'dashboard.html', context)
 

@@ -89,6 +89,11 @@
         justify-content: center;
         margin-top: 2.5px;
     }
+
+    .django-ckeditor-widget{
+        display: flex !important;
+        flex-wrap: wrap !important;
+    }
 </style>
 {% endblock css %}
 
@@ -124,75 +129,29 @@
             </div>
         </div>
         <!-- subject name end -->
-        
-                <!-- comment text -->
-                <div class="card mt-5 post">
-                    <div class="card-body">
-                        <form  method="POST"   >
-                            {% csrf_token %}
-                            <input type="hidden" name="subject" value="{{ comments.id }}">
-                            <input class="form-control my-2" name="subject" type="text" placeholder="Konu">
-                            <div>
-                                <div class="iconlar my-0">
-                                    <div class="div2" style="width:720px; height:55px">
-                                        <i style="padding-left: 10px;" class="fas fa-eraser"></i>
-                                        <span></span>
-                                        <span>
-                                        </span> <i style="padding-left: 10px;" class="fas fa-italic"></i>
-                                        <span></span>
-                                        <i class="fas fa-quote-left"></i>
-                                        <i class="fas fa-paragraph"></i>
-                                        <span></span>
-                                        <span></span>
-                                        <i class="fas fa-comment my-2" style="padding-left: 10px;"></i>
-                                        <span></span>
-                                        <i class="fas fa-heading" style="padding-left: 10px;"></i>
-                                        <span></span>
-                                        <i class="fas fa-file-word" style="padding-left: 10px;"></i>
-                                        <span></span>
-                                        <i class="fas fa-font"></i>
-                                        <span></span>
-                                        <i class="fas fa-align-center" style="padding-left: 10px;"></i>
-                                        <span></span>
-                                        <i class="fas fa-step-forward" style="padding-left: 10px;"></i>
-                                        <span></span>
-                                        <i class="fas fa-align-justify" style="padding-left: 10px;"></i>
-                                        <span></span>
-                                        <i class="fas fa-palette" style="padding-left: 15px;"></i>
-                                        <span></span>
-                                        <span></span>
-                                        <i class="far fa-comment-dots" style="padding-left: 10px;"></i>
-                                        <span></span>
-                                        <i class="fas fa-circle-notch" style="padding-left: 10px;"></i>
-                                        <span></span>
-                                        <i class="fas fa-print" style="padding-left: 10px;"></i>
-                                        <span></span>
-                                        <i class="fas fa-text-size" style="padding-left: 10px;"></i>
-                                        <i class="fa-solid fa-envelopes-bulk"></i>
-                                        <i class="fa-solid fa-paperclip"></i>
-                                        <i class="fa-solid fa-database"></i>
-                                        <i class="fa-regular fa-image" style="padding-left: 40px;"></i>
-                                        <i class="fa-regular fa-user"></i>
-                                        <i class="fa-solid fa-paperclip"></i>
-                                        <i class="fa-solid fa-table"></i>
-                                        <i class="fa-solid fa-arrow-up-wide-short"></i>
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                        <span></span>
-                                    </div>
-                                    <textarea class="form-control my-2" name="text" placeholder="Yorum" cols="30"
-                                        rows="10"></textarea>
-                                    <button type="submit" class="btn btn-primary my-2 btn-success" type="submit">Yeni Konu Aç</button>
-                                    <button type="button"
-                                        style="border: 1px solid rgba(128, 128, 128, 0.854); float: right;  margin-top:10px;"
-                                        class="btn btn-"><i class="fa-solid fa-paperclip "
-                                            style="padding-right:7px;"></i>Dosya
-                                        Ekle</button>
-                        </form>
+
+        <!-- comment text -->
+        <div class="card mt-5 post">
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="subject" value="{{ comments.id }}">
+                    <input class="form-control my-2" name="subject" type="text" placeholder="Konu">
+                    <div class="form">
+                        {{ form.media }}
+                        {{ form.as_p }}
                     </div>
-                </div>
+                        <button type="submit" class="btn btn-primary my-2 btn-success" type="submit">
+                            Yeni Konu Aç
+                        </button>
+                        <button type="button" style="border: 1px solid rgba(128, 128, 128, 0.854); float: right;  margin-top:10px;"
+                            class="btn btn-warning"><i class="fa-solid fa-paperclip " style="padding-right:7px;"></i>
+                            Dosya Ekle
+                        </button>
+                </form>
             </div>
         </div>
     </div>
-    </div>
+
 </main>
 {% endblock main %}

@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from appMy.models import GameCard
+from appMy.models import GameCard,ForumTyp
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
 
@@ -29,7 +29,8 @@ class Comment(models.Model):
     author = models.ForeignKey(User, verbose_name=("Yazar"), on_delete=models.CASCADE, null=True)
     game_cate= models.ForeignKey(GameCard, verbose_name=("Konuya bağlı Kategori İsmi"), on_delete=models.CASCADE, null=True)
     image = models.ForeignKey(Profileimage, verbose_name=("Profil Resmi"), on_delete=models.CASCADE,null=True, related_name="comment_avatars")
-    
+    typ_comment=models.ForeignKey(ForumTyp, verbose_name=("Konu tipi"), on_delete=models.CASCADE,null=True)
+
     def __str__(self):
         return self.subject_brand.subjectBrand
    

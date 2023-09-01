@@ -6,6 +6,7 @@ from django.urls import reverse
 from .models import *
 from appMy.models import *
 from django.http import HttpResponse
+from .forms import PostForm
 
 
 
@@ -81,6 +82,7 @@ def postDetail(request, category, pk):
     else:
         user = Profile.objects.all()
         
+    form=PostForm
     if request.method == 'POST':
         
         text = request.POST.get("text")
@@ -100,7 +102,8 @@ def postDetail(request, category, pk):
         "subject":subject,
         "games":games,
         'subject_author':subject_author,
-        "user":user
+        "user":user,
+        'form':form
         }
     
     return render(request,'postDetail.html',context)
@@ -120,6 +123,7 @@ def messagePost(request, game_slug):
     
     print("useeer", user)
     # game_slug a göre konu başlığı oluşturup yorumu kaydetme
+    form=PostForm
     if request.method == 'POST':
         subject_slug = request.POST.get("subject")  
         print(subject_slug)
@@ -138,7 +142,8 @@ def messagePost(request, game_slug):
         return redirect('/blog/'+game_slug+'/'+str((subject_url.slug)))    
     context = {
         'game': game,
-        "user": user
+        "user": user,
+        'form':form
     }
     return render(request, 'messagePost.html', context)
 
