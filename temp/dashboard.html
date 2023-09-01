@@ -198,7 +198,7 @@
                                 <div class="content-text">
                                     <h6>{{ card.subject_brand | truncatechars:25 }}</h6>
                                     <hr class="m-0 ">
-                                    <p>{{ card.text | truncatechars:25 }}</p>
+                                    <p>{{ card.text|safe | truncatechars:25 }}</p>
                                 </div>
                                 <div class="text-under d-flex justify-content-between align-items-center">
                                     <div class="d-flex">
