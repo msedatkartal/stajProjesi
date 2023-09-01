@@ -64,3 +64,7 @@ body.dark-mode .iconlar i {
     color:whitesmoke;
 }
 
+
+body.dark-mode .post-bg{
+    background: black !important;
+}
