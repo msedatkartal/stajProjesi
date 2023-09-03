@@ -44,6 +44,9 @@ def dashboardPage(request):
     # POPÜLER KONU
     most = Comment.objects.all()
     print("ssssssssssssssssssssssssssssssssssssssss",most)
+    
+    
+    
     context = {
         'gamecard': gamecard,
         'gamecategory': gamecategory,
