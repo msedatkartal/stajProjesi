@@ -132,7 +132,7 @@ def messagePost(request, game_slug):
         print(subject_slug)
         text = request.POST.get("text")
         comment_number += 1
-        subject_title=Subject(subjectBrand=subject_slug,game_cate=game,comment_number = comment_number)
+        subject_title=Subject(subjectBrand=subject_slug,game_cate=game,comment_number = comment_number,author = request.user,image=user.image)
         subject_title.save()
         subject_url = Subject.objects.filter().last()
         comment = Comment(text=text, subject_brand=subject_title, author=request.user, game_cate=game,image= user.image)
