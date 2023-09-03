@@ -5,11 +5,19 @@ from django.utils.text import slugify
 from ckeditor.fields import RichTextField
 
 # User Model
+class Profileimage(models.Model):
+    image = models.ImageField(("Profil Resmi"), upload_to="profile", max_length=None)
+
+
+# Subject
 class Subject(models.Model):
     subjectBrand = models.CharField(("Konu Başlığı"), max_length=50)
     game_cate = models.ForeignKey(GameCard, verbose_name=("Konuya Bağlı Kategori İsmi"), on_delete=models.CASCADE,null=True)
     slug = models.SlugField(blank=True,null=True)
     comment_number = models.IntegerField(("Başlık Yorum Sayısı"),default=0,null=True)
+    date_now =models.DateTimeField(("Tarih - Saat"),auto_now_add = True,null=True)
+    image = models.ForeignKey(Profileimage, verbose_name=("Profil Resmi"), on_delete=models.CASCADE,null=True)
+    author = models.ForeignKey(User, verbose_name=("Yazar"), on_delete=models.CASCADE,null=True)
     
     def save(self, *args, **kwargs):
         if self.subjectBrand:
@@ -18,10 +26,14 @@ class Subject(models.Model):
 
     def __str__(self):
         return self.subjectBrand
+<<<<<<< HEAD
+   
+=======
 class Profileimage(models.Model):
     image = models.ImageField(("Profil Resmi"), upload_to="profile", max_length=None)
     
     
+>>>>>>> 22e33bbc348f066655fd29abb53590fe60c2073c
 # Comment
 class Comment(models.Model):
     text = RichTextField(("Yorum")) 
