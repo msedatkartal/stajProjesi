@@ -61,8 +61,8 @@ def loginPage(request):
 def logoutUser(request):
     user = Profile.objects.filter(user=request.user,loginUser=True).first()
     print(user)
-    # user.loginUser = False
-    # user.save()
+    user.loginUser = False
+    user.save()
     logout(request)
     return redirect("dashboardPage")
 
@@ -72,13 +72,9 @@ def postDetail(request, category, pk):
     games = GameCard.objects.filter(slug=category).first()
     subject = Subject.objects.filter(slug=pk).first()
     comments = Comment.objects.filter(subject_brand__subjectBrand =subject)
-<<<<<<< HEAD
-    print("aradığın burdaaaaaaaaaaaaaaaa  :   ",comments)
-=======
+    print("bura bak  :",comments.__len__())
     sss = comments.first()
     xxx = sss.typ_comment
-    print("nnnnnnnnnnnnnnnnnn: ",xxx)
->>>>>>> c4e4af08a470f4e0d372f150d707fafebc294ef3
     subject_author = comments.first()
     
  
@@ -87,19 +83,23 @@ def postDetail(request, category, pk):
     else:
         user = Profile.objects.all()
         
-    form=PostForm
+    form=PostForm()
     if request.method == 'POST':
-<<<<<<< HEAD
-        submit = request.POST.get("submit")
-        if submit == "commentDelete":
+        if request.POST.get("submit")  == "commentDelete":
             pid = request.POST.get("id")
-            print("bak pid buradaaaaa:     ",pid)
-            commentDelete = Comment(id=pid)
-            commentDelete.delete()
-            return redirect('/blog/'+category+'/'+ pk)
+            print("pid buradaaa :  ",pid)
+
+            comment_delete = get_object_or_404(Comment,id=pid)
+            comment_delete.delete()
+            if comments.__len__() == 0:
+                subject.delete()
+            subject.comment_number -= 1
+            subject.save()
+            user.comment_user -=1
+            user.save()
+            return redirect('/forumlar/' + category)
         
-=======
->>>>>>> c4e4af08a470f4e0d372f150d707fafebc294ef3
+
         text = request.POST.get("text")
         comment = Comment(text=text,subject_brand=subject,author=request.user,image= user.image,game_cate=games,typ_comment = xxx)
         comment.save()
