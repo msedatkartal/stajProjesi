@@ -72,7 +72,13 @@ def postDetail(request, category, pk):
     games = GameCard.objects.filter(slug=category).first()
     subject = Subject.objects.filter(slug=pk).first()
     comments = Comment.objects.filter(subject_brand__subjectBrand =subject)
+<<<<<<< HEAD
     print("aradığın burdaaaaaaaaaaaaaaaa  :   ",comments)
+=======
+    sss = comments.first()
+    xxx = sss.typ_comment
+    print("nnnnnnnnnnnnnnnnnn: ",xxx)
+>>>>>>> c4e4af08a470f4e0d372f150d707fafebc294ef3
     subject_author = comments.first()
     
  
@@ -83,6 +89,7 @@ def postDetail(request, category, pk):
         
     form=PostForm
     if request.method == 'POST':
+<<<<<<< HEAD
         submit = request.POST.get("submit")
         if submit == "commentDelete":
             pid = request.POST.get("id")
@@ -91,8 +98,10 @@ def postDetail(request, category, pk):
             commentDelete.delete()
             return redirect('/blog/'+category+'/'+ pk)
         
+=======
+>>>>>>> c4e4af08a470f4e0d372f150d707fafebc294ef3
         text = request.POST.get("text")
-        comment = Comment(text=text,subject_brand=subject,author=request.user,image= user.image,game_cate=games)
+        comment = Comment(text=text,subject_brand=subject,author=request.user,image= user.image,game_cate=games,typ_comment = xxx)
         comment.save()
         subject.comment_number += 1
         subject.save()
@@ -138,9 +147,6 @@ def messagePost(request, game_slug):
         subject_title=Subject(subjectBrand=subject_slug,game_cate=game,comment_number = comment_number)
         subject_title.save()
         subject_url = Subject.objects.filter().last()
-        
-        print("son konu:", subject_url)
-      
         comment = Comment(text=text, subject_brand=subject_title, author=request.user, game_cate=game,image= user.image)
         comment.save()
         user.comment_user += 1

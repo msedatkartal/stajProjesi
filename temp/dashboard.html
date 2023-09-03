@@ -306,7 +306,7 @@
                                         class="rounded-circle" />
                                     <div class="ms-3">
                                         <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip"
-                                                title="{{ i.subject_brand.subjectBrand|striptags|truncatechars:'200' }}">{{ i.text|safe|truncatechars:'100' }}</a>
+                                                title="{{ i.subject_brand.subjectBrand|striptags|truncatechars:'200' }}">{{ i.text|safe|striptags|truncatechars:'100' }}</a>
                                         </p>
                                     </div>
                                 </div>
@@ -357,7 +357,7 @@
                                         class="rounded-circle" />
                                     <div class="ms-3">
                                         <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip"
-                                                title="{{ i.text|striptags|truncatechars:'200' }}">{{ i.subject_brand.subjectBrand|truncatechars:'100' }}</a>
+                                                title="{{ i.text|striptags|safe|truncatechars:'200' }}">{{ i.subject_brand.subjectBrand|truncatechars:'100' }}</a>
                                         </p>
                                     </div>
                                 </div>
@@ -397,7 +397,7 @@
                     </thead>
                     <tbody>
 
-                        {% for k,i in comments  %}
+                        {% for k in off_topic  %}
                         <tr>
                             <td>
                                 <p>{{ k.id }}</p>
@@ -485,7 +485,7 @@
                                 {% for i in category.gamecard_set.all %}
                                 <div class="d-flex justify-content-between">
                                     <div>
-                                        <a href="{% url 'forumDetail' i.slug %}">{{ i.gameName }}</a>
+                                        <a href="{% url 'forumDetail'  i.slug %}">{{ i.gameName }}</a>
                                         <p>Çoğu oyunda gördüğümüz Battle Royal modunu yaratan Pubg hakkında paylaşımları
                                             burada bulabilirsiniz.
                                         </p>
