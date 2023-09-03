@@ -74,9 +74,9 @@ def postDetail(request, category, pk):
     subject = Subject.objects.filter(slug=pk).first()
     print(subject)
     comments = Comment.objects.filter(subject_brand__subjectBrand =subject)
-    sss = comments.first()
-    xxx = sss.typ_comment
-    print("nnnnnnnnnnnnnnnnnn: ",xxx)
+    comment = comments.first()
+    type_post = comment.typ_comment
+    print("nnnnnnnnnnnnnnnnnn: ",type_post)
     subject_author = comments.first()
     
  
@@ -88,7 +88,7 @@ def postDetail(request, category, pk):
     form=PostForm
     if request.method == 'POST':
         text = request.POST.get("text")
-        comment = Comment(text=text,subject_brand=subject,author=request.user,image= user.image,game_cate=games,typ_comment = xxx)
+        comment = Comment(text=text,subject_brand=subject,author=request.user,image= user.image,game_cate=games,typ_comment = type_post)
         comment.save()
         subject.comment_number += 1
         subject.save()
@@ -119,6 +119,7 @@ def messagePost(request, game_slug):
     try:
         game = GameCard.objects.get(slug=game_slug) 
         user = Profile.objects.filter(user = request.user).first()
+        
         
     except GameCard.DoesNotExist:
         return HttpResponse("Oyun bulunamadı.")
