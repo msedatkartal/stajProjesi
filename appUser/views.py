@@ -72,15 +72,8 @@ def postDetail(request, category, pk):
     games = GameCard.objects.filter(slug=category).first()
     subject = Subject.objects.filter(slug=pk).first()
     comments = Comment.objects.filter(subject_brand__subjectBrand =subject)
-<<<<<<< HEAD
-    print("bura bak  :",comments.__len__())
-    sss = comments.first()
-    xxx = sss.typ_comment
-=======
     comment = comments.first()
     type_post = comment.typ_comment
-    print("nnnnnnnnnnnnnnnnnn: ",type_post)
->>>>>>> d43ae3fc2f3be0c67d40e09161aafdad787ebbe8
     subject_author = comments.first()
     
  
