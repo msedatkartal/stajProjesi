@@ -204,8 +204,13 @@
                                     <p style="font-size: small;" data-mdb-toggle="tooltip" title="{{ i.date_now }}"> 
                                         {{i.date_now|naturaltime }} 
                                     </p>
-                                    <button type="button" class="btn-close" aria-label="Close" data-mdb-toggle="modal"
-                                        data-mdb-target="#deleteAlert"></button>
+                                    
+                                    {% if request.user == i.author %}  
+                                        <input type="hidden" name="id" value="{{ i.id }}">       
+                                        <button type="submit" class="btn-close" aria-label="Close" data-mdb-toggle="modal"
+                                            data-mdb-target="#deleteAlert"></button>                      
+                                    {% endif %}
+                                        
                                 </div>
                             </div>
                             <div class="card-body">
@@ -227,7 +232,12 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn closeBtn" data-mdb-dismiss="modal">Vazgeç</button>
-                                <a style="width:100px;" type="button" class="btn orangeBtn">Sil</a>
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="id" value="{{ i.id }}">  
+                                    <button style="width:100px;" type="submit" name="submit" value="commentDelete" class="btn orangeBtn">Sil</button>
+
+                                </form>
                             </div>
                         </div>
                     </div>

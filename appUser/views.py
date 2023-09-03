@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth import login,logout,authenticate
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -61,8 +61,8 @@ def loginPage(request):
 def logoutUser(request):
     user = Profile.objects.filter(user=request.user,loginUser=True).first()
     print(user)
-    user.loginUser = False
-    user.save()
+    # user.loginUser = False
+    # user.save()
     logout(request)
     return redirect("dashboardPage")
 
@@ -70,10 +70,9 @@ def logoutUser(request):
 # comment
 def postDetail(request, category, pk):
     games = GameCard.objects.filter(slug=category).first()
-    print("oyu kategorisi:   ",category)
     subject = Subject.objects.filter(slug=pk).first()
-    print(subject)
     comments = Comment.objects.filter(subject_brand__subjectBrand =subject)
+    print("aradığın burdaaaaaaaaaaaaaaaa  :   ",comments)
     subject_author = comments.first()
     
  
@@ -84,6 +83,13 @@ def postDetail(request, category, pk):
         
     form=PostForm
     if request.method == 'POST':
+        submit = request.POST.get("submit")
+        if submit == "commentDelete":
+            pid = request.POST.get("id")
+            print("bak pid buradaaaaa:     ",pid)
+            commentDelete = Comment(id=pid)
+            commentDelete.delete()
+            return redirect('/blog/'+category+'/'+ pk)
         
         text = request.POST.get("text")
         comment = Comment(text=text,subject_brand=subject,author=request.user,image= user.image,game_cate=games)
@@ -92,11 +98,11 @@ def postDetail(request, category, pk):
         subject.save()
         user.comment_user +=1
         user.save()
-        
         return redirect('/blog/'+category+'/'+ pk )
     
+        
     
-    print("usssssssssssssssser", user)
+
     context = {
         "comments":comments,
         "subject":subject,
