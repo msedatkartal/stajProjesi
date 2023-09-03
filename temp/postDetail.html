@@ -204,8 +204,31 @@
                                     <p style="font-size: small;" data-mdb-toggle="tooltip" title="{{ i.date_now }}"> 
                                         {{i.date_now|naturaltime }} 
                                     </p>
-                                    <button type="button" class="btn-close" aria-label="Close" data-mdb-toggle="modal"
-                                        data-mdb-target="#deleteAlert"></button>
+                                    
+                                    {% if request.user == i.author %}  
+                                        <button type="submit" class="btn-close" aria-label="Close" data-mdb-toggle="modal"
+                                            data-mdb-target="#deleteAlert{{ i.id }}"></button> 
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="deleteAlert{{ i.id }}" tabindex="-1" aria-labelledby="deleteAlertLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-body text-center">
+                                                    <h5>Mesajı silmek istediğinize emin misiniz?</h5>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn closeBtn" data-mdb-dismiss="modal">Vazgeç</button>
+                                                    <form method="POST">
+                                                        {% csrf_token %}
+                                                        <input type="hidden" name="id" value="{{ i.id }}">  
+                                                        <button style="width:100px;" type="submit" name="submit" value="commentDelete" class="btn orangeBtn">Sil</button>
+                                                    </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>                     
+                                    {% endif %}
+                                        
                                 </div>
                             </div>
                             <div class="card-body">
@@ -214,24 +237,9 @@
                         </div>
                     </div>
                 </div>
+                
+
                 {% endfor %}
-
-                <!-- Modal -->
-                <div class="modal fade" id="deleteAlert" tabindex="-1" aria-labelledby="deleteAlertLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-
-                            <div class="modal-body text-center">
-                                <h5>Mesajı silmek istediğinize emin misiniz?</h5>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn closeBtn" data-mdb-dismiss="modal">Vazgeç</button>
-                                <a style="width:100px;" type="button" class="btn orangeBtn">Sil</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
 
                 {% if request.user.is_authenticated %}
