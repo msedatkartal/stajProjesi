@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth import login,logout,authenticate
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -70,13 +70,10 @@ def logoutUser(request):
 # comment
 def postDetail(request, category, pk):
     games = GameCard.objects.filter(slug=category).first()
-    print("oyu kategorisi:   ",category)
     subject = Subject.objects.filter(slug=pk).first()
-    print(subject)
     comments = Comment.objects.filter(subject_brand__subjectBrand =subject)
     comment = comments.first()
     type_post = comment.typ_comment
-    print("nnnnnnnnnnnnnnnnnn: ",type_post)
     subject_author = comments.first()
     
  
@@ -85,8 +82,23 @@ def postDetail(request, category, pk):
     else:
         user = Profile.objects.all()
         
-    form=PostForm
+    form=PostForm()
     if request.method == 'POST':
+        if request.POST.get("submit")  == "commentDelete":
+            pid = request.POST.get("id")
+            print("pid buradaaa :  ",pid)
+
+            comment_delete = get_object_or_404(Comment,id=pid)
+            comment_delete.delete()
+            if comments.__len__() == 0:
+                subject.delete()
+            subject.comment_number -= 1
+            subject.save()
+            user.comment_user -=1
+            user.save()
+            return redirect('/forumlar/' + category)
+        
+
         text = request.POST.get("text")
         comment = Comment(text=text,subject_brand=subject,author=request.user,image= user.image,game_cate=games,typ_comment = type_post)
         comment.save()
@@ -94,11 +106,11 @@ def postDetail(request, category, pk):
         subject.save()
         user.comment_user +=1
         user.save()
-        
         return redirect('/blog/'+category+'/'+ pk )
     
+        
     
-    print("usssssssssssssssser", user)
+
     context = {
         "comments":comments,
         "subject":subject,
