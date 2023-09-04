@@ -3,6 +3,9 @@ from django.utils.text import slugify
 
 class ForumTyp(models.Model):
     name=models.CharField(("tip"), max_length=50)
+    
+    def __str__(self):
+        return self.name
    
 
 class CategoryGame(models.Model):

@@ -7,7 +7,7 @@ class ProfileAdmin(admin.ModelAdmin):
     readonly_fields = ['loginUser']
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display= ['subject_brand','game_cate','author','date_now']
+    list_display= ['id','subject_brand','game_cate','author','date_now']
 
 admin.site.register(Profile,ProfileAdmin)
 admin.site.register(Comment,CommentAdmin)

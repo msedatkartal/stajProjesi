@@ -21,11 +21,12 @@ class Subject(models.Model):
 class Profileimage(models.Model):
     image = models.ImageField(("Profil Resmi"), upload_to="profile", max_length=None)
     
+    
 # Comment
 class Comment(models.Model):
     text = RichTextField(("Yorum")) 
     date_now =models.DateTimeField(("Tarih - Saat"),auto_now_add = True)
-    subject_brand=models.ForeignKey(Subject, verbose_name=("Konu Başlığı"), on_delete=models.CASCADE,null=True)
+    subject_brand=models.ForeignKey(Subject, verbose_name=("Konu Başlığı"), on_delete=models.PROTECT,null=True)
     author = models.ForeignKey(User, verbose_name=("Yazar"), on_delete=models.CASCADE, null=True)
     game_cate= models.ForeignKey(GameCard, verbose_name=("Konuya bağlı Kategori İsmi"), on_delete=models.CASCADE, null=True)
     image = models.ForeignKey(Profileimage, verbose_name=("Profil Resmi"), on_delete=models.CASCADE,null=True, related_name="comment_avatars")

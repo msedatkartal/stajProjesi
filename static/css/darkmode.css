@@ -10,9 +10,7 @@ body.dark-mode {
     background-color: rgb(20, 20, 20);
     color: whitesmoke;
 }
-body.dark-mode .moon-sun-button * {
-    fill:#ffffff !important;
-}
+
 
 body.dark-mode .owl-carousel{
     background-color:var(--bg-card-color-1);

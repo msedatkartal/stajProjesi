@@ -196,7 +196,7 @@
               <h1 class="title-subject">{{ games.gameName }}</h1>
               
               {% if request.user.is_authenticated %}
-                 <a href="{% url 'messagePost' game_slug=games.slug %}" class="new-subject">  
+                 <a href="{% url 'messagePost'  game_slug=games.slug  %}" class="new-subject">  
                   <input type="submit" value="Yeni Konu" name="newsubject" class="btn btn-success newsubject">
                 </a>
               {% else %}
