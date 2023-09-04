@@ -6,7 +6,7 @@ from django.utils import timezone
 from datetime import datetime
 from django.db.models import F, Count
 from django.db.models import Q
-from django.contrib.postgres.search import SearchHeadline
+
 
 
 
