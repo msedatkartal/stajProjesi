@@ -3,6 +3,11 @@ from django.utils.text import slugify
 
 class ForumTyp(models.Model):
     name=models.CharField(("tip"), max_length=50)
+    slug = models.SlugField(blank=True,null=True)
+
+    def save(self,*args, **kwargs):
+        self.slug = slugify(self.name.replace('ı','i'))
+        super(ForumTyp,self).save(*args, **kwargs)
     
     def __str__(self):
         return self.name
@@ -28,6 +33,9 @@ class GameCard(models.Model):
     categoryName=models.ForeignKey(CategoryGame, verbose_name=("kategori ismi"), on_delete=models.CASCADE)
     slug=models.SlugField(blank=True, null=True)
     forumTyp=models.ForeignKey(ForumTyp, verbose_name=("forum tipi"), on_delete=models.CASCADE, blank=True,null=True)
+   
+    
+    
     
     def save(self,*args, **kwargs):
         self.slug = slugify(self.gameName.replace('ı','i'))
