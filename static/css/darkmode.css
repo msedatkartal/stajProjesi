@@ -67,3 +67,6 @@ body.dark-mode .post-bg{
     background: black !important;
 }
 
+body.dark-mode .table tbody {
+    background: var(--bg-card-color-2);
+}
