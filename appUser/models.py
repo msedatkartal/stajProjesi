@@ -26,14 +26,7 @@ class Subject(models.Model):
 
     def __str__(self):
         return self.subjectBrand
-<<<<<<< HEAD
-   
-=======
-class Profileimage(models.Model):
-    image = models.ImageField(("Profil Resmi"), upload_to="profile", max_length=None)
-    
-    
->>>>>>> 22e33bbc348f066655fd29abb53590fe60c2073c
+
 # Comment
 class Comment(models.Model):
     text = RichTextField(("Yorum")) 
