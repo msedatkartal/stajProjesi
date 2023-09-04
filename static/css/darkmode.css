@@ -68,5 +68,5 @@ body.dark-mode .post-bg{
 }
 
 body.dark-mode .table tbody {
-    background: var(--bg-card-color-2);
+    background: red;
 }
