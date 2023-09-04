@@ -69,8 +69,6 @@
 
   /* Some styles to make the page look a little nicer */
 
-
-
   .border-subject-row {
     padding: 20px 15px;
   }
@@ -235,7 +233,7 @@
         <!--  subject table -->
         <div class="row mt-3">
           <div class="col">
-            {% for brand in comments %}
+            {% for brand in subject %}
             <table class="table align-middle mb-0 bg-white">
               <thead class="bg-light">
                 <tr>
@@ -253,8 +251,8 @@
                         class="rounded-circle" />
                       <div class="ms-3">
 
-                        <a href="{% url 'postDetail' brand.game_cate.slug brand.subject_brand.slug %}" data-mdb-toggle="tooltip" title="{{ brand.text|striptags|truncatechars:50 }}">
-                          <p class="fw-bold owlgreenBtn mb-1">{{ brand.subject_brand }}</p>
+                        <a href="{% url 'postDetail' brand.game_cate.slug brand.slug %}" data-mdb-toggle="tooltip" title="{{ brand.text|striptags|truncatechars:50 }}">
+                          <p class="fw-bold owlgreenBtn mb-1">{{ brand.subjectBrand }}</p>
                         </a>
 
                         <div class="d-flex">
@@ -266,7 +264,7 @@
                     </div>
                   </td>
                   <td>
-                    <p class="fw-normal mb-1">Cevaplar: {{ brand.subject_brand.comment_number }}</p>
+                    <p class="fw-normal mb-1">Cevaplar: {{ brand.comment_number }}</p>
                   </td>
                 </tr>
               </tbody>

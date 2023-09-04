@@ -32,7 +32,8 @@ body.dark-mode thead *,  body.dark-mode .post, body.dark-mode .breadcrumbs__item
     color: whitesmoke;
 }
 
-body.dark-mode .forumlar .card:nth-child(even) , body.dark-mode .post, body.dark-mode textarea, body.dark-mode .modal-content{
+
+body.dark-mode .forumlar .card:nth-child(even) , body.dark-mode .post, body.dark-mode .modal-content{
 
     background-color: var(--bg-card-color-2);
     color: white;
@@ -62,10 +63,7 @@ body.dark-mode .iconlar i {
     color:whitesmoke;
 }
 
-
 body.dark-mode .post-bg{
     background: black !important;
 }
-
-
 

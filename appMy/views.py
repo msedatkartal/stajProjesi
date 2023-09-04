@@ -4,6 +4,10 @@ from appUser.models import *
 import datetime
 from django.utils import timezone
 from datetime import datetime
+from django.db.models import F, Count
+from django.db.models import Q
+from django.contrib.postgres.search import SearchHeadline
+
 
 
 def dashboardPage(request):
@@ -42,18 +46,24 @@ def dashboardPage(request):
    
     
     # POPÜLER KONU
-    most = Comment.objects.all()
-    print("ssssssssssssssssssssssssssssssssssssssss",most)
-    
-    
+    # most = Subject.objects.all()
+    # most_subjects = {}
+    # for subject in most:
+    #     comment_count = subject.comment_number  # Konunun yorum sayısını alın
+    #     most_subjects[subject.subjectBrand] = comment_count
+    # print("başlıklar burda  :   ",most_subjects)
+    # sorted_most_subjects = dict(sorted(most_subjects.items(), key=lambda item: item[1], reverse=True))
+    # print("sıralanmış başlıklar  :  ",sorted_most_subjects.items())
+    popular_subjects = Subject.objects.annotate(comment_count=Count('comment')).order_by('-comment_count')[0:10]
     
     context = {
         'gamecard': gamecard,
         'gamecategory': gamecategory,
         'comments': last_ten_comments.items(),
         'game_subject':game_subject.items(),
-        # 'topic_post':topic.items(),
         'off_topic':topic,
+        # 'sorted_most_subjects':sorted_most_subjects.items()
+        "popular_subjects":popular_subjects
         
     }
     return render(request, 'dashboard.html', context)
@@ -86,4 +96,23 @@ def forumDetail(request,pk = None):
 
 
 
+def Query(request):
+    search_post=request.GET.get('q')
+    comments = Comment.objects.all().order_by("-date_now")
+    
+    
+    if search_post:
+        posts=Comment.objects.filter(Q(subject_brand__subjectBrand__icontains=search_post) | Q(text__icontains=search_post))
+        
+    else:
+        posts=None
+        
+    
+    context={
+        'posts':posts,
+        'search_post':search_post,
+        'comments':comments
+    }
 
+    return render(request, 'search.html',context)
+    

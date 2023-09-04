@@ -13,7 +13,8 @@ urlpatterns = [
     path('',dashboardPage, name='dashboardPage'),
     path('forumDetail',forumDetail, name='forumDetail'),
     path('forumlar/<str:pk>',forumDetail, name='forumDetail'),
-    
+    path('search/', Query, name='Query'),
+
     # appUser
     path('loginPage', loginPage , name='loginPage'),
     path('blog/<category>/<str:pk>',postDetail, name='postDetail'),
