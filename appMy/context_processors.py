@@ -36,6 +36,8 @@ def get_login(request):
         except Profile.DoesNotExist:
             pass
     birthday= Profile.objects.filter(birthday__day=datetime.now().date().day, birthday__month=datetime.now().date().month)
+    
+    
     context = {
                 'profile_user': profile_user,
                 'birthday_watch': birthday,
