@@ -103,6 +103,7 @@
         transition: opacity 0.5s, transform 0.5s;
     }
 
+
     .active-search .search-glass {
         opacity: 0;
         transform: rotate(360deg);
@@ -118,6 +119,11 @@
         transform: rotate(360deg);
     }
 
+    .query{
+        position: absolute;
+        top: 3px;
+        right: 0;
+    }
     .modal-footer{
 
         justify-content: center !important;
@@ -261,7 +267,7 @@
                     </li>
                     {% endif %}
                     <!-- search -->
-                    <form class='search-button m-auto' action='' method='POST' target='_blank'>
+                    <form class='search-button m-auto' action='{% url "Query" %}' method='GET'>
                         <input class='search-bar' type='search' name='q'>
                         <button class='search-btn' type='button'>
                             <ion-icon class='search-icon search-glass' name="search-outline"></ion-icon>
@@ -270,7 +276,7 @@
                     </form>
                     <!-- dark/light mode -->
                     <li class="nav-item me-3 me-lg-2 d-flex align-items-center">
-                        <a class="nav-link moon-sun-button"  href="#" role="button">
+                        <a class="nav-link moon-sun-button"  href="" role="button">
                             <span  id="moon" ><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ffffff" height="30px" width="30px" version="1.1" id="Layer_1" viewBox="0 0 511.999 511.999" xml:space="preserve">
                                 <g> 
                                     <g>
@@ -290,8 +296,7 @@
 
 
                 <!-- col-lg de main right offcanvas -->
-             
-
+            
                 <div class="canvasBtn ms-2 me-2"> 
                     <a  style="color: black;"
                     type="button"
@@ -330,19 +335,9 @@
                             <i class="fas fa-pen-to-square"></i>
                             Yeni konu aç
                         </button>
-
-
-                        
-                 
-                        
-                    
-
                     </div>
                     {% endif %}
                         
-                  
-        
-        
                     <div class="card mb-3">
                         <div class="card-header">
                             <i class="fas fa-cake-candles me-2"></i>
@@ -356,8 +351,6 @@
                             </div>
                         </div>
                     </div>
-        
-        
         
                     <div class="card mb-3">
                         <div class="card-header head">
@@ -457,9 +450,13 @@
 
  
 
-                    <form class="d-flex input-group w-auto position-relative search">
-                        <input type="search" class="form-control border border-3 border-dark" placeholder="Ara.."
+                    <form method="GET" action="{% url 'Query' %}" class="d-flex input-group w-auto position-relative search">
+                        <input type="search" name="q"  class="form-control border border-3 border-dark" placeholder="Ara.."
                             aria-label="Search" />
+                            <button class="btn bg-transparent  h-75 position-absolute end-0 mt-1 box-shadow-none " type="button">
+                                <ion-icon class='search-icon  query text-black me-2  ' name="search-outline"></ion-icon>
+                            </button>
+
                     </form>
                 </div>
 

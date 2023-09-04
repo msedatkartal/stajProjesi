@@ -5,6 +5,9 @@ import datetime
 from django.utils import timezone
 from datetime import datetime
 from django.db.models import F, Count
+from django.db.models import Q
+
+
 
 
 def dashboardPage(request):
@@ -93,4 +96,23 @@ def forumDetail(request,pk = None):
 
 
 
+def Query(request):
+    search_post=request.GET.get('q')
+    comments = Comment.objects.all().order_by("-date_now")
+    
+    
+    if search_post:
+        posts=Comment.objects.filter(Q(subject_brand__subjectBrand__icontains=search_post) | Q(text__icontains=search_post))
+        
+    else:
+        posts=None
+        
+    
+    context={
+        'posts':posts,
+        'search_post':search_post,
+        'comments':comments
+    }
 
+    return render(request, 'search.html',context)
+    
