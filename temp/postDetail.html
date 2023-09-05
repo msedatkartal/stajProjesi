@@ -80,7 +80,7 @@
                                                 {{i.date_now|naturaltime }} 
                                             </p>
                                             
-                                            {% if request.user == i.author %}  
+                                            {% if request.user.id == i.author.id or request.user.is_superuser  %}  
                                                 <button type="submit" class="btn-close" aria-label="Close" data-mdb-toggle="modal"
                                                     data-mdb-target="#deleteAlert{{ i.id }}"></button> 
                                                 <!-- Modal -->

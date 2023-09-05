@@ -5,7 +5,11 @@
     z-index: 2050 !important;
     animation: timeend 5.8s both;
     opacity: 1;
+    border-color: transparent ;
+    
  }
+
+ 
 
  .time-animate {
     width: 100%;
@@ -14,6 +18,7 @@
     border-bottom-right-radius: 0.375rem;
     border-bottom-left-radius: 0.375rem;
     overflow: hidden;
+    
  }
 
  .time-animate div {
@@ -21,6 +26,7 @@
     height: 100%;
     background: #d59393;
     animation: timew 5s linear both;
+    border: none !important;
  }
 
  @keyframes timew {
