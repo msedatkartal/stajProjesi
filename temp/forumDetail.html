@@ -109,6 +109,8 @@
   .main_right ul {
     list-style: none;
   }
+  
+ 
 
   .orangeBtn {
     background-color: #D8601D;
@@ -160,9 +162,6 @@
 }
 
  @media (max-width: 992px) {
-
-
-
     .displayBtn {
       display: none;
     }
@@ -194,7 +193,7 @@
               <h1 class="title-subject">{{ games.gameName }}</h1>
               
               {% if request.user.is_authenticated %}
-                 <a href="{% url 'messagePost'  game_slug=games.slug  %}" class="new-subject">  
+                 <a href="{% url 'messagePost'  game_slug=games.slug %}" class="new-subject">  
                   <input type="submit" value="Yeni Konu" name="newsubject" class="btn btn-success newsubject">
                 </a>
               {% else %}
@@ -202,12 +201,7 @@
                 <input type="submit" value="Yeni Konu" name="newsubject" class="btn btn-success newsubject" data-mdb-toggle="modal"
                   data-mdb-target="#singinAlert">
               </a>
-                
               {% endif %}
-                
-
-              
-                
             </div>
           </div>
         </div>
@@ -218,7 +212,6 @@
           aria-hidden="true">
           <div class="modal-dialog">
               <div class="modal-content">
-                  
                   <div class="modal-body text-center">
                       <h5>Yeni konu açmak lütfen giriş yapınız!</h5> </div>
                   <div class="modal-footer">
@@ -228,8 +221,6 @@
               </div>
           </div>
       </div>
-
-
         <!--  subject table -->
         <div class="row mt-3">
           <div class="col">
@@ -239,8 +230,7 @@
                 <tr>
                   <th style="padding: 25px;"></th>
                   <th></th>
-                  <!-- <th>Status</th> -->
-
+                
                 </tr>
               </thead>
               <tbody>
@@ -252,11 +242,13 @@
                       <div class="ms-3">
 
                         <a href="{% url 'postDetail' brand.game_cate.slug brand.slug %}" data-mdb-toggle="tooltip" title="{{ brand.text|striptags|truncatechars:50 }}">
-                          <p class="fw-bold owlgreenBtn mb-1">{{ brand.subjectBrand }}</p>
+                          <p class="fw-bold owlgreenBtn mb-1">
+                            {{ brand.subjectBrand }}
+                          </p>
                         </a>
 
                         <div class="d-flex">
-                          <div class="me-5"><i class="fas fa-baby"></i> <small>{{ brand.author }}</small></div>
+                          <div class="me-5"><i class="fas fa-baby"></i><small>{{ brand.author }}</small></div>
                           <div><i class="far fa-clock"></i> <small>{{ brand.date_now|naturaltime }}</small></div>
                         </div>
 
@@ -303,7 +295,7 @@
         <div class="card mb-3">
           <div class="card-header head owlgreenBtn2">
             <i class="fas fa-users me-2"></i>
-            <a href="#" class="owlgreenBtn2">Çevrimiçi üyeler</a>
+            <a  class="owlgreenBtn2">Çevrimiçi üyeler</a>
           </div>
           <div class="card-body">
             {% for i in user_active %}
@@ -324,17 +316,20 @@
         <div class="card mb-3">
           <div class="card-header owlgreenBtn2">
             <i class="far fa-comment me-2"></i>
-            <a href="#" class="owlgreenBtn2">Son mesajlar</a>
+            <a  class="owlgreenBtn2">Son mesajlar</a>
           </div>
           
           {% for card in comment3  %}
             
-          <div class="card-body">
+          <div class="card-body border-top">
             <img src="{{ card.image.image.url }}" alt="" class="rounded-circle me-2" style="width: 30px;">
-            <a href="#" class="owlgreenBtn2">{{ card.subject_brand }}</a>
+            <a href="{% url 'postDetail' card.game_cate.slug card.subject_brand.slug %}" class="owlgreenBtn2">
+              {{ card.subject_brand }}
+            </a>
             <p class="mt-3">{{ card.date_now| naturaltime }}</p>
-            <a href="" class="owlgreenBtn2">{{ card.author }}</a>
+            <a class="owlgreenBtn2">{{ card.author }}</a>
           </div>
+          
           {% endfor %}
             
           
@@ -363,7 +358,7 @@
               </div>
               <div class="d-flex justify-content-between">
                 <li>Son üye:</li>
-                <li> <a href="#" class="owlgreenBtn2">{{ user_last }}</a></li>
+                <li> <a  class="owlgreenBtn2">{{ user_last }}</a></li>
                 </li>
               </div>
             </ul>
@@ -372,39 +367,6 @@
       </div>
     </div>
   </div>
-
-
-
-
-
-  {% comment %}
-
-  <div class="row border-subject-row">
-  </div>
-  {% endcomment %}
-
-
-
-
-
-  {% comment %}
-
-  <div class="row tables">
-  </div>
-  {% endcomment %}
-
-
-  <div class="row pagination-bottom mt-5">
-
-  </div>
-
-
-
 </div>
 
-
-
-
-
-</div>
 {% endblock main %}

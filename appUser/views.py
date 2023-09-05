@@ -129,14 +129,14 @@ def messagePost(request, game_slug):
 
     # game_slug a göre messagepostu getirme
     try:
-        game = GameCard.objects.get(slug=game_slug) 
+        game = GameCard.objects.get(slug=game_slug)
+        print("tipi buradaaaa   :  ",game.forumTyp)
         user = Profile.objects.filter(user = request.user).first()
-        
         
     except GameCard.DoesNotExist:
         return HttpResponse("Oyun bulunamadı.")
+     
     
-    print("useeer", user)
     # game_slug a göre konu başlığı oluşturup yorumu kaydetme
     form=PostForm
     if request.method == 'POST':
@@ -147,7 +147,7 @@ def messagePost(request, game_slug):
         subject_title=Subject(subjectBrand=subject_slug,game_cate=game,comment_number = comment_number,author = request.user,image=user.image)
         subject_title.save()
         subject_url = Subject.objects.filter().last()
-        comment = Comment(text=text, subject_brand=subject_title, author=request.user, game_cate=game,image= user.image)
+        comment = Comment(text=text, subject_brand=subject_title, author=request.user, game_cate=game,image= user.image,typ_comment = game.forumTyp)
         comment.save()
         user.comment_user += 1
         user.save()

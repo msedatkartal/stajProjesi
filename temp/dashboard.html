@@ -151,48 +151,48 @@
         color: white;
     }
 
-    
-    .closeBtn{
+
+    .closeBtn {
         background-color: #f0c37f;
         color: white;
     }
-    .closeBtn:hover{
+
+    .closeBtn:hover {
         background-color: #f0b966;
         color: white;
     }
 
-    .modal-footer{
+    .modal-footer {
         justify-content: center !important;
     }
 
-    
+
     .nav-tabs .nav-link.active {
         color: #1A605D;
         border-color: #1A605D;
-      }
+    }
 
-      .owlgreenBtn{
+    .owlgreenBtn {
         color: #2B8482;
     }
 
-    .owlgreenBtn:hover{
-        color:#1A605D;
+    .owlgreenBtn:hover {
+        color: #1A605D;
     }
 
-    .owlgreenBtn2{
-        color: #2B8482; 
+    .owlgreenBtn2 {
+        color: #2B8482;
     }
-    .owlgreenBtn2:hover{
-        color: #2B8482; 
+
+    .owlgreenBtn2:hover {
+        color: #2B8482;
     }
 
     @media (max-width: 992px) {
-        .displayBtn{
+        .displayBtn {
             display: none;
         }
     }
-
-
 </style>
 
 {% endblock css %}
@@ -226,10 +226,16 @@
                                         <div class="user-img mb-2">
                                             <img src="{{ card.image.image.url }}" alt="">
                                         </div>
-                                        <small class="d-flex justify-content-center align-items-center ms-2">{{ card.author }}</small>
+                                        <small class="d-flex justify-content-center align-items-center ms-2">
+                                            {{card.author }}
+                                        </small>
                                     </div>
                                     <div class="message ">
-                                        <i class="far fa-comments "> <small class="ms-1 ">{{ card.subject_brand.comment_number }}</small></i>
+                                        <i class="far fa-comments ">
+                                             <small class="ms-1 ">
+                                                {{card.subject_brand.comment_number }}
+                                            </small>
+                                        </i>
                                     </div>
                                 </div>
                             </div>
@@ -305,25 +311,39 @@
                                     <img src="{{ i.image.image.url }}" alt="" style="width: 45px; height: 45px"
                                         class="rounded-circle" />
                                     <div class="ms-3">
-                                        <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip"
-                                                title="{{ i.subject_brand.subjectBrand|striptags|truncatechars:'200' }}">{{ i.text|safe|striptags|truncatechars:'100' }}</a>
+                                        <p>
+                                            <a href="{% url 'postDetail' i.game_cate.slug i.subject_brand.slug %}" class="owlgreenBtn" data-mdb-toggle="tooltip" title="{{ i.subject_brand.subjectBrand|striptags|truncatechars:'200' }}">
+                                                {{i.text|safe|striptags|truncatechars:'100' }}
+                                            </a>
                                         </p>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">{{ i.game_cate }}</a>
+                                <p>
+                                    <a href="{% url 'forumDetail' i.game_cate.slug %}" class="owlgreenBtn" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">
+                                        {{ i.game_cate }}
+                                    </a>
                                 </p>
                             </td>
                             <td>
-                                <p class="owlgreenBtn" data-mdb-toggle="tooltip" title="Cevap">{{ i.subject_brand.comment_number }}</p>
+                                <p class="owlgreenBtn" data-mdb-toggle="tooltip" title="Cevap">
+                                    {{i.subject_brand.comment_number }}
+                                </p>
                             </td>
                             <td>
-                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="Gönderim">{{ i.date_now | naturaltime }}</a></p>
+                                <p>
+                                    <a class="owlgreenBtn" data-mdb-toggle="tooltip" title="Gönderim">
+                                        {{ i.date_now |naturaltime }}
+                                    </a>
+                                </p>
                             </td>
                             <td>
-                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="Son Yazan">{{ i.author }}</a></p>
-                                </button>
+                                <p>
+                                    <a class="owlgreenBtn" data-mdb-toggle="tooltip" title="Son Yazan">
+                                        {{ i.author }}
+                                    </a>
+                                </p>
                             </td>
                         </tr>
 
@@ -356,25 +376,39 @@
                                     <img src="{{ i.image.image.url }}" alt="" style="width: 45px; height: 45px"
                                         class="rounded-circle" />
                                     <div class="ms-3">
-                                        <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip"
-                                                title="{{ i.text|striptags|safe|truncatechars:'200' }}">{{ i.subject_brand.subjectBrand|truncatechars:'100' }}</a>
+                                        <p>
+                                            <a href="{% url 'postDetail' i.game_cate.slug i.subject_brand.slug %}" class="owlgreenBtn" data-mdb-toggle="tooltip" title="{{ i.text|striptags|safe|truncatechars:'200' }}">
+                                                {{i.subject_brand.subjectBrand|truncatechars:'100' }}
+                                            </a>
                                         </p>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">{{ i.game_cate }}</a>
+                                <p>
+                                    <a href="{% url 'forumDetail' i.game_cate.slug %}" class="owlgreenBtn" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">
+                                        {{ i.game_cate }}
+                                    </a>
                                 </p>
                             </td>
                             <td>
-                                <p class="owlgreenBtn" data-mdb-toggle="tooltip" title="Cevap">{{ i.subject_brand.comment_number }}</p>
+                                <p class="owlgreenBtn" data-mdb-toggle="tooltip" title="Cevap">
+                                    {{i.subject_brand.comment_number }}
+                                </p>
                             </td>
                             <td>
-                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="Gönderim">{{ i.date_now | naturaltime }}</a></p>
+                                <p>
+                                    <a class="owlgreenBtn" data-mdb-toggle="tooltip" title="Gönderim">
+                                        {{ i.date_now |naturaltime }}
+                                    </a>
+                                </p>
                             </td>
                             <td>
-                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="Son Yazan">{{ i.author }}</a></p>
-                                </button>
+                                <p>
+                                    <a class="owlgreenBtn" data-mdb-toggle="tooltip" title="Son Yazan">
+                                        {{ i.author }}
+                                    </a>
+                                </p>
                             </td>
                         </tr>
 
@@ -397,7 +431,7 @@
                     </thead>
                     <tbody>
 
-                        {% for k in off_topic  %}
+                        {% for k in off_topic %}
                         <tr>
                             <td>
                                 <p>{{ k.id }}</p>
@@ -407,25 +441,41 @@
                                     <img src="{{ k.image.image.url }}" alt="" style="width: 45px; height: 45px"
                                         class="rounded-circle" />
                                     <div class="ms-3">
-                                        <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip"
-                                                title="{{ k.text|striptags|truncatechars:'200' }}">{{ k.subject_brand.subjectBrand|truncatechars:'100' }}</a>
+                                        <p>
+                                            <a href="{% url 'postDetail' k.game_cate.slug k.subject_brand.slug %}"
+                                                class="owlgreenBtn" data-mdb-toggle="tooltip"
+                                                title="{{ k.text|striptags|truncatechars:'200' }}">
+                                                {{k.subject_brand.subjectBrand|truncatechars:'100' }}
+                                            </a>
                                         </p>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">{{ k.game_cate }}</a>
+                                <p>
+                                    <a href="{% url 'forumDetail' k.game_cate.slug %}" class="owlgreenBtn" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">
+                                        {{ k.game_cate }}
+                                    </a>
                                 </p>
                             </td>
                             <td>
-                                <p class="owlgreenBtn" data-mdb-toggle="tooltip" title="Cevap">{{ k.subject_brand.comment_number }}</p>
+                                <p class="owlgreenBtn" data-mdb-toggle="tooltip" title="Cevap">
+                                    {{k.subject_brand.comment_number }}
+                                </p>
                             </td>
                             <td>
-                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="Gönderim">{{ k.date_now | naturaltime }}</a></p>
+                                <p>
+                                    <a class="owlgreenBtn" data-mdb-toggle="tooltip" title="Gönderim">
+                                        {{ k.date_now |naturaltime }}
+                                    </a>
+                                </p>
                             </td>
                             <td>
-                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="Son Yazan">{{ k.author }}</a></p>
-                                </button>
+                                <p>
+                                    <a class="owlgreenBtn" data-mdb-toggle="tooltip" title="Son Yazan">
+                                        {{ k.author }}
+                                    </a>
+                                </p>
                             </td>
                         </tr>
 
@@ -433,374 +483,385 @@
                     </tbody>
                 </table>
             </div>
+
             <!-- POPÜLER KONULAR -->
             <div class="tab-pane fade" id="ex-with-icons-tabs-4" role="tabpanel" aria-labelledby="ex-with-icons-tab-4">
-                <div class="tab-content tabloscrool" id="ex-with-icons-content" style="overflow-x: scroll; ">
-                    <!-- YENİ MESAJ -->
-                    <div class="tab-pane fade show active" id="ex-with-icons-tabs-1" role="tabpanel"
-                        aria-labelledby="ex-with-icons-tab-1">
-                        <table class="table align-middle mb-0 bg-white">
-                            <thead class="bg-light">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Konu</th>
-                                    <th>Forumu</th>
-                                    <th>Cevap</th>
-                                    <th>Gönderim</th>
-                                    <th>Son Yazan</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for i in popular_subjects %}
-                                <tr>
-                                    <td>
-                                        <p>{{ i.id }}</p>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <img src="{{ i.image.image.url }}" alt="" style="width: 45px; height: 45px"
-                                                class="rounded-circle" />
-                                            <div class="ms-3">
-                                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip"
-                                                        title="{{ i.subject_brand.subjectBrand|striptags|truncatechars:'200' }}">{{ i.text|safe|striptags|truncatechars:'100' }}</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">{{ i.game_cate }}</a>
+                <table class="table align-middle mb-0 bg-white">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Konu</th>
+                            <th>Forumu</th>
+                            <th>Cevap</th>
+                            <th>Gönderim</th>
+                            <th>Son Yazan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in popular_subjects %}
+                        <tr>
+                            <td>
+                                <p>{{ i.id }}</p>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="{{ i.image.image.url }}" alt="" style="width: 45px; height: 45px"
+                                        class="rounded-circle" />
+                                    <div class="ms-3">
+                                        <p>
+                                            <a href="{% url 'postDetail' i.game_cate.slug i.slug %}" class="owlgreenBtn"
+                                                data-mdb-toggle="tooltip"
+                                                title="{{ i.subject_brand.subjectBrand|striptags|truncatechars:'200' }}">
+                                                {{i.subjectBrand|safe|striptags|truncatechars:'100' }}
+                                            </a>
                                         </p>
-                                    </td>
-                                    <td>
-                                        <p class="owlgreenBtn" data-mdb-toggle="tooltip" title="Cevap">{{ i.comment_number }}</p>
-                                    </td>
-                                    <td>
-                                        <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="Gönderim">{{ i.date_now | naturaltime }}</a></p>
-                                    </td>
-                                    <td>
-                                        <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="Son Yazan">{{ i.author }}</a></p>
-                                        </button>
-                                    </td>
-                                </tr>
-        
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-            </div>
-        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p>
+                                    <a href="{% url 'forumDetail' i.game_cate.slug %}" class="owlgreenBtn" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">
+                                        {{ i.game_cate }}
+                                    </a>
+                                </p>
+                            </td>
+                            <td>
+                                <p class="owlgreenBtn" data-mdb-toggle="tooltip" title="Cevap">
+                                    {{ i.comment_number }}
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <a class="owlgreenBtn" data-mdb-toggle="tooltip" title="Gönderim">
+                                        {{ i.date_now |naturaltime }}
+                                    </a>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <a class="owlgreenBtn" data-mdb-toggle="tooltip" title="Son Yazan">
+                                        {{ i.author }}
+                                    </a>
+                                </p>
+                            </td>
+                        </tr>
 
-        <!-- Tabs content -->
-    </div>
-    <div id="forumlar" class="row mt-5">
-        <div class="col-lg-9">
-            {% for category in gamecategory %}
-            <div class="forumlar">
-                <div class="card">
-                    <div class="card-body">
-                        <h4>{{ category.categoryName }}</h4>
-                    </div>
-                </div>
-                <div class="card games mt-3 mb-5">
-                    <div class="card-body">
-                        <div>
-                            {% for i in category.gamecard_set.all %}
-                            <a href="{% url 'forumDetail' i.slug %}" class="me-3 owlgreenBtn"><i class="fas fa-gamepad me-1"></i>{{i.gameName }}</a>
-                            {% endfor %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Tabs content -->
+        </div>
+        <div id="forumlar" class="row mt-5">
+            <div class="col-lg-9">
+                {% for category in gamecategory %}
+                <div class="forumlar">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>{{ category.categoryName }}</h4>
                         </div>
                     </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-
-        <div class="col-3 main_right">
-            <!-- MODAL START -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Konuyu gönder...</h5>
-                            <button type="button" class="btn-close" data-mdb-dismiss="modal"
-                                aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body modal-game">
-
-                            {% for category in gamecategory %}
+                    <div class="card games mt-3 mb-5">
+                        <div class="card-body">
                             <div>
-                                <p> {{ category.categoryName }}</p>
-                                <p>{{ category.categoryName }} oyunlar bilgi ve paylaşım forumu</p>
-                            </div>
-                            <hr>
                                 {% for i in category.gamecard_set.all %}
-                                <div class="d-flex justify-content-between">
-                                    <div>
-                                        <a href="{% url 'forumDetail'  i.slug %}">{{ i.gameName }}</a>
-                                        <p>Çoğu oyunda gördüğümüz Battle Royal modunu yaratan Pubg hakkında paylaşımları
-                                            burada bulabilirsiniz.
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <p>Konular</p>
-                                        <p>43</p>
-                                    </div>
+                                <a href="{% url 'forumDetail' i.slug %}" class="me-3 owlgreenBtn"><i
+                                        class="fas fa-gamepad me-1"></i>{{i.gameName }}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- MAİN-RİGHT  SECTİON START -->
+        
+            <div class="col-3 main_right">
+                <!-- MODAL START -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Oyuna Git !!!</h5>
+                                <button type="button" class="btn-close" data-mdb-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body modal-game">
+
+                                {% for category in gamecategory %}
+                                <div>
+                                    <p> {{ category.categoryName }}</p>
+                                    <p>{{ category.categoryName }} oyunlar bilgi ve paylaşım forumu</p>
+                                </div>
+                                <hr>
+                                {% for i in category.gamecard_set.all %}
+                                <div>
+                                    <a href="{% url 'forumDetail'  i.slug %}">{{ i.gameName }}</a>
+                                    <p> <q class="fw-medium">{{ i.gameName }}</q> hakkında paylaşımları
+                                        burada bulabilirsiniz.
+                                    </p>
                                 </div>
                                 <hr>
                                 {% endfor %}
 
-                            {% endfor %}
+                                {% endfor %}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- MODAL END -->
-            
-            {% if request.user.is_authenticated %}
-            <div class="card mb-3 displayBtn ">
-                <div class="card-body">
-                    <h5 class="text-center">Yeni Konu Aç</h5>
-                    <p class="text-center">Bir soru sorun, bilgi içeren bir konu açın veya yeni üyeler ile tanışın.</p>
+                <!-- MODAL END -->
+
+                {% if request.user.is_authenticated %}
+                <div class="card mb-3 displayBtn ">
+                    <div class="card-body">
+                        <h5 class="text-center">Yeni Konu Aç</h5>
+                        <p class="text-center">Bir soru sorun, bilgi içeren bir konu açın veya yeni üyeler ile tanışın.
+                        </p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-center">
+                        <button type="button" class="btn orangeBtn button-text" data-mdb-toggle="modal"
+                            data-mdb-target="#exampleModal">
+                            <i class="fas fa-pen-to-square"></i>
+                            Yeni konu aç
+                        </button>
+                    </div>
                 </div>
-                <div class="card-footer d-flex justify-content-center">
+                {% else %}
+                <div class="card mb-3 displayBtn">
                     <button type="button" class="btn orangeBtn button-text" data-mdb-toggle="modal"
-                        data-mdb-target="#exampleModal">
+                        data-mdb-target="#singinAlert">
                         <i class="fas fa-pen-to-square"></i>
                         Yeni konu aç
                     </button>
                 </div>
-            </div>
-            {% else %}
-            <div class="card mb-3 displayBtn">
-                <button type="button" class="btn orangeBtn button-text" data-mdb-toggle="modal"
-                    data-mdb-target="#singinAlert">
-                    <i class="fas fa-pen-to-square"></i>
-                    Yeni konu aç
-                </button>
-            </div>
-            {% endif %}
-                
-            <!-- Modal -->
-            <div class="modal fade" id="singinAlert" tabindex="-1" aria-labelledby="SigninAlertLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-body text-center">
-                            <h5>Yeni konu açmak lütfen giriş yapınız!</h5> </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn closeBtn" data-mdb-dismiss="modal">Kapat</button>
-                            <a href="loginPage"  type="button" class="btn orangeBtn">Giriş</a>
+                {% endif %}
+
+                <!--  Modal start-->
+                <div class="modal fade" id="singinAlert" tabindex="-1" aria-labelledby="SigninAlertLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body text-center">
+                                <h5>Yeni konu açmak lütfen giriş yapınız!</h5>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn closeBtn" data-mdb-dismiss="modal">Kapat</button>
+                                <a href="loginPage" type="button" class="btn orangeBtn">Giriş</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <!-- Modal end -->
 
-
-            <div class="card mb-3 displayBtn">
-                <div class="card-header owlgreenBtn2">
-                    <i class="fas fa-cake-candles me-2"></i>
-                    <a href="" class="owlgreenBtn2">Bugün doğum günü olanlar</a>
-                </div>
-                <div class="card-body">
-                    <div>
-                        {% for i in birthday_watch %}
-                        <a>{{ i }},</a>
-                        {% endfor %}
+                <div class="card mb-3 displayBtn">
+                    <div class="card-header owlgreenBtn2">
+                        <i class="fas fa-cake-candles me-2"></i>
+                        <a href="" class="owlgreenBtn2">Bugün doğum günü olanlar</a>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            {% for i in birthday_watch %}
+                            <a>{{ i }},</a>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
-            </div>
 
 
 
-            <div class="card mb-3 displayBtn">
-                <div class="card-header head owlgreenBtn2">
-                    <i class="fas fa-users me-2"></i>
-                    <a href="#" class="owlgreenBtn2">Çevrimiçi üyeler</a>
-                </div>
-                <div class="card-body">
-                    {% if user_active.count %}
+                <div class="card mb-3 displayBtn">
+                    <div class="card-header head owlgreenBtn2">
+                        <i class="fas fa-users me-2"></i>
+                        <a class="owlgreenBtn2">Çevrimiçi üyeler</a>
+                    </div>
+                    <div class="card-body">
+                        {% if user_active.count %}
                         {% for i in user_active %}
-                            {% if i.loginUser %}
-                                <p class="d-inline">{{ i.user.username }}</p>,
-                            {% endif %}
+                        {% if i.loginUser %}
+                        <p class="d-inline">{{ i.user.username }}</p>,
+                        {% endif %}
                         {% endfor %}
-                    {% else %}
-                    <p>Şuan çevrimiçi üye yok.</p>
-                    {% endif %}
-                    
-                </div>
-                <div class="card-footer">
-                    <p style="font-size: 10px;">Toplam: <b>{{ bool_num }}</b></p>
-                </div>
-            </div>
+                        {% else %}
+                        <p>Şuan çevrimiçi üye yok.</p>
+                        {% endif %}
 
-            <div class="card mb-3 displayBtn">
-                <div class="card-header owlgreenBtn2">
-                    <i class="far fa-comment me-2"></i>
-                    <a href="#" class="owlgreenBtn2">Son mesajlar</a>
-                </div>
-                {% for card in comment3  %}
-            
-                <div class="card-body">
-                    <img src="{{ card.image.image.url }}" alt="" class="rounded-circle me-2" style="width: 30px;">
-                    <a href="#" class="owlgreenBtn2">{{ card.subject_brand }}</a>
-                    <p class="mt-3">{{ card.date_now| naturaltime }}</p>
-                    <a href="" class="owlgreenBtn2">{{ card.author }}</a>
-                </div>
-                {% endfor %}
-            </div>
-            <div class="card displayBtn">
-                <div class="card-header owlgreenBtn2">
-                    <i class="fas fa-chart-column me-2"></i>
-                    <p class="owlgreenBtn2" style="display: inline;"> Forum istatistikleri</p>
-                </div>
-                <div class="card-body">
-                    <ul class="p-0">
-                        <div class="d-flex justify-content-between">
-                            <li>Konular:</li>
-                            <li> {{ subject_num }}</li>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <li>Mesajlar:</li>
-                            <li>{{ comment_num }}</li>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <li>Kullanıcılar:</li>
-                            <li> {{ profile_num }}</li>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <li>Son üye:</li>
-                            <li> <a href="#" class="owlgreenBtn2">{{ user_last }}</a></li>
-                            </li>
-                        </div>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-
-
-<!-- İnformation Bar -->
-
-<div class="container">
-
-    <div class="card information mb-5 ">
-        <div class="card-body">
-
-            <div class="container text-center text-md-start">
-
-                <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 row-cols-1">
-
-                    <div class="col d-flex justify-content-center align-items-center smokewhite shaking-icon">
-                        <div class="col-2 mt-2 me-2">
-                            <i class="fas fa-file-signature fa-2x"></i>
-                        </div>
-                        <div class="col-10 mt-4 ">
-                            <a href="#" class="line">
-                                <h6 class=" smokewhite fw-bold">
-                                    Şartlar ve Kurallar
-                                </h6>
-                            </a>
-                            <p>
-                                Forum kullanım kurallarımız.
-                            </p>
-                        </div>
                     </div>
-
-
-
-
-                    <div class="col d-flex justify-content-center align-items-center smokewhite shaking-icon">
-                        <div class="col-2 mt-2 me-2">
-                            <i class="fas fa-user-shield fa-2xl"></i>
-                        </div>
-                        <div class="col-10 mt-4">
-                            <a href="#" class="line">
-                                <h6 class="smokewhite fw-bold">
-                                    Gizlilik Politikası
-                                </h6>
-                            </a>
-                            <p>
-                                Kişisel bilgi gizlilik detayları.
-                            </p>
-                        </div>
+                    <div class="card-footer">
+                        <p style="font-size: 10px;">Toplam: <b>{{ bool_num }}</b></p>
                     </div>
-
-                    <div class="col d-flex justify-content-center align-items-center smokewhite shaking-icon">
-                        <div class="col-2 mt-2 me-2">
-                            <i class="fas fa-life-ring fa-2xl"></i>
-                        </div>
-                        <div class="col-10 mt-4">
-                            <a href="#" class="line">
-                                <h6 class="smokewhite fw-bold">
-                                    Yardım
-                                </h6>
-                            </a>
-                            <p>
-                                Forum kullanım klavuzu
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col d-flex justify-content-center align-items-center smokewhite shaking-icon">
-                        <div class="col-2 mt-2 me-2">
-                            <i class="fas fa-envelope fa-2xl "></i>
-                        </div>
-                        <div class="col-10 mt-4">
-                            <a href="#" class="line">
-                                <h6 class="smokewhite fw-bold">
-                                    Bize Ulaşın
-                                </h6>
-                            </a>
-                            <p>
-                                Forum yöneticilerine ulaş.
-                            </p>
-                        </div>
-                    </div>
-
                 </div>
-                <!-- Grid row -->
+
+                <div class="card mb-3 displayBtn">
+                    <div class="card-header owlgreenBtn2">
+                        <i class="far fa-comment me-2"></i>
+                        <a  class="owlgreenBtn2">Son mesajlar</a>
+                    </div>
+                    {% for card in comment3 %}
+
+                    <div class="card-body border-top">
+                        <img src="{{ card.image.image.url }}" alt="profil resmi" class="rounded-circle me-2" style="width: 30px;">
+                        <a href="{% url 'postDetail' card.game_cate.slug card.subject_brand.slug %}"
+                            class="owlgreenBtn2">{{ card.subject_brand }}</a>
+                        <p class="mt-3">{{ card.date_now| naturaltime }}</p>
+                        <a  class="owlgreenBtn2">{{ card.author }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="card displayBtn">
+                    <div class="card-header owlgreenBtn2">
+                        <i class="fas fa-chart-column me-2"></i>
+                        <p class="owlgreenBtn2" style="display: inline;"> Forum istatistikleri</p>
+                    </div>
+                    <div class="card-body ">
+                        <ul class="p-0">
+                            <div class="d-flex justify-content-between">
+                                <li>Konular:</li>
+                                <li> {{ subject_num }}</li>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <li>Mesajlar:</li>
+                                <li>{{ comment_num }}</li>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <li>Kullanıcılar:</li>
+                                <li> {{ profile_num }}</li>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <li>Son üye:</li>
+                                <li> <a class="owlgreenBtn2">{{ user_last }}</a></li>
+                                </li>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
         </div>
     </div>
 
-</div>
+<!-- MAİN-RİGHT SECTİON END -->
 
-{% endblock main %}
+    <!-- İnformation Bar -->
+
+    <div class="container">
+
+        <div class="card information mb-5 ">
+            <div class="card-body">
+
+                <div class="container text-center text-md-start">
+
+                    <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 row-cols-1">
+
+                        <div class="col d-flex justify-content-center align-items-center smokewhite shaking-icon">
+                            <div class="col-2 mt-2 me-2">
+                                <i class="fas fa-file-signature fa-2x"></i>
+                            </div>
+                            <div class="col-10 mt-4 ">
+                                <a href="#" class="line">
+                                    <h6 class=" smokewhite fw-bold">
+                                        Şartlar ve Kurallar
+                                    </h6>
+                                </a>
+                                <p>
+                                    Forum kullanım kurallarımız.
+                                </p>
+                            </div>
+                        </div>
 
 
-{% block js %}
-<script>
 
-    var owl = $('.owl-carousel');
-    owl.owlCarousel({
-        margin: 25,
-        loop: true,
-        dots: false,
-        nav: true,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        smartSpeed: 4000,
-        responsive: {
-            0: {
-                items: 2
-            },
 
-            600: {
-                items: 2
-            },
-            767: {
-                items: 3
-            },
-            1000: {
-                items: 4
+                        <div class="col d-flex justify-content-center align-items-center smokewhite shaking-icon">
+                            <div class="col-2 mt-2 me-2">
+                                <i class="fas fa-user-shield fa-2xl"></i>
+                            </div>
+                            <div class="col-10 mt-4">
+                                <a href="#" class="line">
+                                    <h6 class="smokewhite fw-bold">
+                                        Gizlilik Politikası
+                                    </h6>
+                                </a>
+                                <p>
+                                    Kişisel bilgi gizlilik detayları.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col d-flex justify-content-center align-items-center smokewhite shaking-icon">
+                            <div class="col-2 mt-2 me-2">
+                                <i class="fas fa-life-ring fa-2xl"></i>
+                            </div>
+                            <div class="col-10 mt-4">
+                                <a href="#" class="line">
+                                    <h6 class="smokewhite fw-bold">
+                                        Yardım
+                                    </h6>
+                                </a>
+                                <p>
+                                    Forum kullanım klavuzu
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col d-flex justify-content-center align-items-center smokewhite shaking-icon">
+                            <div class="col-2 mt-2 me-2">
+                                <i class="fas fa-envelope fa-2xl "></i>
+                            </div>
+                            <div class="col-10 mt-4">
+                                <a href="#" class="line">
+                                    <h6 class="smokewhite fw-bold">
+                                        Bize Ulaşın
+                                    </h6>
+                                </a>
+                                <p>
+                                    Forum yöneticilerine ulaş.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Grid row -->
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    {% endblock main %}
+
+
+    {% block js %}
+    <script>
+
+        var owl = $('.owl-carousel');
+        owl.owlCarousel({
+            margin: 25,
+            loop: true,
+            dots: false,
+            nav: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            smartSpeed: 4000,
+            responsive: {
+                0: {
+                    items: 2
+                },
+
+                600: {
+                    items: 2
+                },
+                767: {
+                    items: 3
+                },
+                1000: {
+                    items: 4
+                }
             }
-        }
-    })
+        })
 
-</script>
-{% endblock js %}
+    </script>
+    {% endblock js %}
