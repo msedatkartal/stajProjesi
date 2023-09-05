@@ -6,10 +6,11 @@
 
 }
 
-body.dark-mode {
+body.dark-mode{
     background-color: rgb(20, 20, 20);
     color: whitesmoke;
 }
+
 
 
 body.dark-mode .owl-carousel{
@@ -63,10 +64,89 @@ body.dark-mode .iconlar i {
     color:whitesmoke;
 }
 
-body.dark-mode .post-bg{
-    background: black !important;
+body.dark-mode .post-bg {
+    background-color: rgb(20, 20, 20) !important;
 }
 
 body.dark-mode .table tbody {
-    background:var(--bg-card-color-2) !important;
+
+    background: var(--bg-card-color-2);
+}
+
+body.dark-mode .forumlar .card:nth-child(2n) * {
+    color: whitesmoke !important;
+}
+
+
+body.dark-mode .owlgreenBtn {
+    color: whitesmoke !important;
+}
+
+body.dark-mode .active>.page-link,
+.page-link.active {
+    color: whitesmoke !important;
+    background-color: rgb(114, 121, 134) !important;
+}
+
+body.dark-mode .page-item:not(:first-child) .page-link:hover {
+    background-color: var(--bg-card-color-4);
+    color: whitesmoke;
+}
+
+body.dark-mode .page-item:first-child .page-link {
+    background-color: var(--bg-card-color-4);
+    color: whitesmoke;
+}
+
+body.dark-mode section {
+
+    background: var(--bg-card-color-2);
+}
+
+body.dark-mode .nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    background-color: rgb(114, 121, 134) !important;
+    color: white;
+}
+
+body.dark-mode .nav-item a {
+    color: gray;
+}
+
+body.dark-mode .colorclass a {
+    color: gray;
+}
+
+body.dark-mode .form-check-input[type="checkbox"]:checked {
+    background-image: none;
+    background-color: gray !important;
+}
+
+body.dark-mode .form-check-input:checked {
+    border-color: gray !important;
+}
+
+body.dark-mode .orangeBG{
+    background-color: rgb(114, 121, 134) !important;
+        color: white;
+}
+
+body.dark-mode .orangeBG:hover{
+    background-color: var(--bg-card-color-1) !important;
+    color: white;
+}
+
+body.dark-mode .orangeBtn{
+    background-color: var(--bg-card-color-4) !important;
+        color: white;
+}
+
+body.dark-mode .orangeBtn:hover{
+    background-color: grey !important;
+        color: white;
+}
+
+body.dark-mode .mini-text-color{
+    color: whitesmoke !important;
+    opacity: 0.75 !important;
 }
