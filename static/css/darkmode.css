@@ -151,3 +151,15 @@ body.dark-mode .mini-text-color{
     opacity: 0.75 !important;
 }
 
+body.dark-mode .toast-box{
+
+    background: var(--bg-card-color-2) !important;
+    color: rgb(222, 112, 112) !important;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+body.dark-mode .toast {
+
+    background-color: black !important; 
+  }

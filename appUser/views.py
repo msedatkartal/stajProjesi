@@ -59,11 +59,14 @@ def loginPage(request):
 
 
 def logoutUser(request):
+    print(request.user.username, 'test')
     user = Profile.objects.filter(user=request.user,loginUser=True).first()
-    print(user)
-    user.loginUser = False
-    user.save()
+    if user:
+        user.loginUser = False
+        user.save()
+        
     logout(request)
+    
     return redirect("dashboardPage")
 
 
@@ -87,15 +90,21 @@ def postDetail(request, category, pk):
         if request.POST.get("submit")  == "commentDelete":
             pid = request.POST.get("id")
             print("pid buradaaa :  ",pid)
-
             comment_delete = get_object_or_404(Comment,id=pid)
-            comment_delete.delete()
-            if comments.__len__() == 0:
-                subject.delete()
-            subject.comment_number -= 1
-            subject.save()
-            user.comment_user -=1
-            user.save()
+            if request.user.is_superuser or request.user.id == comment_delete.author.id:
+              
+                comment_delete.delete()
+                
+                if comments.__len__() == 0:
+                    subject.delete()
+                    
+                subject.comment_number -= 1
+                subject.save()
+                
+                user.comment_user -=1
+                user.save()
+                
+                
             return redirect('/forumlar/' + category)
         
 
