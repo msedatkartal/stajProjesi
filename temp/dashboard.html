@@ -305,24 +305,24 @@
                                     <img src="{{ i.image.image.url }}" alt="" style="width: 45px; height: 45px"
                                         class="rounded-circle" />
                                     <div class="ms-3">
-                                        <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip"
+                                        <p><a href="{% url 'postDetail' i.game_cate.slug i.subject_brand.slug %}" class="owlgreenBtn" data-mdb-toggle="tooltip"
                                                 title="{{ i.subject_brand.subjectBrand|striptags|truncatechars:'200' }}">{{ i.text|safe|striptags|truncatechars:'100' }}</a>
                                         </p>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">{{ i.game_cate }}</a>
+                                <p><a href="{% url 'forumDetail' i.game_cate.slug %}" class="owlgreenBtn" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">{{ i.game_cate }}</a>
                                 </p>
                             </td>
                             <td>
                                 <p class="owlgreenBtn" data-mdb-toggle="tooltip" title="Cevap">{{ i.subject_brand.comment_number }}</p>
                             </td>
                             <td>
-                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="Gönderim">{{ i.date_now | naturaltime }}</a></p>
+                                <p><a class="owlgreenBtn" data-mdb-toggle="tooltip" title="Gönderim">{{ i.date_now | naturaltime }}</a></p>
                             </td>
                             <td>
-                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="Son Yazan">{{ i.author }}</a></p>
+                                <p><a class="owlgreenBtn" data-mdb-toggle="tooltip" title="Son Yazan">{{ i.author }}</a></p>
                                 </button>
                             </td>
                         </tr>
@@ -356,24 +356,24 @@
                                     <img src="{{ i.image.image.url }}" alt="" style="width: 45px; height: 45px"
                                         class="rounded-circle" />
                                     <div class="ms-3">
-                                        <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip"
+                                        <p><a href="{% url 'postDetail' i.game_cate.slug i.subject_brand.slug %}" class="owlgreenBtn" data-mdb-toggle="tooltip"
                                                 title="{{ i.text|striptags|safe|truncatechars:'200' }}">{{ i.subject_brand.subjectBrand|truncatechars:'100' }}</a>
                                         </p>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">{{ i.game_cate }}</a>
+                                <p><a href="{% url 'forumDetail' i.game_cate.slug %}" class="owlgreenBtn" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">{{ i.game_cate }}</a>
                                 </p>
                             </td>
                             <td>
                                 <p class="owlgreenBtn" data-mdb-toggle="tooltip" title="Cevap">{{ i.subject_brand.comment_number }}</p>
                             </td>
                             <td>
-                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="Gönderim">{{ i.date_now | naturaltime }}</a></p>
+                                <p><a class="owlgreenBtn" data-mdb-toggle="tooltip" title="Gönderim">{{ i.date_now | naturaltime }}</a></p>
                             </td>
                             <td>
-                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="Son Yazan">{{ i.author }}</a></p>
+                                <p><a class="owlgreenBtn" data-mdb-toggle="tooltip" title="Son Yazan">{{ i.author }}</a></p>
                                 </button>
                             </td>
                         </tr>
@@ -407,24 +407,24 @@
                                     <img src="{{ k.image.image.url }}" alt="" style="width: 45px; height: 45px"
                                         class="rounded-circle" />
                                     <div class="ms-3">
-                                        <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip"
+                                        <p><a href="{% url 'postDetail' k.game_cate.slug k.subject_brand.slug %}" class="owlgreenBtn" data-mdb-toggle="tooltip"
                                                 title="{{ k.text|striptags|truncatechars:'200' }}">{{ k.subject_brand.subjectBrand|truncatechars:'100' }}</a>
                                         </p>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">{{ k.game_cate }}</a>
+                                <p><a href="{% url 'forumDetail' k.game_cate.slug %}" class="owlgreenBtn" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">{{ k.game_cate }}</a>
                                 </p>
                             </td>
                             <td>
                                 <p class="owlgreenBtn" data-mdb-toggle="tooltip" title="Cevap">{{ k.subject_brand.comment_number }}</p>
                             </td>
                             <td>
-                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="Gönderim">{{ k.date_now | naturaltime }}</a></p>
+                                <p><a class="owlgreenBtn" data-mdb-toggle="tooltip" title="Gönderim">{{ k.date_now | naturaltime }}</a></p>
                             </td>
                             <td>
-                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="Son Yazan">{{ k.author }}</a></p>
+                                <p><a class="owlgreenBtn" data-mdb-toggle="tooltip" title="Son Yazan">{{ k.author }}</a></p>
                                 </button>
                             </td>
                         </tr>
@@ -461,24 +461,25 @@
                                             <img src="{{ i.image.image.url }}" alt="" style="width: 45px; height: 45px"
                                                 class="rounded-circle" />
                                             <div class="ms-3">
-                                                <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip"
-                                                        title="{{ i.subject_brand.subjectBrand|striptags|truncatechars:'200' }}">{{ i.text|safe|striptags|truncatechars:'100' }}</a>
-                                                </p>
+                                                <p>
+                                                    <a href="{% url 'postDetail' i.game_cate.slug i.slug %}" class="owlgreenBtn" data-mdb-toggle="tooltip"
+                                                        title="{{ i.subject_brand.subjectBrand|striptags|truncatechars:'200' }}">{{ i.subjectBrand|safe|striptags|truncatechars:'100' }}</a>
+                                                </p>              
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">{{ i.game_cate }}</a>
+                                        <p><a href="{% url 'forumDetail' i.game_cate.slug %}" class="owlgreenBtn" data-mdb-toggle="tooltip" title="{{ i.game_cate }}">{{ i.game_cate }}</a>
                                         </p>
                                     </td>
                                     <td>
                                         <p class="owlgreenBtn" data-mdb-toggle="tooltip" title="Cevap">{{ i.comment_number }}</p>
                                     </td>
                                     <td>
-                                        <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="Gönderim">{{ i.date_now | naturaltime }}</a></p>
+                                        <p><a class="owlgreenBtn" data-mdb-toggle="tooltip" title="Gönderim">{{ i.date_now | naturaltime }}</a></p>
                                     </td>
                                     <td>
-                                        <p><a href="#" class="owlgreenBtn" data-mdb-toggle="tooltip" title="Son Yazan">{{ i.author }}</a></p>
+                                        <p><a class="owlgreenBtn" data-mdb-toggle="tooltip" title="Son Yazan">{{ i.author }}</a></p>
                                         </button>
                                     </td>
                                 </tr>
@@ -521,7 +522,7 @@
                 <div class="modal-dialog modal-lg modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Konuyu gönder...</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Oyuna Git !!!</h5>
                             <button type="button" class="btn-close" data-mdb-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
@@ -534,18 +535,12 @@
                             </div>
                             <hr>
                                 {% for i in category.gamecard_set.all %}
-                                <div class="d-flex justify-content-between">
                                     <div>
                                         <a href="{% url 'forumDetail'  i.slug %}">{{ i.gameName }}</a>
-                                        <p>Çoğu oyunda gördüğümüz Battle Royal modunu yaratan Pubg hakkında paylaşımları
+                                        <p> <q class="fw-medium">{{ i.gameName }}</q> hakkında paylaşımları
                                             burada bulabilirsiniz.
                                         </p>
                                     </div>
-                                    <div>
-                                        <p>Konular</p>
-                                        <p>43</p>
-                                    </div>
-                                </div>
                                 <hr>
                                 {% endfor %}
 
@@ -643,7 +638,7 @@
             
                 <div class="card-body">
                     <img src="{{ card.image.image.url }}" alt="" class="rounded-circle me-2" style="width: 30px;">
-                    <a href="#" class="owlgreenBtn2">{{ card.subject_brand }}</a>
+                    <a href="{% url 'postDetail' card.game_cate.slug card.subject_brand.slug %}" class="owlgreenBtn2">{{ card.subject_brand }}</a>
                     <p class="mt-3">{{ card.date_now| naturaltime }}</p>
                     <a href="" class="owlgreenBtn2">{{ card.author }}</a>
                 </div>

@@ -128,20 +128,15 @@
             <tbody>
               <tr class="table-tr">
                 <td>
-                  <div class="d-flex align-items-center">
-                    <img src="" alt="" style="width: 45px; height: 45px"
-                      class="rounded-circle" />
                     <div class="ms-3">
-                        <a href="{% url 'forumDetail' result.game_cate.slug %}">
+                        <a href="{% url 'postDetail' result.game_cate.slug result.subject_brand.slug  %}">
                             <p>{{ result.subject_brand|safe|title }}</p>
                         </a>
                         <p>
                             {{ result.text|safe }}
                         </p>
                     </div>
-                  </div>
                 </td>
-               
               </tr>
             </tbody>
           </table>
