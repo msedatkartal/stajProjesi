@@ -3,170 +3,7 @@
 {% load humanize %}
 
 {% block css %}
-<style>
-
-  :root {
-
-    --mdb-link-hover-color: #1A605D !important;
-  }
-
-  .breadcrumbs {
-    border: 1px solid #cbd2d9;
-    border-radius: 0.3rem;
-    display: inline-flex;
-    overflow: hidden;
-    margin-top: 30px;
-  }
-
-  .breadcrumbs__item {
-    background: #fff;
-    color: #333;
-    outline: none;
-    padding: 0.75em 0.75em 0.75em 1.25em;
-    position: relative;
-    text-decoration: none;
-    transition: background 0.2s linear;
-  }
-
-  .breadcrumbs__item:hover:after,
-  .breadcrumbs__item:hover {
-    background: #edf1f5;
-  }
-
-  .breadcrumbs__item:focus:after,
-  .breadcrumbs__item:focus,
-  .breadcrumbs__item.is-active:focus {
-    background: #323f4a;
-    color: #fff;
-  }
-
-  .breadcrumbs__item:after,
-  .breadcrumbs__item:before {
-    background: white;
-    bottom: 0;
-    clip-path: polygon(50% 50%, -50% -50%, 0 100%);
-    content: "";
-    left: 100%;
-    position: absolute;
-    top: 0;
-    transition: background 0.2s linear;
-    width: 1em;
-    z-index: 1;
-  }
-
-  .breadcrumbs__item:before {
-    background: #cbd2d9;
-    margin-left: 1px;
-  }
-
-  .breadcrumbs__item:last-child {
-    border-right: none;
-  }
-
-  .breadcrumbs__item.is-active {
-    background: #edf1f5;
-  }
-
-  /* Some styles to make the page look a little nicer */
-
-  .border-subject-row {
-    padding: 20px 15px;
-  }
-
-  .border-subject {
-    color: #090a0a;
-    background: #fff;
-    border: 1px solid #ededed;
-    border-radius: 4px;
-    border-color: #2B8482;
-    box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 2px, inset rgba(0, 0, 0, 0.08) 0px -5px 20px;
-    background-clip: padding-box;
-  }
-
-  .title-subject {
-    padding: 0;
-    margin: 0 0 5px 0;
-    min-width: 0;
-    margin-right: auto;
-    font-weight: bold;
-  }
-
-  .newsubject {
-    margin: auto;
-    height: 48px;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2.5px;
-  }
-
-  .main_right a,
-  .main_right p,
-  .main_right li,
-  .content-text p {
-    font-size: 12px;
-  }
-
-  .main_right ul {
-    list-style: none;
-  }
-  
- 
-
-  .orangeBtn {
-    background-color: #D8601D;
-    color: white;
-}
-
-.orangeBtn:hover {
-    background: #d2450d;
-    color: white;
-}
-
-
-.owlgreenBtn {
-  color: #2B8482;
-}
-
-.owlgreenBtn:hover {
-  color: #1A605D;
-}
-
-.owlgreenBtn2 {
-  color: #2B8482;
-}
-
-.owlgreenBtn2:hover {
-  color: #2B8482;
-}
-
-
-.closeBtn{
-  background-color: #f0c37f;
-  color: white;
-}
-.closeBtn:hover{
-  background-color: #f0b966;
-  color: white;
-}
-
-.modal-footer{
-
-  justify-content: center !important;
-}
-
-
-.active>.page-link,
-.page-link.active {
-  color: #1A605D;
-  background-color: #aed8d7;
-}
-
- @media (max-width: 992px) {
-    .displayBtn {
-      display: none;
-    }
-  }
-</style>
+  <link rel="stylesheet" href="{% static 'css/forumDetail.css' %}">
 {% endblock css %}
 
 
@@ -193,14 +30,14 @@
               <h1 class="title-subject">{{ games.gameName }}</h1>
               
               {% if request.user.is_authenticated %}
-                 <a href="{% url 'messagePost'  game_slug=games.slug %}" class="new-subject">  
-                  <input type="submit" value="Yeni Konu" name="newsubject" class="btn btn-success newsubject">
-                </a>
+                  <a href="{% url 'messagePost'  game_slug=games.slug %}" class="new-subject">  
+                    <input type="submit" value="Yeni Konu" name="newsubject" class="btn btn-success newsubject">
+                  </a>
               {% else %}
-              <a ref="{% url 'messagePost' game_slug=games.slug %}" class="new-subject pe-1">
-                <input type="submit" value="Yeni Konu" name="newsubject" class="btn btn-success newsubject" data-mdb-toggle="modal"
-                  data-mdb-target="#singinAlert">
-              </a>
+                <a ref="{% url 'messagePost' game_slug=games.slug %}" class="new-subject pe-1">
+                  <input type="submit" value="Yeni Konu" name="newsubject" class="btn btn-success newsubject" data-mdb-toggle="modal"
+                    data-mdb-target="#singinAlert">
+                </a>
               {% endif %}
             </div>
           </div>
@@ -225,42 +62,38 @@
         <div class="row mt-3">
           <div class="col">
             {% for brand in subject %}
-            <table class="table align-middle mb-0 bg-white">
-              <thead class="bg-light">
-                <tr>
-                  <th style="padding: 25px;"></th>
-                  <th></th>
-                
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <div class="d-flex align-items-center">
-                      <img src="{{ brand.image.image.url }}" alt="" style="width: 45px; height: 45px"
-                        class="rounded-circle" />
-                      <div class="ms-3">
-
-                        <a href="{% url 'postDetail' brand.game_cate.slug brand.slug %}" data-mdb-toggle="tooltip" title="{{ brand.text|striptags|truncatechars:50 }}">
-                          <p class="fw-bold owlgreenBtn mb-1">
-                            {{ brand.subjectBrand }}
-                          </p>
-                        </a>
-
-                        <div class="d-flex mini-text-color">
-                          <div class="me-5"><i class="fas fa-baby"></i><small>{{ brand.author }}</small></div>
-                          <div><i class="far fa-clock"></i> <small>{{ brand.date_now|naturaltime }}</small></div>
+              <table class="table align-middle mb-0 bg-white">
+                <thead class="bg-light">
+                  <tr>
+                    <th style="padding: 25px;"></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img src="{{ brand.image.image.url }}" alt="" style="width: 45px; height: 45px"
+                          class="rounded-circle" />
+                        <div class="ms-3">
+                          <a href="{% url 'postDetail' brand.game_cate.slug brand.slug %}" data-mdb-toggle="tooltip" title="{{ brand.text|striptags|truncatechars:50 }}">
+                            <p class="fw-bold owlgreenBtn mb-1">
+                              {{ brand.subjectBrand }}
+                            </p>
+                          </a>
+                          <div class="d-flex mini-text-color">
+                            <div class="me-5"><i class="fas fa-baby"></i><small>{{ brand.author }}</small></div>
+                            <div><i class="far fa-clock"></i> <small>{{ brand.date_now|naturaltime }}</small></div>
+                          </div>
                         </div>
-
                       </div>
-                    </div>
-                  </td>
-                  <td>
-                    <p class="fw-normal mini-text-color mb-1">Cevaplar: {{ brand.comment_number }}</p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                    </td>
+                    <td>
+                      <p class="fw-normal mini-text-color mb-1">Cevaplar: {{ brand.comment_number }}</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             {% endfor %}
           </div>
         </div>
@@ -287,10 +120,9 @@
               </ul>
             </nav>
           </div>
-
         </div>
-
       </div>
+
       <div class="col-3 main_right displayBtn">
         <div class="card mb-3">
           <div class="card-header head owlgreenBtn2">
@@ -298,13 +130,10 @@
             <a  class="owlgreenBtn2">Çevrimiçi üyeler</a>
           </div>
           <div class="card-body">
-            {% for i in user_active %}
-                    
-            {% if i.loginUser %}
-                <p>{{ i.user.username }}</p>
-                
-            {% endif %}
-            
+            {% for i in user_active %} 
+              {% if i.loginUser %}
+                  <p>{{ i.user.username }}</p> 
+              {% endif %}
             {% endfor %}
    
           </div>
@@ -320,22 +149,16 @@
           </div>
           
           {% for card in comment3  %}
-            
-          <div class="card-body border-top">
-            <img src="{{ card.image.image.url }}" alt="" class="rounded-circle me-2" style="width: 30px;">
-            <a href="{% url 'postDetail' card.game_cate.slug card.subject_brand.slug %}" class="owlgreenBtn2">
-              {{ card.subject_brand }}
-            </a>
-            <p class="mt-3">{{ card.date_now| naturaltime }}</p>
-            <a class="owlgreenBtn2">{{ card.author }}</a>
-          </div>
-          
+            <div class="card-body border-top">
+              <img src="{{ card.image.image.url }}" alt="" class="rounded-circle me-2" style="width: 30px;">
+              <a href="{% url 'postDetail' card.game_cate.slug card.subject_brand.slug %}" class="owlgreenBtn2">
+                {{ card.subject_brand }}
+              </a>
+              <p class="mt-3">{{ card.date_now| naturaltime }}</p>
+              <a class="owlgreenBtn2">{{ card.author }}</a>
+            </div>
           {% endfor %}
-            
-          
-          
         </div>
-
 
         <div class="card">
           <div class="card-header owlgreenBtn2">

@@ -1,0 +1,102 @@
+.nav-item a {
+    color: #d8521d;
+}
+
+.colorclass a {
+    color: #d8521d;
+}
+
+
+section {
+    margin: 80px auto;
+    padding: 20px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    border-radius: 10px;
+    background: #EEDAD1;
+}
+
+img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.carousel-item {
+    position: relative;
+    display: none;
+    float: left;
+    width: 100%;
+    backface-visibility: hidden;
+    transition: transform .6s ease-in-out;
+}
+
+
+.log {
+
+    padding: 10px 60px 10px 60px;
+}
+
+.form-outline .form-control {
+    min-height: auto;
+    padding: .32rem .75rem;
+    border: 0;
+    background: white;
+    transition: all .2s linear;
+
+}
+
+
+.inp {
+    margin-bottom: 15px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.orangeBG {
+    background: #D8601D;
+    color: white;
+}
+
+.orangeBG:hover {
+    background: #d8521d;
+    color: white;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    background-color: rgb(249, 240, 228);
+    color: #d8521d;
+}
+
+.form-check-input[type="checkbox"]:checked {
+    background-image: none;
+    background-color: #D8601D !important;
+}
+
+.form-check-input:checked {
+    border-color: #D8601D !important;
+}
+
+@media (max-width: 992px) {
+
+    img {
+        height: 500px;
+    }
+
+    .log {
+        padding: 20px 40px 20px 40px;
+    }
+
+}
+
+@media (max-width: 767px) {
+
+    img {
+        display: none !important;
+    }
+
+    .k-link {
+        display: block;
+    }
+}

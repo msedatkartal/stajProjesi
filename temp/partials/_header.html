@@ -1,189 +1,7 @@
 {% load static %}
 {% load humanize %}
 {% block css %}
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Blinker&display=swap');
-
-    .header-img {
-        object-fit: contain;
-        object-position: center;
-        width: 100%;
-        height: 100%;
-    }
-
-    .navbg {
-        background: #D8601D;
-    }
-
-    .btncolor {
-        background-color: #D8601D;
-    }
-
-    .btncolor:hover {
-        background: #d8521d;
-    }
-
-    .nlink {
-        font-family: 'Blinker', sans-serif;
-        font-size: 17px !important;
-    }
-
-    .nlink2 {
-        font-family: 'Blinker', sans-serif;
-    }
-
-    .hover-shadow:hover {
-        background: #cf6135;
-    }
-
-    .dropdown-toggle-split {
-        padding-right: 0.50rem;
-        padding-left: 0.50rem;
-
-    }
-
-    /*search start*/
-    .search-button {
-        position: relative;
-        width: 36px;
-        height: 36px;
-        display: flex;
-        align-items: center;
-        transition: width 0.5s;
-        right: 0.5rem;
-    }
-
-    .active-search {
-        width: 200px;
-        border: 0.125rem solid black;
-        border-radius: 2rem;
-    }
-
-    .search-bar {
-        position: absolute;
-        width: inherit;
-        height: inherit;
-        border: 0.125rem solid transparent;
-        background-color: transparent;
-        border-radius: 2rem;
-        outline: none;
-        font: 1rem helvetica, sans-serif;
-        letter-spacing: 0.05rem;
-        padding-left: 2rem;
-    }
-
-    ::-webkit-search-cancel-button {
-        position: absolute;
-        right: 2rem;
-        filter: grayscale(100%) invert(20%);
-        font-size: 0.9rem;
-        cursor: pointer;
-    }
-
-    .search-btn {
-        position: absolute;
-        right: 2.2px;
-        width: 30px;
-        height: 30px;
-        border: none;
-        background-color: transparent;
-        display: grid;
-        place-items: center;
-        cursor: pointer;
-    }
-
-    .search-icon {
-        position: absolute;
-        color: white;
-        font-size: 1.5rem;
-    }
-
-    .search-glass {
-        opacity: 1;
-        transition: opacity 0.5s, transform 0.5s;
-    }
-
-
-    .active-search .search-glass {
-        opacity: 0;
-        transform: rotate(360deg);
-    }
-
-    .search-close {
-        opacity: 0;
-        transition: opacity 0.5s, transform 0.5s;
-    }
-
-    .active-search .search-close {
-        opacity: 1;
-        transform: rotate(360deg);
-    }
-
-    .query {
-        position: absolute;
-        top: 3px;
-        right: 0;
-    }
-
-    .modal-footer {
-
-        justify-content: center !important;
-    }
-
-    .orangeBtn {
-        background-color: #D8601D;
-        color: white;
-    }
-
-    .orangeBtn:hover {
-        background: #d2450d;
-        color: white;
-    }
-
-
-    .closeBtn {
-        background-color: #f0c37f;
-        color: white;
-    }
-
-    .closeBtn:hover {
-        background-color: #f0b966;
-        color: white;
-    }
-
-
-
-
-    @media (max-width: 992px) {
-        .logbox2 {
-            background-color: transparent !important;
-            box-shadow: 0px 0px 28px 7px rgba(0, 0, 0, 0.1);
-        }
-
-        .search {
-            display: none !important;
-        }
-    }
-
-    @media (min-width: 992px) {
-
-        .logbox2 {
-            position: absolute;
-            top: -124px;
-            right: 50px;
-        }
-
-        .search-button {
-            display: none;
-        }
-
-        .canvasBtn {
-            display: none;
-        }
-
-    }
-</style>
-
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
 {% endblock css %}
 
 <!-- Modal -->
@@ -238,26 +56,27 @@
                             </ul>
                         </div>
 
-
-                        <!-- notifications -->
-                        <li class="nav-item dropdown me-3 me-lg-2">
-                            <a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
-                                role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                                <span class="text-white">
-                                    <i class="fas fa-bell fa-lg"></i>
-                                    <span class="badge bg-warning badge-dot"></span>
-                                </span>
-                            </a>
-                        </li>
-                        <!-- messagebox -->
-                        <li class="nav-item dropdown me-3 me-lg-2">
-                            <a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
-                                role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                                <span class="text-white"><i class="fas fa-inbox fa-lg"></i>
-                                    <span class="badge bg-warning badge-dot"></span>
-                                </span>
-                            </a>
-                        </li>
+                        <div class="d-flex align-items-center">
+                            <!-- notifications -->
+                            <li class="nav-item dropdown me-3 me-lg-2">
+                                <a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
+                                    role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                                    <span class="text-white">
+                                        <i class="fas fa-bell fa-lg"></i>
+                                        <span class="badge bg-warning badge-dot"></span>
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- messagebox -->
+                            <li class="nav-item dropdown me-3 me-lg-2">
+                                <a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
+                                    role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                                    <span class="text-white"><i class="fas fa-inbox fa-lg"></i>
+                                        <span class="badge bg-warning badge-dot"></span>
+                                    </span>
+                                </a>
+                            </li>
+                        </div>
                         {% else %}
                         <!-- login -->
                         <li class="nav-item me-3 me-lg-2">
@@ -467,11 +286,8 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
@@ -481,11 +297,11 @@
                                 aria-current="page" href="/"><i class="pe-2 fas fa-house-chimney"></i>Anasayfa</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nlink nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href=""><i
+                            <a class="nlink nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href="#"><i
                                     class="pe-2 fas fa-comments"></i>Forumlar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nlink nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href=""><i
+                            <a class="nlink nav-link text-white fw-semibold rounded-pill fs-5 hover-shadow" href="#"><i
                                     class="pe-2 fas fa-blog"></i>Blog</a>
                         </li>
                         <li class="nav-item">
@@ -498,74 +314,22 @@
                         </li>
                     </ul>
 
-
-
                     <form method="GET" action="{% url 'Query' %}"
                         class="d-flex input-group w-auto position-relative search">
                         <input type="search" name="q" class="form-control border border-3 border-dark"
                             placeholder="Ara.." aria-label="Search" />
-                        <button class="btn bg-transparent  h-75 position-absolute end-0 mt-1 box-shadow-none "
+                        <button class="btn bg-transparent  h-75 position-absolute end-0 me-1 mt-1 box-shadow-none "
                             type="button">
                             <ion-icon class='search-icon  query text-black me-2  ' name="search-outline"></ion-icon>
                         </button>
-
                     </form>
                 </div>
-
-
             </div>
         </nav>
     </div>
 </header>
 
 {% block js %}
-<script>
-    //seach-button
-    const search = document.querySelector('.search-button');
-    const bar = document.querySelector('.search-bar');
-    const btn = document.querySelector('.search-btn');
-
-
-    function activate() {
-        search.classList.toggle('active-search');
-        bar.value = '';
-        setTimeout(() => bar.focus(), 750)
-    }
-
-    btn.addEventListener('click', activate, false);
-
-    //moon-sun mode
-    let moon = document.getElementById('moon')
-    let sun = document.getElementById('sun')
-
-    document.addEventListener("DOMContentLoaded", function () {
-        const darkMode = localStorage.getItem("darkMode") === "true";
-        document.body.classList.toggle("dark-mode", darkMode);
-    });
-
-    // Toggle butonuna tıklanınca dark-mode durumunu değiştir ve localStorage'a kaydet
-    document.querySelector(".moon-sun-button").addEventListener("click", () => {
-        const body = document.body;
-        const darkMode = body.classList.toggle("dark-mode");
-        localStorage.setItem("darkMode", darkMode);
-        moon.classList.toggle('d-none')
-        sun.classList.toggle('d-none')
-    });
-
-    /*document.querySelector('.moon-sun-button').addEventListener('click',()=>{
-        document.body.classList.toggle('dark-mode')
-        moon.classList.toggle('d-none')
-        sun.classList.toggle('d-none')  
-        card.classList.toggle('dark')
-    })*/
-
-
-
-
-
-
-
-
-</script>
+    <script src="{% static 'js/header.js' %}"></script>
 
 {% endblock js %}

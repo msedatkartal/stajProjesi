@@ -4,280 +4,143 @@
 
 
 {% block css %}
-<style>
-    
-    .breadcrumbs {
-        border: 1px solid #cbd2d9;
-        border-radius: 0.3rem;
-        display: inline-flex;
-        overflow: hidden;
-        margin-top: 30px;
-    }
-
-    .breadcrumbs__item {
-        background: #fff;
-        color: #333;
-        outline: none;
-        padding: 0.75em 0.75em 0.75em 1.25em;
-        position: relative;
-        text-decoration: none;
-        transition: background 0.2s linear;
-    }
-
-    .breadcrumbs__item:hover:after,
-    .breadcrumbs__item:hover {
-        background: #edf1f5;
-    }
-
-    .breadcrumbs__item:focus:after,
-    .breadcrumbs__item:focus,
-    .breadcrumbs__item.is-active:focus {
-        background: #323f4a;
-        color: #fff;
-    }
-
-    .breadcrumbs__item:after,
-    .breadcrumbs__item:before {
-        background: white;
-        bottom: 0;
-        clip-path: polygon(50% 50%, -50% -50%, 0 100%);
-        content: "";
-        left: 100%;
-        position: absolute;
-        top: 0;
-        transition: background 0.2s linear;
-        width: 1em;
-        z-index: 1;
-    }
-
-    .breadcrumbs__item:before {
-        background: #cbd2d9;
-        margin-left: 1px;
-    }
-
-    .breadcrumbs__item:last-child {
-        border-right: none;
-    }
-
-    .breadcrumbs__item.is-active {
-        background: #edf1f5;
-    }
-
-    .border-subject-row {
-        padding: 20px 15px;
-    }
-
-    .border-subject {
-        color: #090a0a;
-        background: #fff;
-        border: 1px solid #ededed;
-        border-radius: 4px;
-        border-color: #2B8482;
-        box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 2px, inset rgba(0, 0, 0, 0.08) 0px -5px 20px;
-        background-clip: padding-box;
-    }
-
-    .title-subject {
-        padding: 0;
-        margin: 0 0 5px 0;
-        min-width: 0;
-        margin-right: auto;
-        font-weight: bold;
-    }
-
-    .newsubject {
-        margin: auto;
-        height: 48px;
-        align-items: center;
-        justify-content: center;
-        margin-top: 2.5px;
-    }
-
-    .tooltip-inner {
-        background-color: #807979;
-    }
-
-    .orangeBtn {
-        background-color: #D8601D;
-        color: white;
-    }
-
-    .orangeBtn:hover {
-        background: #d2450d;
-        color: white;
-    }
-
-    .closeBtn {
-        background-color: #f0c37f;
-        color: white;
-    }
-
-    .closeBtn:hover {
-        background-color: #f0b966;
-        color: white;
-    }
-
-    .modal-footer {
-
-        justify-content: center !important;
-    }
-    .django-ckeditor-widget{
-        display: flex !important;
-        flex-wrap: wrap !important;
-    }
-
-
-
-  
-</style>
+    <link rel="stylesheet" href="{% static 'css/postDetail.css' %}">
 {% endblock css %}
 
 
 {% block main %}
-<main>
-
-    <!-- Comment -->
-    <div class="container mb-5">
-        <!-- page next -->
-        <div class="row mb-2">
-            <div class="col-9">
-                <nav class="breadcrumbs">
-
-                    <a href="{% url 'dashboardPage' %}" class="breadcrumbs__item">Anasayfa</a>
-
-                    <a href="#shop" class="breadcrumbs__item">{{ games.categoryName }}</a>
-                    <a href="#cart" class="breadcrumbs__item">{{ games.gameName }}</a>
-                </nav>
+    <main>
+        <!-- Comment -->
+        <div class="container mb-5">
+            <!-- page next -->
+            <div class="row mb-2">
+                <div class="col-9">
+                    <nav class="breadcrumbs">
+                        <a href="{% url 'dashboardPage' %}" class="breadcrumbs__item">Anasayfa</a>
+                        <a href="#shop" class="breadcrumbs__item">{{ games.categoryName }}</a>
+                        <a href="#cart" class="breadcrumbs__item">{{ games.gameName }}</a>
+                    </nav>
+                </div>
             </div>
-        </div>
-        <!-- page next-end -->
+            <!-- page next-end -->
 
-        <!-- subject name start -->
-        <div class="row mb-5">
-            <div class="col">
-                <div class="row mt-2">
-                    <div class="col border-subject">
-                        <div class="p-title d-flex">
-                            <h1 class="title-subject">{{ subject.subjectBrand }}</h1>
-                            <form method="POST">
-                                {% csrf_token %}
-                                <div class="new-subject">
-                                    <input type="hidden" value="yenikonu" name="yenikonu">
-
-                                </div>
-                            </form>
-                        </div>
-                        <div class="d-flex">
-                            <div class="me-5"><i class="fas fa-baby"></i> <small>{{ subject_author.author }}</small>
+            <!-- subject name start -->
+            <div class="row mb-5">
+                <div class="col">
+                    <div class="row mt-2">
+                        <div class="col border-subject">
+                            <div class="p-title d-flex">
+                                <h1 class="title-subject">{{ subject.subjectBrand }}</h1>
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <div class="new-subject">
+                                        <input type="hidden" value="yenikonu" name="yenikonu">
+                                    </div>
+                                </form>
                             </div>
-                            <div><i class="far fa-clock"></i> <small>{{ subject_author.date_now }}</small></div>
+                            <div class="d-flex">
+                                <div class="me-5"><i class="fas fa-baby"></i> <small>{{ subject_author.author }}</small>
+                                </div>
+                                <div><i class="far fa-clock"></i> <small>{{ subject_author.date_now }}</small></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-        </div>
-        <!-- subject name end -->
+            <!-- subject name end -->
 
-        <!-- comment card start -->
-        <div class="row ">
-            <div class="col-12">
-                {% for i in comments %}
-                <div class="card mb-2 ">
-                    <div class="d-flex post">
-                        <div class="card-header p-0 py-3 border-0">
-                            <div class="comment border-end m-auto px-4 ">
-                                <div class="m-auto my-2" style="width: fit-content;">
-                                    <img style="width: 125px; height: 125px; border:2px solid #00000030 ; border-radius: 50%;"
-                                        src="{{ i.image.image.url }}" alt="">
+            <!-- comment card start -->
+            <div class="row ">
+                <div class="col-12">
+                    {% for i in comments %}
+                        <div class="card mb-2 ">
+                            <div class="d-flex post">
+                                <div class="card-header p-0 py-3 border-0">
+                                    <div class="comment border-end m-auto px-4 ">
+                                        <div class="m-auto my-2" style="width: fit-content;">
+                                            <img style="width: 125px; height: 125px; border:2px solid #00000030 ; border-radius: 50%;"
+                                                src="{{ i.image.image.url }}" alt="">
+                                        </div>
+                                        <div class="m-auto p-2 text-center" style="width: 200px;">
+                                            <h5 class="m-0 d-inline m-auto" style="width: fit-content; ">{{ i.author }}</h5>
+                                            <p class="mt-2" style="text-align:left;"><b class="me-3">Katılım :</b> 
+                                                {{i.author.date_joined|date:"SHORT_DATE_FORMAT" }}
+                                            </p>
+                                            <p class="me-1" style="text-align:left;"><b class="me-1">Mesajlar :</b> 
+                                                {{i.author.profile.comment_user }}
+                                            </p>
+                                            <!-- <h6 style="min-width:50px; font-size: 12px;"> {{ i.date_now }} </h6> -->
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="m-auto p-2 text-center" style="width: 200px;">
-                                    <h5 class="m-0 d-inline m-auto" style="width: fit-content; ">{{ i.author }}</h5>
-                                    <p class="mt-2" style="text-align:left;"><b class="me-3">Katılım :</b> 
-                                        {{i.author.date_joined|date:"SHORT_DATE_FORMAT" }}
-                                    </p>
-                                    <p class="me-1" style="text-align:left;"><b class="me-1">Mesajlar :</b> 
-                                        {{i.author.profile.comment_user }}
-                                    </p>
-                                    <!-- <h6 style="min-width:50px; font-size: 12px;"> {{ i.date_now }} </h6> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-block w-100">
-                            <div class="card-header mt-3">
-                                <div class="d-flex justify-content-between">
-                                    <p style="font-size: small;" data-mdb-toggle="tooltip" title="{{ i.date_now }}"> 
-                                        {{i.date_now|naturaltime }} 
-                                    </p>
-                                    
-                                    {% if request.user == i.author %}  
-                                        <button type="submit" class="btn-close" aria-label="Close" data-mdb-toggle="modal"
-                                            data-mdb-target="#deleteAlert{{ i.id }}"></button> 
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="deleteAlert{{ i.id }}" tabindex="-1" aria-labelledby="deleteAlertLabel"
-                                        aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-body text-center">
-                                                    <h5>Mesajı silmek istediğinize emin misiniz?</h5>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn closeBtn" data-mdb-dismiss="modal">Vazgeç</button>
-                                                    <form method="POST">
-                                                        {% csrf_token %}
-                                                        <input type="hidden" name="id" value="{{ i.id }}">  
-                                                        <button style="width:100px;" type="submit" name="submit" value="commentDelete" class="btn orangeBtn">Sil</button>
-                                                    </form>
+                                <div class="d-block w-100">
+                                    <div class="card-header mt-3">
+                                        <div class="d-flex justify-content-between">
+                                            <p style="font-size: small;" data-mdb-toggle="tooltip" title="{{ i.date_now }}"> 
+                                                {{i.date_now|naturaltime }} 
+                                            </p>
+                                            
+                                            {% if request.user == i.author %}  
+                                                <button type="submit" class="btn-close" aria-label="Close" data-mdb-toggle="modal"
+                                                    data-mdb-target="#deleteAlert{{ i.id }}"></button> 
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="deleteAlert{{ i.id }}" tabindex="-1" aria-labelledby="deleteAlertLabel"
+                                                aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-body text-center">
+                                                            <h5>Mesajı silmek istediğinize emin misiniz?</h5>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn closeBtn" data-mdb-dismiss="modal">Vazgeç</button>
+                                                            <form method="POST">
+                                                                {% csrf_token %}
+                                                                <input type="hidden" name="id" value="{{ i.id }}">  
+                                                                <button style="width:100px;" type="submit" name="submit" value="commentDelete" class="btn orangeBtn">Sil</button>
+                                                            </form>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>                     
-                                    {% endif %}
-                                        
+                                                </div>                     
+                                            {% endif %} 
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>{{ i.text|safe }}</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <p>{{ i.text|safe }}</p>
+                        </div>
+                    {% endfor %}
+
+
+                    {% if request.user.is_authenticated %}
+                        <!-- comment text -->
+                        <div class="card mt-5 ">
+                            <div class="card-body post-bg">
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <div class="form">
+                                        {{ form.media }}
+                                        {{ form.as_p }}
+                                    </div>
+
+                                    <button type="submit" class="btn orangeBtn my-2" type="submit">Paylaş</button>
+                                
+                                </form>
                             </div>
                         </div>
-                    </div>
+                    {% else %}
+                        <div class=" d-flex justify-content-end w-100">
+                            <a href="{% url 'loginPage' %}" type="button" class="btn orangeBtn button-text">
+                                Mesaj yazabilmek için lütfen giriş yapınız
+                            </a>
+                        </div>
+                    {% endif %}
                 </div>
-                
-
-                {% endfor %}
-
-
-                {% if request.user.is_authenticated %}
-                <!-- comment text -->
-                <div class="card mt-5 ">
-                    <div class="card-body post-bg">
-                        <form method="POST">
-                            {% csrf_token %}
-                            <div class="form">
-                                {{ form.media }}
-                                {{ form.as_p }}
-                            </div>
-
-                            <button type="submit" class="btn orangeBtn my-2" type="submit">Paylaş</button>
-                           
-                        </form>
-                    </div>
-                </div>
-                {% else %}
-                <div class=" d-flex justify-content-end w-100">
-                    <a href="{% url 'loginPage' %}" type="button" class="btn orangeBtn button-text">
-                        Mesaj yazabilmek için lütfen giriş yapınız
-                    </a>
-                </div>
-
-                {% endif %}
-
-
-
             </div>
         </div>
-    </div>
-    </div>
-</main>
+        </div>
+    </main>
 {% endblock main %}
 

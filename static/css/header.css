@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Blinker&display=swap');
+
+.header-img {
+    object-fit: contain;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+}
+
+.navbg {
+    background: #D8601D;
+}
+
+.btncolor {
+    background-color: #D8601D;
+}
+
+.btncolor:hover {
+    background: #d8521d;
+}
+
+.nlink {
+    font-family: 'Blinker', sans-serif;
+    font-size: 17px !important;
+}
+
+.nlink2 {
+    font-family: 'Blinker', sans-serif;
+}
+
+.hover-shadow:hover {
+    background: #cf6135;
+}
+
+.dropdown-toggle-split {
+    padding-right: 0.50rem;
+    padding-left: 0.50rem;
+
+}
+
+/*search start*/
+.search-button {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    transition: width 0.5s;
+    right: 0.5rem;
+}
+
+.active-search {
+    width: 200px;
+    border: 0.125rem solid black;
+    border-radius: 2rem;
+}
+
+.search-bar {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border: 0.125rem solid transparent;
+    background-color: transparent;
+    border-radius: 2rem;
+    outline: none;
+    font: 1rem helvetica, sans-serif;
+    letter-spacing: 0.05rem;
+    padding-left: 2rem;
+}
+
+::-webkit-search-cancel-button {
+    position: absolute;
+    right: 2rem;
+    filter: grayscale(100%) invert(20%);
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.search-btn {
+    position: absolute;
+    right: 2.2px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+.search-icon {
+    position: absolute;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.search-glass {
+    opacity: 1;
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+
+.active-search .search-glass {
+    opacity: 0;
+    transform: rotate(360deg);
+}
+
+.search-close {
+    opacity: 0;
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.active-search .search-close {
+    opacity: 1;
+    transform: rotate(360deg);
+}
+
+.query {
+    position: absolute;
+    top: 3px;
+    right: 0;
+}
+
+.modal-footer {
+
+    justify-content: center !important;
+}
+
+.orangeBtn {
+    background-color: #D8601D;
+    color: white;
+}
+
+.orangeBtn:hover {
+    background: #d2450d;
+    color: white;
+}
+
+.closeBtn {
+    background-color: #f0c37f;
+    color: white;
+}
+
+.closeBtn:hover {
+    background-color: #f0b966;
+    color: white;
+}
+
+@media (max-width: 992px) {
+    .logbox2 {
+        background-color: transparent !important;
+        box-shadow: 0px 0px 28px 7px rgba(0, 0, 0, 0.1);
+    }
+
+    .search {
+        display: none !important;
+    }
+}
+
+@media (min-width: 992px) {
+
+    .logbox2 {
+        position: absolute;
+        top: -124px;
+        right: 50px;
+    }
+
+    .search-button {
+        display: none;
+    }
+
+    .canvasBtn {
+        display: none;
+    }
+
+}

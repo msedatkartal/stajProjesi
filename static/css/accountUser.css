@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Blinker&display=swap');
+
+
+.bg {
+    height: 200px;
+    background-image: url("{% static 'img/banner.png' %}");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+}
+
+.navbg {
+    background: #D8601D;
+}
+
+.btncolor {
+    background-color: #D8601D;
+}
+
+.btncolor:hover {
+    background: #d8521d;
+}
+
+.nlink {
+
+    font-family: 'Blinker', sans-serif;
+    font-size: 17px !important;
+
+}
+
+.nlink2 {
+    font-family: 'Blinker', sans-serif;
+}
+
+/*search start*/
+.search-button {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    transition: width 0.5s;
+    right: 0.5rem;
+}
+
+.active-search {
+    width: 200px;
+    border: 0.125rem solid black;
+    border-radius: 2rem;
+}
+
+.search-bar {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border: 0.125rem solid transparent;
+    background-color: transparent;
+    border-radius: 2rem;
+    outline: none;
+    font: 1rem helvetica, sans-serif;
+    letter-spacing: 0.05rem;
+    padding-left: 2rem;
+}
+
+::-webkit-search-cancel-button {
+    position: absolute;
+    right: 2rem;
+    filter: grayscale(100%) invert(20%);
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.search-btn {
+    position: absolute;
+    right: 2.2px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+.search-icon {
+    position: absolute;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.search-glass {
+    opacity: 1;
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+
+.active-search .search-glass {
+    opacity: 0;
+    transform: rotate(360deg);
+}
+
+.search-close {
+    opacity: 0;
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.active-search .search-close {
+    opacity: 1;
+    transform: rotate(360deg);
+}
+/*search end*/
+
+.hover-shadow:hover {
+    background: #cf6135;
+}
+
+.modal-fullscreen {
+    height: 70px;
+}
+
+.deleteBtn {
+
+    background: #D8601D;
+    color: white;
+}
+
+.deleteBtn:hover {
+
+    background: #d8521d;
+    color: white;
+
+}
+
+
+@media (max-width: 992px) {
+
+    .logbox2 {
+        display: none;
+    }
+
+    .p-image {
+        display: none;
+    }
+
+    .p-owl {
+        display: none;
+    }
+
+    .container-fluid {
+        padding-left: 5px !important;
+    }
+
+
+}
+
+@media (min-width: 992px) {
+
+
+    .indexBtn {
+        display: none;
+    }
+
+    .pimg {
+        display: none;
+    }
+
+}
+
+@media (max-width: 660px) {
+
+    .modal-fullscreen {
+        height: 110px;
+    }
+
+    .account {
+        display: block !important;
+    }
+
+    .accountBtn {
+        margin: 8px 0 0 60px !important;
+    }
+}
+
+
+@media (max-width: 575px) {
+
+    .e-spc {
+        margin-top: 15px;
+    }
+
+    .spc {
+        margin-top: 25px;
+    }
+
+    .text-mb {
+        margin-bottom: 0.3rem !important;
+    }
+}
+
+@media (max-width: 405px) {
+    .modal-fullscreen {
+        height: 103px;
+    }
+
+    .modal-title {
+        margin-left: 20px !important;
+        font-size: 16px !important;
+    }
+}
+
+@media (max-width: 355px) {
+    .modal-fullscreen {
+        height: 100px;
+    }
+
+    .modal-title {
+        font-size: 14px !important;
+    }
+
+    .accountBtn {
+        margin-left: 40px !important;
+    }
+}
+
+@media (max-width: 320px) {
+    .modal-fullscreen {
+        height: 98px;
+    }
+
+    .modal-title {
+        font-size: 13px !important;
+    }
+
+    .accountBtn {
+        margin-left: 30px !important;
+    }
+}

@@ -3,112 +3,7 @@
 
 
 {% block css %}
-
-<style>
-    .nav-item a {
-        color: #d8521d;
-    }
-
-    .colorclass a {
-        color: #d8521d;
-    }
-
-
-    section {
-        margin: 80px auto;
-        padding: 20px;
-        box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-        border-radius: 10px;
-        background: #EEDAD1;
-    }
-
-    img {
-        max-height: 100%;
-        max-width: 100%;
-    }
-
-    .carousel-item {
-        position: relative;
-        display: none;
-        float: left;
-        width: 100%;
-        backface-visibility: hidden;
-        transition: transform .6s ease-in-out;
-    }
-
-
-    .log {
-
-        padding: 10px 60px 10px 60px;
-    }
-
-    .form-outline .form-control {
-        min-height: auto;
-        padding: .32rem .75rem;
-        border: 0;
-        background: white;
-        transition: all .2s linear;
-
-    }
-
-
-    .inp {
-        margin-bottom: 15px;
-        border: none;
-        outline: none;
-        font-size: 16px;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    }
-
-    .orangeBG {
-        background: #D8601D;
-        color: white;
-    }
-
-    .orangeBG:hover {
-        background: #d8521d;
-        color: white;
-    }
-
-    .nav-pills .nav-link.active,
-    .nav-pills .show>.nav-link {
-        background-color: rgb(249, 240, 228);
-        color: #d8521d;
-    }
-
-    .form-check-input[type="checkbox"]:checked {
-        background-image: none;
-        background-color: #D8601D !important;
-    }
-
-    .form-check-input:checked {
-        border-color: #D8601D !important;
-    }
-
-    @media (max-width: 992px) {
-
-        img {
-            height: 500px;
-        }
-
-        .log {
-            padding: 20px 40px 20px 40px;
-        }
-
-    }
-
-    @media (max-width: 767px) {
-
-        img {
-            display: none !important;
-        }
-
-        .k-link {
-            display: block;
-        }
-    }
-</style>
-
+    <link rel="stylesheet" href="{% static 'css/login-register.css' %}">
 {% endblock css %}
 
 
@@ -171,33 +66,33 @@
                                     {% csrf_token %}
                                     <!-- Name input -->
                                     <div class="form-outline mb-4">
-                                        <input type="text" name="fname" id="registerName" class="form-control" />
+                                        <input type="text" name="fname" id="registerName" class="form-control" required />
                                         <label class="form-label" for="registerName">Ad</label>
                                     </div>
 
                                     <!-- Username input -->
                                     <div class="form-outline mb-4">
                                         <input type="text" name="username_register" id="registerUsername"
-                                            class="form-control" />
+                                            class="form-control" required />
                                         <label class="form-label" for="registerUsername">Kullanıcı Adı</label>
                                     </div>
 
                                     <!-- Email input -->
                                     <div class="form-outline mb-4">
-                                        <input type="email" name="email" id="registerEmail" class="form-control" />
+                                        <input type="email" name="email" id="registerEmail" class="form-control" required/>
                                         <label class="form-label" for="registerEmail">Email</label>
                                     </div>
 
                                     <!-- Password input -->
                                     <div class="form-outline mb-4">
-                                        <input type="password" name="password1" id="registerPassword"
+                                        <input type="password" name="password1" id="registerPassword" required
                                             class="form-control" />
                                         <label class="form-label" for="registerPassword">Parola</label>
                                     </div>
 
                                     <!-- Repeat Password input -->
                                     <div class="form-outline mb-4">
-                                        <input type="password" name="password2" id="registerRepeatPassword"
+                                        <input type="password" name="password2" id="registerRepeatPassword" required
                                             class="form-control" />
                                         <label class="form-label" for="registerRepeatPassword">Parolayı tekrarla</label>
                                     </div>
@@ -205,7 +100,7 @@
                                     <!-- Checkbox -->
                                     <div class="form-check d-flex justify-content-center mb-4">
                                         <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck"
-                                            checked aria-describedby="registerCheckHelpText" />
+                                            checked aria-describedby="registerCheckHelpText"  required/>
                                         <label class="form-check-label" for="registerCheck">
                                             Şartları okudum ve kabul ediyorum
                                         </label>
