@@ -92,9 +92,8 @@ def postDetail(request, category, pk):
             print("pid buradaaa :  ",pid)
             comment_delete = get_object_or_404(Comment,id=pid)
             if request.user.is_superuser or request.user.id == comment_delete.author.id:
-              
-                comment_delete.delete()
                 
+                comment_delete.delete()
                 if comments.__len__() == 0:
                     subject.delete()
                     
